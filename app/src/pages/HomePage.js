@@ -1,17 +1,8 @@
-
 import Component from '../core/Component.js';
 import UserCard from '../components/UserCard.js';
 
 export default class HomePage extends Component {
-
     template() {
-
-        const user = {
-            name: 'heolee',
-            win: 1,
-            lose: 0,
-        };
-
         return `
             <div class="p-5" style="width: 100%; height: 88vh;">
                 <div class="home-container d-flex rounded-5 p-3" style="width: 100%; height: 100%; background-color: rgba(14, 180, 252, 0.25); overflow: auto;">
@@ -37,7 +28,6 @@ export default class HomePage extends Component {
     }
 
     setEvent() {
-
         // "gamelog" 버튼 클릭 시
         this.addEvent('click', '#gamelog-button', () => {
             window.location.hash = '/gamelog'; // gamelog 페이지로 이동

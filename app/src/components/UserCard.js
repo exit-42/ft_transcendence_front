@@ -1,9 +1,7 @@
-
 import Component from '../core/Component.js';
 
 export default class UserCard extends Component {
     template() {
-
         const user = {
             name: 'heolee',
             win: 1,

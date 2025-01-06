@@ -1,4 +1,3 @@
-
 import Component from '../core/Component.js';
 
 export default class SelectPage extends Component {
@@ -32,7 +31,6 @@ export default class SelectPage extends Component {
     }
 
     setEvent() {
-
         this.addEvent('click', '#room2-button', () => {
             window.location.hash = '/room2';
         });
@@ -40,6 +38,5 @@ export default class SelectPage extends Component {
         this.addEvent('click', '#room4-button', () => {
             window.location.hash = '/room4';
         });
-
     }
 }

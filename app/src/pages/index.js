@@ -1,4 +1,3 @@
-
 import LoginPage from './LoginPage.js';
 import HomePage from './HomePage.js';
 import LobbyPage from './LobbyPage.js';
@@ -37,6 +36,6 @@ export default (main) => {
         result,
         gamelog,
         counter,
-        usercard
+        usercard,
     };
 };

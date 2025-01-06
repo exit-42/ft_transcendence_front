@@ -1,4 +1,3 @@
-
 import Component from '../core/Component.js';
 
 export default class ResultPage extends Component {
@@ -15,6 +14,4 @@ export default class ResultPage extends Component {
             </div>
         `;
     }
-
 }
-

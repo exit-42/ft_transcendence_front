@@ -1,10 +1,8 @@
-
 import Component from '../core/Component.js';
 import Game from '../components/Game.js';
 
 export default class GamePage extends Component {
     template() {
-
         const player1 = 'heolee';
         const player2 = 'haejeong';
 
@@ -17,9 +15,7 @@ export default class GamePage extends Component {
     }
 
     mounted() {
-        const $game = this.$target.querySelector(
-            '[data-component="game"]'
-        );
+        const $game = this.$target.querySelector('[data-component="game"]');
         new Game($game);
     }
 }

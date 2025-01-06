@@ -1,35 +1,9 @@
-
 import Component from '../core/Component.js';
 import Chatting from '../components/Chatting.js';
 import UserCard from '../components/UserCard.js';
 
 export default class RoomFourPage extends Component {
     template() {
-
-        const user1 = {
-            name: 'heolee',
-            win: 1,
-            lose: 0,
-        };
-
-        const user2 = {
-            name: 'haejeong',
-            win: 0,
-            lose: 1,
-        };
-
-        const user3 = {
-            name: 'sangyhan',
-            win: 2,
-            lose: 1,
-        };
-
-        const user4 = {
-            name: 'sham',
-            win: 1,
-            lose: 2,
-        };
-
         return `
             <div class="p-3" style="width: 100%; height: 88vh;">
                 <div class="all-container d-flex flex-column rounded-5 p-3" style="width: 100%; height: 100%; background-color: rgba(14, 180, 252, 0.25); overflow: auto;">
@@ -56,7 +30,9 @@ export default class RoomFourPage extends Component {
     }
 
     mounted() {
-        const $usercards = this.$target.querySelectorAll('[data-component="usercard"]');
+        const $usercards = this.$target.querySelectorAll(
+            '[data-component="usercard"]'
+        );
         $usercards.forEach(($usercard) => {
             new UserCard($usercard);
         });
@@ -68,7 +44,6 @@ export default class RoomFourPage extends Component {
     }
 
     setEvent() {
-
         this.addEvent('click', '#exit-button', () => {
             window.location.hash = '/lobby';
         });
@@ -76,6 +51,5 @@ export default class RoomFourPage extends Component {
         this.addEvent('click', '#start-button', () => {
             window.location.hash = '/game';
         });
-
     }
 }

@@ -2,7 +2,6 @@ import Component from '../core/Component.js';
 
 export default class Chatting extends Component {
     template() {
-
         return `
             <div class="p-1" style="width:100%; height: 100%;">
                 <div class="d-flex align-items-center" style="height: 20%;"></div>
@@ -16,5 +15,4 @@ export default class Chatting extends Component {
             </div>
         `;
     }
-
 }
