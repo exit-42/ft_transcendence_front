@@ -1,5 +1,5 @@
 import Component from '../core/Component.js';
-import UserCard from '../components/UserCard.js';
+import { UserCard } from '../components/index.js';
 
 export default class HomePage extends Component {
     template() {

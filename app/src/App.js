@@ -1,6 +1,6 @@
 import Router from './Router.js';
 import Component from './core/Component.js';
-import Header from './components/Header.js';
+import { Header } from './components/index.js';
 import createPages from './pages/index.js';
 
 export default class App extends Component {

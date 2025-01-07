@@ -11,7 +11,7 @@ import CounterPage from './CounterPage.js';
 
 import UserCard from '../components/UserCard.js';
 
-export default (main) => {
+export default function createPages(main) {
     const login = () => new LoginPage(main);
     const home = () => new HomePage(main);
     const lobby = () => new LobbyPage(main);
@@ -38,4 +38,4 @@ export default (main) => {
         counter,
         usercard,
     };
-};
+}

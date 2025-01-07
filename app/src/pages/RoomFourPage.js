@@ -1,6 +1,5 @@
 import Component from '../core/Component.js';
-import Chatting from '../components/Chatting.js';
-import UserCard from '../components/UserCard.js';
+import { Chatting, UserCard } from '../components/index.js';
 
 export default class RoomFourPage extends Component {
     template() {

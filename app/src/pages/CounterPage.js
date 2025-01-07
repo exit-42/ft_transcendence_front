@@ -1,5 +1,5 @@
 import Component from '../core/Component.js';
-import Counter from '../components/Counter.js';
+import { Counter } from '../components/index.js';
 
 export default class CounterPage extends Component {
     template() {

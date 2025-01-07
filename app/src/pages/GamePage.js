@@ -1,5 +1,5 @@
 import Component from '../core/Component.js';
-import Game from '../components/Game.js';
+import { Game } from '../components/index.js';
 
 export default class GamePage extends Component {
     template() {
