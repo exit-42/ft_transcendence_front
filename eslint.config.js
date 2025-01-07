@@ -1,12 +1,12 @@
 import js from '@eslint/js';
 import globals from 'globals';
 import prettierConfig from 'eslint-config-prettier';
-import prettierPlugin from 'eslint-plugin-prettier';
 import googleConfig from 'eslint-config-google';
 
 export default [
     js.configs.recommended,
     googleConfig,
+    prettierConfig,
     {
         rules: {
             'no-unused-vars': 'error',
@@ -19,16 +19,6 @@ export default [
                 ...globals.node,
                 ...globals.browser,
             },
-        },
-    },
-    prettierConfig,
-    {
-        plugins: {
-            prettier: prettierPlugin,
-        },
-        rules: {
-            ...prettierPlugin.configs.recommended.rules,
-            'prettier/prettier': 'error', // Prettier 규칙 위반 시 오류로 처리
         },
     },
 ];
