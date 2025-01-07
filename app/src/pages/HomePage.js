@@ -21,9 +21,7 @@ export default class HomePage extends Component {
     }
 
     mounted() {
-        const $usercard = this.$target.querySelector(
-            '[data-component="usercard"]'
-        );
+        const $usercard = this.$target.querySelector('[data-component="usercard"]');
         new UserCard($usercard);
     }
 

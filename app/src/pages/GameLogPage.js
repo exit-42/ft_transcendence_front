@@ -14,7 +14,11 @@ export default class GameLogPage extends Component {
                 winner: 'haejeong',
                 score: '8 : 11',
             },
-            { players: 'sham VS haejeong', winner: 'sham', score: '11 : 7' },
+            {
+                players: 'sham VS haejeong',
+                winner: 'sham',
+                score: '11 : 7',
+            },
         ];
 
         // 게임 로그를 반복적으로 렌더링
@@ -27,7 +31,7 @@ export default class GameLogPage extends Component {
                 <div class="my-auto">Winner : ${log.winner}</div>
                 <div class="my-auto">${log.score}</div>
             </li>
-        `
+        `,
             )
             .join('');
 

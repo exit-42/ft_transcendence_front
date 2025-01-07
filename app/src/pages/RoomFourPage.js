@@ -30,16 +30,12 @@ export default class RoomFourPage extends Component {
     }
 
     mounted() {
-        const $usercards = this.$target.querySelectorAll(
-            '[data-component="usercard"]'
-        );
+        const $usercards = this.$target.querySelectorAll('[data-component="usercard"]');
         $usercards.forEach(($usercard) => {
             new UserCard($usercard);
         });
 
-        const $chatting = this.$target.querySelector(
-            '[data-component="chatting"]'
-        );
+        const $chatting = this.$target.querySelector('[data-component="chatting"]');
         new Chatting($chatting);
     }
 

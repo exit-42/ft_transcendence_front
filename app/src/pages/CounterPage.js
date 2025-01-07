@@ -10,9 +10,7 @@ export default class CounterPage extends Component {
     }
 
     mounted() {
-        const $counter = this.$target.querySelector(
-            '[data-component="counter-up"]'
-        );
+        const $counter = this.$target.querySelector('[data-component="counter-up"]');
         new Counter($counter);
     }
 }

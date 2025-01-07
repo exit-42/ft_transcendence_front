@@ -3,11 +3,26 @@ import Component from '../core/Component.js';
 export default class LobbyPage extends Component {
     template() {
         const rooms = [
-            { capacity: '2/4', roomName: "heolee's room" },
-            { capacity: '2/2', roomName: "haejeong's room" },
-            { capacity: '1/2', roomName: "sangyhan's room" },
-            { capacity: '1/4', roomName: "sham's room" },
-            { capacity: '1/4', roomName: "klha's room" },
+            {
+                capacity: '2/4',
+                roomName: "heolee's room",
+            },
+            {
+                capacity: '2/2',
+                roomName: "haejeong's room",
+            },
+            {
+                capacity: '1/2',
+                roomName: "sangyhan's room",
+            },
+            {
+                capacity: '1/4',
+                roomName: "sham's room",
+            },
+            {
+                capacity: '1/4',
+                roomName: "klha's room",
+            },
             { capacity: '3/4', roomName: "dna's room" },
         ];
 
@@ -20,7 +35,7 @@ export default class LobbyPage extends Component {
                 <div class="m-auto rounded-circle" style="width: 5rem; height: 5rem; background-color: white"></div>
                 <div class="m-auto fs-4 text-white">${room.roomName}</div>
             </li>
-        `
+        `,
             )
             .join('');
 
