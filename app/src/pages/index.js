@@ -7,9 +7,6 @@ import RoomFourPage from './RoomFourPage.js';
 import GamePage from './GamePage.js';
 import ResultPage from './ResultPage.js';
 import GameLogPage from './GameLogPage.js';
-import CounterPage from './CounterPage.js';
-
-import UserCard from '../components/UserCard.js';
 
 export default function createPages(main) {
     const login = () => new LoginPage(main);
@@ -21,9 +18,6 @@ export default function createPages(main) {
     const game = () => new GamePage(main);
     const result = () => new ResultPage(main);
     const gamelog = () => new GameLogPage(main);
-    const counter = () => new CounterPage(main);
-
-    const usercard = () => new UserCard(main);
 
     return {
         login,
@@ -35,7 +29,5 @@ export default function createPages(main) {
         game,
         result,
         gamelog,
-        counter,
-        usercard,
     };
 }

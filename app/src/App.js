@@ -6,13 +6,13 @@ import createPages from './pages/index.js';
 export default class App extends Component {
     template() {
         return `
-        <header></header>
+        <div id="header"></div>
         <main></main>
         `;
     }
 
     mounted() {
-        const $header = this.$target.querySelector('header');
+        const $header = this.$target.querySelector('#header');
         new Header($header);
         const $main = this.$target.querySelector('main');
         const pages = createPages($main);
@@ -53,15 +53,6 @@ export default class App extends Component {
         router.addRoute('#/gamelog', () => {
             $header.style.display = 'block';
             pages.gamelog();
-        });
-        router.addRoute('#/counter', () => {
-            $header.style.display = 'block';
-            pages.counter();
-        });
-
-        router.addRoute('#/usercard', () => {
-            $header.style.display = 'none';
-            pages.usercard();
         });
 
         router.onRouteChange = (currentRoute) => {
