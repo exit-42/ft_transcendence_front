@@ -6,13 +6,13 @@ import createPages from './pages/index.js';
 export default class App extends Component {
     template() {
         return `
-        <div id="header"></div>
+        <header></header>
         <main></main>
         `;
     }
 
     mounted() {
-        const $header = this.$target.querySelector('#header');
+        const $header = this.$target.querySelector('header');
         new Header($header);
         const $main = this.$target.querySelector('main');
         const pages = createPages($main);
