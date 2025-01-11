@@ -29,7 +29,8 @@ export default class Component {
 
     setState(newState) {
         // 상태 변경 후 렌더링
-        this.$state = { ...this.$state, ...newState };
+        // 인자로 들어온 newState로 갱신, 호출하는 쪽에서 state를 변경하고 호출해야 함.
+        this.$state = { ...newState };
         this.render();
     }
 
