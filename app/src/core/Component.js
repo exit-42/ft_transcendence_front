@@ -9,9 +9,12 @@ export default class Component {
         this.setup();
         this.setEvent();
         this.render();
+        this._observeDOMChages();
     }
 
     setup() {} // 컴포넌트 state 설정
+
+    dispose() {}
 
     mounted() {} // 컴포넌트가 마운트 되었을 때
 
@@ -39,6 +42,20 @@ export default class Component {
         this.$target.addEventListener(eventType, (event) => {
             if (!event.target.closest(selector)) return false;
             callback(event);
+        });
+    }
+
+    _observeDOMChages() {
+        const observer = new MutationObserver(() => {
+            if (!document.contains(this.$target)) {
+                this.dispose();
+                observer.disconnect();
+            }
+        });
+
+        observer.observe(document.body, {
+            childList: true,
+            subtree: true,
         });
     }
 }
