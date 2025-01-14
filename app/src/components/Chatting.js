@@ -1,6 +1,14 @@
 import Component from '../core/Component.js';
 
 export default class Chatting extends Component {
+
+    setup() {
+        console.log("소켓 열거임");
+    }
+    dispose() {
+        console.log("소켓 닫을거임");
+    }
+
     template() {
         return `
             <div class="p-1" style="width:100%; height: 100%;">
