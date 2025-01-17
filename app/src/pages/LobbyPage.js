@@ -40,8 +40,8 @@ export default class LobbyPage extends Component {
             .join('');
 
         return `
-            <div class="parent" style="">
-                <div class="parent" style="height: 100%; background-color: rgba(14, 180, 252, 0.25);">
+            <div class="cus-parent" style="">
+                <div class="cus-parent" style="height: 100%; background-color: rgba(14, 180, 252, 0.25);">
                     <ul class="cus-lobby-container">
                         ${roomItems}
                     </ul>

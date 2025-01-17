@@ -6,12 +6,12 @@ export default class HomePage extends Component {
         return `
             <div class="p-5" style="width: 100%; height: 88vh;">
                 <div class="home-container d-flex rounded-5 p-3" style="width: 100%; height: 100%; background-color: rgba(14, 180, 252, 0.25); overflow: auto;">
-                    <div class="home-item-container d-flex flex-column">
+                    <div class="w-50 h-100 d-flex flex-column">
                         <button class="home-button border-0 fs-1 text-white fw-bold rounded-pill custom-button" id="gamelog-button">gamelog</button>
                         <button class="home-button border-0 fs-1 text-white fw-bold rounded-pill custom-button" id="lobby-button">lobby</button>
                         <button class="home-button border-0 fs-1 text-white fw-bold rounded-pill custom-button" id="select-button">make room</button>
                     </div>
-                    <div class="home-item-container d-flex">
+                    <div class="w-50 h-100 d-flex">
                         <div data-component="usercard" class="home-card m-auto">
                         </div>
                     </div>

@@ -1,25 +1,3 @@
-.parent {
-    height: 88vh;
-    min-height: 100%;
-    padding: 3rem;
-    border-radius: 1.25rem;
-    overflow: auto;
-}
-
-.lobby-container {
-    display: grid;
-    list-style: none;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1rem;
-    padding: 0;
-    margin: 0;
-}
-
-.home-item-container {
-    width: 50%;
-    height: 100%;
-}
-
 .custom-button {
     background-color: rgba(14, 180, 252, 0.6);
 }
@@ -92,7 +70,7 @@
         flex-direction: column;
     }
 
-    .home-item-container {
+    .cus-home-item-container {
         align-items: center;
         width: 100%;
         height: 100%;
