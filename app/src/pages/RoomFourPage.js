@@ -7,20 +7,20 @@ export default class RoomFourPage extends Component {
             <div class="p-3" style="width: 100%; height: 88vh;">
                 <div class="all-container d-flex flex-column rounded-5 p-3" style="width: 100%; height: 100%; background-color: rgba(14, 180, 252, 0.25); overflow: auto;">
                     <div class="room-container d-flex justify-content-evenly" style="width: 100%;">
-                        <div data-component="usercard" class="user-card">
+                        <div data-component="usercard" class="cus-user-card">
                         </div>
-                        <div data-component="usercard" class="user-card">
+                        <div data-component="usercard" class="cus-user-card">
                         </div>
-                        <div data-component="usercard" class="user-card">
+                        <div data-component="usercard" class="cus-user-card">
                         </div>
-                        <div data-component="usercard" class="user-card">
+                        <div data-component="usercard" class="cus-user-card">
                         </div>
                     </div>
                     <div class="d-flex justify-content-evenly" style="width: 100%;">
                         <div data-component="chatting" class="d-flex flex-column m-2" style="width: 80%; height: 12rem; background-color: rgba(14, 180, 252, 0.25);"></div>
                         <div class="d-flex flex-column m-2">
-                            <button class="m-auto border-0 fs-1 text-white fw-bold rounded-pill custom-button" style="width: 10rem; height: 4rem;" id="exit-button">Exit</button>
-                            <button class="m-auto border-0 fs-1 text-white fw-bold rounded-pill custom-button" style="width: 10rem; height: 4rem;" id="start-button">Start</button>
+                            <button class="m-auto border-0 fs-1 text-white fw-bold rounded-pill cus-button" style="width: 10rem; height: 4rem;" id="exit-button">Exit</button>
+                            <button class="m-auto border-0 fs-1 text-white fw-bold rounded-pill cus-button" style="width: 10rem; height: 4rem;" id="start-button">Start</button>
                         </div>
                     </div>
                 </div>

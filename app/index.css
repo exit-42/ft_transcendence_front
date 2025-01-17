@@ -1,52 +1,12 @@
-.parent {
-    height: 88vh;
-    min-height: 100%;
-    padding: 3rem;
-    border-radius: 1.25rem;
-    overflow: auto;
-}
-
-.lobby-container {
-    display: grid;
-    list-style: none;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1rem;
-    padding: 0;
-    margin: 0;
-}
-
-.home-item-container {
-    width: 50%;
-    height: 100%;
-}
-
-.custom-button {
+.cus-button {
     background-color: rgba(14, 180, 252, 0.6);
 }
 
-.custom-button:hover {
+.cus-button:hover {
     background-color: rgba(14, 180, 252);
 }
 
-.home-button {
-    margin: auto;
-    width: 21rem;
-    height: 7rem;
-}
-
-.home-card {
-    width: 25rem;
-    height: 30rem;
-}
-
-.select-item {
-    display: flex;
-    margin: 5px;
-    width: 50%;
-    height: 100%;
-}
-
-.user-card {
+.cus-user-card {
     margin-top: auto;
     margin-bottom: auto;
     margin-left: 2px;
@@ -59,56 +19,17 @@
     justify-content: space-evenly;
 }
 
-@media (max-width: 1200px) {
-    .lobby-container {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
-@media (max-width: 1000px) {
-    .home-button {
-        width: 18rem;
-        height: 6rem;
-    }
-
-    .home-card {
-        width: 22rem;
-        height: 30rem;
-    }
-}
-
-@media (max-width: 992px) {
-    .lobby-container {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
 @media (max-width: 700px) {
-    .lobby-container {
-        grid-template-columns: 1fr;
-    }
-
     .home-container {
         flex-direction: column;
     }
 
-    .home-item-container {
-        align-items: center;
-        width: 100%;
-        height: 100%;
-    }
-
-    .home-button {
+    .cus-home-button {
         margin: 10px;
     }
 
     .select-container {
         flex-direction: column;
-    }
-
-    .select-item {
-        width: 100%;
-        height: 100%;
     }
 
     .room-container {
@@ -119,7 +40,7 @@
         justify-content: start;
     }
 
-    .user-card {
+    .cus-user-card {
         margin-top: 2px;
         margin-bottom: 2px;
         margin-left: auto;
