@@ -1,12 +1,12 @@
-.custom-button {
+.cus-button {
     background-color: rgba(14, 180, 252, 0.6);
 }
 
-.custom-button:hover {
+.cus-button:hover {
     background-color: rgba(14, 180, 252);
 }
 
-.home-button {
+.cus-home-button {
     margin: auto;
     width: 21rem;
     height: 7rem;
@@ -44,7 +44,7 @@
 }
 
 @media (max-width: 1000px) {
-    .home-button {
+    .cus-home-button {
         width: 18rem;
         height: 6rem;
     }
@@ -76,7 +76,7 @@
         height: 100%;
     }
 
-    .home-button {
+    .cus-home-button {
         margin: 10px;
     }
 
