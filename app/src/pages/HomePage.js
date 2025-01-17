@@ -12,7 +12,7 @@ export default class HomePage extends Component {
                         <button class="cus-home-button border-0 fs-1 text-white fw-bold rounded-pill cus-button" id="select-button">make room</button>
                     </div>
                     <div class="w-50 h-100 d-flex">
-                        <div data-component="usercard" class="home-card m-auto">
+                        <div data-component="usercard" class="cus-home-card m-auto">
                         </div>
                     </div>
                 </div>

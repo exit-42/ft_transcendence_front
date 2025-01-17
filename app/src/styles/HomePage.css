@@ -4,10 +4,20 @@
     height: 7rem;
 }
 
+.cus-home-card {
+    width: 25rem;
+    height: 30rem;
+}
+
 @media (max-width: 1000px) {
     .cus-home-button {
         width: 18rem;
         height: 6rem;
+    }
+
+    .cus-home-card {
+        width: 22rem;
+        height: 30rem;
     }
 }
 
