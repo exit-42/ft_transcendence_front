@@ -4,8 +4,8 @@ import { UserCard } from '../components/index.js';
 export default class HomePage extends Component {
     template() {
         return `
-            <div class="p-5" style="width: 100%; height: 88vh;">
-                <div class="home-container d-flex rounded-5 p-3" style="width: 100%; height: 100%; background-color: rgba(14, 180, 252, 0.25); overflow: auto;">
+            <div class="p-4" style="width: 100%; height: 88vh;">
+                <div class="home-container d-flex">
                     <div class="w-50 h-100 d-flex flex-column">
                         <button class="cus-home-button border-0 fs-1 text-white fw-bold rounded-pill cus-button" id="gamelog-button">gamelog</button>
                         <button class="cus-home-button border-0 fs-1 text-white fw-bold rounded-pill cus-button" id="lobby-button">lobby</button>
