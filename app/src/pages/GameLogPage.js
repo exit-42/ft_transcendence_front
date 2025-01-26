@@ -36,6 +36,10 @@ export default class GameLogPage extends Component {
             .join('');
 
         return `
+            <div class="d-flex justify-content-evenly">
+                <div class="mode-button">1 VS 1</div>
+                <div class="mode-button">Tournament</div>
+            </div>
             <ul class="d-flex flex-column align-items-center p-5 list-unstyled" style="width: 100%; height: 88vh;">
                 ${gameLogItems}
             </ul>

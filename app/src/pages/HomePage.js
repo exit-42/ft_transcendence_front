@@ -4,16 +4,31 @@ import { UserCard } from '../components/index.js';
 export default class HomePage extends Component {
     template() {
         return `
-            <div class="p-4" style="width: 100%; height: 88vh;">
-                <div class="home-container d-flex">
-                    <div class="w-50 h-100 d-flex flex-column">
-                        <button class="cus-home-button border-0 fs-1 text-white fw-bold rounded-pill cus-button" id="gamelog-button">gamelog</button>
-                        <button class="cus-home-button border-0 fs-1 text-white fw-bold rounded-pill cus-button" id="lobby-button">lobby</button>
-                        <button class="cus-home-button border-0 fs-1 text-white fw-bold rounded-pill cus-button" id="select-button">make room</button>
+            <div class="home-container d-flex">
+                <div class="d-flex flex-column friend-list-container">
+                    <div class="friend-button-container">
+                        <button class="my-1 mx-auto border-0 rounded-pill friend-button">add</button>
+                        <button class="my-1 mx-auto border-0 rounded-pill friend-button">delete</button>
                     </div>
-                    <div class="w-50 h-100 d-flex">
-                        <div data-component="usercard" class="cus-home-card m-auto">
-                        </div>
+                    <ul class="friend-list">
+                        <li class="friend friend-on"></li>
+                        <li class="friend"></li>
+                        <li class="friend"></li>
+                        <li class="friend"></li>
+                        <li class="friend"></li>
+                        <li class="friend"></li>
+                        
+                    <ul>
+                </div>
+                <div class="d-flex flex-column cus-home-card-container">
+                    <button class="cus-home-button border-0 fs-2 text-white fw-bold rounded-pill cus-button" id="gamelog-button">game log</button>
+                    <button class="cus-home-button border-0 fs-2 text-white fw-bold rounded-pill cus-button" id="lobby-button">lobby</button>
+                    <button class="cus-home-button border-0 fs-2 text-white fw-bold rounded-pill cus-button" id="select-button">make room</button>
+                    <button class="cus-home-button border-0 fs-2 text-white fw-bold rounded-pill cus-button" id="select-button">edit ID</button>
+                    <button class="cus-home-button border-0 fs-2 text-white fw-bold rounded-pill cus-button delete-button" id="select-button">delete ID</button>
+                </div>
+                <div class="d-flex cus-home-card-container">
+                    <div data-component="usercard" class="cus-home-card m-auto">
                     </div>
                 </div>
             </div>
