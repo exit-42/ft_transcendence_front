@@ -15,10 +15,6 @@
     height: 25rem;
 }
 
-.all-container {
-    justify-content: space-evenly;
-}
-
 @media (max-width: 700px) {
     .cus-home-button {
         margin: 10px;
@@ -26,10 +22,6 @@
 
     .room-container {
         flex-direction: column;
-    }
-
-    .all-container {
-        justify-content: start;
     }
 
     .cus-user-card {
