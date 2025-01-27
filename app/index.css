@@ -24,10 +24,6 @@
         margin: 10px;
     }
 
-    .select-container {
-        flex-direction: column;
-    }
-
     .room-container {
         flex-direction: column;
     }
