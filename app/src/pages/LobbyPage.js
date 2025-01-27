@@ -40,8 +40,12 @@ export default class LobbyPage extends Component {
             .join('');
 
         return `
-            <div class="cus-parent" style="">
-                <div class="cus-parent" style="height: 100%; background-color: rgba(14, 180, 252, 0.25);">
+            <div class="cus-parent">
+                <div class="d-flex justify-content-evenly mode-button-container">
+                    <button class="border-0 fs-4 text-white fw-bold rounded-pill mode-button cus-button">1 VS 1</button>
+                    <button class="border-0 fs-4 text-white fw-bold rounded-pill mode-button cus-button">Tournament</button>
+                </div>
+                <div class="inner-container">
                     <ul class="cus-lobby-container">
                         ${roomItems}
                     </ul>

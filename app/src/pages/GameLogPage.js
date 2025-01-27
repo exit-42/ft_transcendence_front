@@ -25,7 +25,7 @@ export default class GameLogPage extends Component {
         const gameLogItems = gameLogs
             .map(
                 (log) => `
-            <li class="d-flex m-4 p-4 border-0 fs-3 text-white fw-bold rounded-pill justify-content-between align-items-center"
+            <li class="d-flex mt-0 mb-5 p-4 border-0 fs-3 text-white fw-bold rounded-pill justify-content-between align-items-center"
                 style="width: 80%; height: 7rem; background-color: rgba(14, 180, 252, 0.6);">
                 <div class="my-auto">${log.players}</div>
                 <div class="my-auto">Winner : ${log.winner}</div>
@@ -36,9 +36,9 @@ export default class GameLogPage extends Component {
             .join('');
 
         return `
-            <div class="d-flex justify-content-evenly">
-                <div class="mode-button">1 VS 1</div>
-                <div class="mode-button">Tournament</div>
+            <div class="d-flex justify-content-evenly mt-4">
+                <button class="border-0 fs-4 text-white fw-bold rounded-pill mode-button cus-button">1 VS 1</button>
+                <button class="border-0 fs-4 text-white fw-bold rounded-pill mode-button cus-button">Tournament</button>
             </div>
             <ul class="d-flex flex-column align-items-center p-5 list-unstyled" style="width: 100%; height: 88vh;">
                 ${gameLogItems}
