@@ -59,6 +59,7 @@
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 4px;
+    flex-shrink: 0;
 }
 
 .friend-on {
