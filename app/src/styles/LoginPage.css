@@ -1,6 +1,6 @@
 
 
-.auth-button {
+.cus-auth-button  {
 	width: 18%;
     position: absolute; 
     top: 85%; 
@@ -8,7 +8,7 @@
     transform: translate(-50%, -50%);
 }
 
-.login-button {
+.cus-login-button {
 	width: 18%;
     position: absolute; 
     top: 85%; 
@@ -16,7 +16,7 @@
     transform: translate(-50%, -50%);
 }
 
-.signup-button {
+.cus-signup-button {
 	width: 18%;
     position: absolute; 
     top: 85%; 

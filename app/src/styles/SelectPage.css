@@ -6,7 +6,7 @@
 }
 
 @media (max-width: 1100px) {
-    .select-container {
+    .cus-select-container  {
         flex-direction: column;
     }
 

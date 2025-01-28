@@ -6,13 +6,13 @@ export default class LoginPage extends Component {
             <div style="width: 100vw; height: 100vh; position: relative;">
                 <img  style="width: 100%; height: 100%; object-fit: cover;" src="src/imgs/pingpong.png">
                 <div>
-                    <button class="py-1 fs-3 border-0 text-white rounded-pill cus-button auth-button" id="login-button">
+                    <button class="py-1 fs-3 border-0 text-white rounded-pill cus-button cus-auth-button " id="login-button">
                         Login with 42
                     </button>
-                    <button class="py-1 fs-3 border-0 text-white rounded-pill cus-button login-button" >
+                    <button class="py-1 fs-3 border-0 text-white rounded-pill cus-button cus-login-button" >
                         Log in
                     </button>
-                    <button class="py-1 fs-3 border-0 text-white rounded-pill cus-button signup-button" >
+                    <button class="py-1 fs-3 border-0 text-white rounded-pill cus-button cus-signup-button" >
                         Sign up
                     </button>
                 </div>

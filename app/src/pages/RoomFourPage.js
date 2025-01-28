@@ -6,7 +6,7 @@ export default class RoomFourPage extends Component {
         return `
             <div class="p-5" style="width: 100%; height: 88vh;">
 
-                    <div class="room-container d-flex justify-content-evenly" style="width: 100%;">
+                    <div class="cus-room-container d-flex justify-content-evenly" style="width: 100%;">
                         <div data-component="usercard" class="cus-user-card">
                         </div>
                         <div data-component="usercard" class="cus-user-card">

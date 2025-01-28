@@ -9,7 +9,7 @@
     height: 34rem;
 }
 
-.home-container {
+.cus-home-container {
     width: 100%;
     height: 88vh;
 }
@@ -19,30 +19,30 @@
     width: 45%;
 }
 
-.delete-button {
+.cus-delete-button {
     background-color: black;
 }
 
-.delete-button:hover {
+.cus-delete-button:hover {
     background-color: black;
 }
 
-.friend-list-container {
+.cus-friend-list-container {
     background-color: rgba(14, 180, 252, 0.6);
     height: 100%;
     width: 10%;
 }
 
-.friend-button-container {
+.cus-friend-button-container {
     display: flex;
     flex-direction: row;
 }
 
-.friend-button {
+.cus-friend-button {
     background-color: white;
 }
 
-.friend-list {
+.cus-friend-list {
     list-style: none;
     padding: 0px;
     margin: 0px;
@@ -51,7 +51,7 @@
     overflow: auto;
 }
 
-.friend {
+.cus-friend {
     background-color: white;
     width: 80%;
     aspect-ratio: 1 / 1;
@@ -62,7 +62,7 @@
     flex-shrink: 0;
 }
 
-.friend-on {
+.cus-friend-on {
     border: 2px solid greenyellow;
 }
 
@@ -77,14 +77,14 @@
         height: 30rem;
     }
 
-    .friend-button-container {
+    .cus-friend-button-container {
         display: flex;
         flex-direction: column;
     }
 }
 
 @media (max-width: 700px) {
-    .home-container {
+    .cus-home-container {
         flex-direction: column;
     }
     
@@ -98,22 +98,22 @@
         width: 100%;
     }
 
-    .friend-list-container {
+    .cus-friend-list-container {
         background-color: rgba(14, 180, 252, 0.6);
         height: 100%;
         width: 100%;
     }
 
-    .friend-button-container {
+    .cus-friend-button-container {
         display: flex;
         flex-direction: row;
     }
 
-    .friend-list {
+    .cus-friend-list {
         flex-direction: row;
     }
 
-    .friend {
+    .cus-friend {
         margin: 2px;
         width: 4rem;
         height: 4rem;

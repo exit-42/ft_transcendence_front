@@ -3,7 +3,7 @@ import Component from '../core/Component.js';
 export default class SelectPage extends Component {
     template() {
         return `
-            <div class="d-flex p-5 select-container" style="width: 100%; height: 88vh;">
+            <div class="d-flex p-5 cus-select-container " style="width: 100%; height: 88vh;">
                 <div class="cus-select-item" id="room4-button">
                     <div class="d-flex flex-column m-auto rounded-5 p-3 cus-button" style="width: 20rem; height: 25rem;">
                         <div class="d-flex" style="height: 35%;">

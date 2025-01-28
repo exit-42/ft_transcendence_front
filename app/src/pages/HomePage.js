@@ -4,19 +4,19 @@ import { UserCard } from '../components/index.js';
 export default class HomePage extends Component {
     template() {
         return `
-            <div class="home-container d-flex">
-                <div class="d-flex flex-column friend-list-container">
-                    <div class="friend-button-container">
-                        <button class="my-1 mx-auto border-0 rounded-pill friend-button">add</button>
-                        <button class="my-1 mx-auto border-0 rounded-pill friend-button">delete</button>
+            <div class="cus-home-container d-flex">
+                <div class="d-flex flex-column cus-friend-list-container">
+                    <div class="cus-friend-button-container">
+                        <button class="my-1 mx-auto border-0 rounded-pill cus-friend-button">add</button>
+                        <button class="my-1 mx-auto border-0 rounded-pill cus-friend-button">delete</button>
                     </div>
-                    <ul class="friend-list">
-                        <li class="friend friend-on"></li>
-                        <li class="friend"></li>
-                        <li class="friend"></li>
-                        <li class="friend"></li>
-                        <li class="friend"></li>
-                        <li class="friend"></li>
+                    <ul class="cus-friend-list">
+                        <li class="cus-friend cus-friend-on"></li>
+                        <li class="cus-friend"></li>
+                        <li class="cus-friend"></li>
+                        <li class="cus-friend"></li>
+                        <li class="cus-friend"></li>
+                        <li class="cus-friend"></li>
                         
                     <ul>
                 </div>
@@ -25,7 +25,7 @@ export default class HomePage extends Component {
                     <button class="cus-home-button border-0 fs-2 text-white fw-bold rounded-pill cus-button" id="lobby-button">lobby</button>
                     <button class="cus-home-button border-0 fs-2 text-white fw-bold rounded-pill cus-button" id="select-button">make room</button>
                     <button class="cus-home-button border-0 fs-2 text-white fw-bold rounded-pill cus-button" id="select-button">edit ID</button>
-                    <button class="cus-home-button border-0 fs-2 text-white fw-bold rounded-pill cus-button delete-button" id="select-button">delete ID</button>
+                    <button class="cus-home-button border-0 fs-2 text-white fw-bold rounded-pill cus-button cus-delete-button" id="select-button">delete ID</button>
                 </div>
                 <div class="d-flex cus-home-card-container">
                     <div data-component="usercard" class="cus-home-card m-auto">
