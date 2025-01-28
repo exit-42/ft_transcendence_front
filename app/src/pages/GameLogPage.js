@@ -40,7 +40,7 @@ export default class GameLogPage extends Component {
                 <button class="border-0 fs-4 text-white fw-bold rounded-pill mode-button cus-button">1 VS 1</button>
                 <button class="border-0 fs-4 text-white fw-bold rounded-pill mode-button cus-button">Tournament</button>
             </div>
-            <ul class="d-flex flex-column align-items-center p-5 list-unstyled" style="width: 100%; height: 88vh;">
+            <ul class="d-flex flex-column align-items-center p-5 list-unstyled" style="width: 100%; height: 80vh;">
                 ${gameLogItems}
             </ul>
         `;
