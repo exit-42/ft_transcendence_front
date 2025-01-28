@@ -1,0 +1,25 @@
+
+
+.cus-auth-button  {
+	width: 18%;
+    position: absolute; 
+    top: 85%; 
+    left: 20%; 
+    transform: translate(-50%, -50%);
+}
+
+.cus-login-button {
+	width: 18%;
+    position: absolute; 
+    top: 85%; 
+    left: 50%; 
+    transform: translate(-50%, -50%);
+}
+
+.cus-signup-button {
+	width: 18%;
+    position: absolute; 
+    top: 85%; 
+    left: 80%; 
+    transform: translate(-50%, -50%);
+}

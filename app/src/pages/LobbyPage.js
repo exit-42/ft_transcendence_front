@@ -29,19 +29,23 @@ export default class LobbyPage extends Component {
         const roomItems = rooms
             .map(
                 (room) => `
-            <li class="col m-auto rounded-5 d-flex flex-column p-3" 
-                style="width: 16rem; height: 12rem; background-color: rgba(14, 180, 252, 0.5);">
-                <div class="my-auto fs-5 text-white">${room.capacity}</div>
-                <div class="m-auto rounded-circle" style="width: 5rem; height: 5rem; background-color: white"></div>
-                <div class="m-auto fs-4 text-white">${room.roomName}</div>
-            </li>
-        `,
+                    <li class="col m-auto rounded-5 d-flex flex-column p-3" 
+                        style="width: 16rem; height: 12rem; background-color: rgba(14, 180, 252, 0.5);">
+                        <div class="my-auto fs-5 text-white">${room.capacity}</div>
+                        <div class="m-auto rounded-circle" style="width: 5rem; height: 5rem; background-color: white"></div>
+                        <div class="m-auto fs-4 text-white">${room.roomName}</div>
+                    </li>
+                `,
             )
             .join('');
 
         return `
-            <div class="cus-parent" style="">
-                <div class="cus-parent" style="height: 100%; background-color: rgba(14, 180, 252, 0.25);">
+            <div class="cus-parent">
+                <div class="d-flex justify-content-evenly cus-mode-button-container">
+                    <button class="border-0 fs-4 text-white fw-bold rounded-pill cus-mode-button cus-button">1 VS 1</button>
+                    <button class="border-0 fs-4 text-white fw-bold rounded-pill cus-mode-button cus-button">Tournament</button>
+                </div>
+                <div class="inner-container">
                     <ul class="cus-lobby-container">
                         ${roomItems}
                     </ul>

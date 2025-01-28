@@ -15,29 +15,13 @@
     height: 25rem;
 }
 
-.all-container {
-    justify-content: space-evenly;
-}
-
 @media (max-width: 700px) {
-    .home-container {
-        flex-direction: column;
-    }
-
     .cus-home-button {
         margin: 10px;
     }
 
-    .select-container {
+    .cus-room-container {
         flex-direction: column;
-    }
-
-    .room-container {
-        flex-direction: column;
-    }
-
-    .all-container {
-        justify-content: start;
     }
 
     .cus-user-card {
