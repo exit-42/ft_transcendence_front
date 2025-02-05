@@ -33,3 +33,30 @@
         height: 20rem;
     }
 }
+
+
+.cus-modal-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6); /* 어두운 배경 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cus-modal-content {
+    background-color: #fff; /* 흰색 모달 */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    min-width: 300px;
+    min-height: 150px;
+    text-align: center;
+}
+
+.hidden {
+    display: none;
+}
