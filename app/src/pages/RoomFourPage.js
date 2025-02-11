@@ -5,7 +5,25 @@ export default class RoomFourPage extends Component {
     template() {
         return `
             <div class="p-5" style="width: 100%; height: 88vh;">
-
+                    <div class="cus-tournament-container">
+                        <img class="cus-crown" src="src/imgs/crown.png"></img>
+                        <div class="cus-column-line"></div>
+                        <div class="cus-row-up-line"></div>
+                        <div class="cus-column-line-container">
+                            <div class="cus-column-line"></div>
+                            <div class="cus-column-line"></div>
+                        </div>
+                        <div class="cus-row-down-line-container">
+                            <div class="cus-row-down-line"></div>
+                            <div class="cus-row-down-line"></div>
+                        </div>
+                        <div class="cus-column-line-container">
+                            <div class="cus-column-line"></div>
+                            <div class="cus-column-line"></div>
+                            <div class="cus-column-line"></div>
+                            <div class="cus-column-line"></div>
+                        </div>
+                    </div>
                     <div class="cus-room-container d-flex justify-content-evenly" style="width: 100%;">
                         <div data-component="usercard" class="cus-user-card">
                         </div>
