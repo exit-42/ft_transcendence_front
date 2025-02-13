@@ -1,48 +1,47 @@
 import Component from '../core/Component.js';
+import { GameLog, TournamentLog } from '../components/index.js';
 
 export default class GameLogPage extends Component {
-    template() {
-        // 객체 배열 정의
-        const gameLogs = [
-            {
-                players: 'heolee VS haejeong',
-                winner: 'heolee',
-                score: '11 : 8',
-            },
-            {
-                players: 'sangyhan VS haejeong',
-                winner: 'haejeong',
-                score: '8 : 11',
-            },
-            {
-                players: 'sham VS haejeong',
-                winner: 'sham',
-                score: '11 : 7',
-            },
-        ];
+	template() {
+		return `
+			<div class="d-flex justify-content-evenly mt-4">
+				<button class="border-0 fs-4 text-white fw-bold rounded-pill cus-mode-button cus-button" id="gamelog-button">1 VS 1</button>
+        		<button class="border-0 fs-4 text-white fw-bold rounded-pill cus-mode-button cus-button" id="tournamentlog-button">Tournament</button>
+			</div>
+			<div data-component="gamelog"></div>
+			<div data-component="tournamentlog"></div>
+		`;
+	}
 
-        // 게임 로그를 반복적으로 렌더링
-        const gameLogItems = gameLogs
-            .map(
-                (log) => `
-            <li class="d-flex mt-0 mb-5 p-4 border-0 fs-3 text-white fw-bold rounded-pill justify-content-between align-items-center"
-                style="width: 80%; height: 7rem; background-color: rgba(14, 180, 252, 0.6);">
-                <div class="my-auto">${log.players}</div>
-                <div class="my-auto">Winner : ${log.winner}</div>
-                <div class="my-auto">${log.score}</div>
-            </li>
-        `,
-            )
-            .join('');
+	mounted() {
+		const $gamelog = this.$target.querySelector('[data-component="gamelog"]');
+		const $tournamentlog = this.$target.querySelector('[data-component="tournamentlog"]');
+		this.gameLogInstance = new GameLog($gamelog);
+		this.tournamentLogInstance = new TournamentLog($tournamentlog);
+	
+		this.toggleComponent('gamelog');
+	}
+	
+	setEvent() {
+		this.addEvent('click', '#gamelog-button', () => {
+			this.toggleComponent('gamelog');
+		});
+	
+		this.addEvent('click', '#tournamentlog-button', () => {
+			this.toggleComponent('tournamentlog');
+		});
+	}
 
-        return `
-            <div class="d-flex justify-content-evenly mt-4">
-                <button class="border-0 fs-4 text-white fw-bold rounded-pill cus-mode-button cus-button">1 VS 1</button>
-                <button class="border-0 fs-4 text-white fw-bold rounded-pill cus-mode-button cus-button">Tournament</button>
-            </div>
-            <ul class="d-flex flex-column align-items-center p-5 list-unstyled" style="width: 100%; height: 80vh;">
-                ${gameLogItems}
-            </ul>
-        `;
-    }
+	toggleComponent(componentType) {
+		const $gamelog = this.$target.querySelector('[data-component="gamelog"]');
+		const $tournamentlog = this.$target.querySelector('[data-component="tournamentlog"]');
+	
+		if (componentType === 'gamelog') {
+			$gamelog.classList.remove('d-none');
+			$tournamentlog.classList.add('d-none');
+		} else if (componentType === 'tournamentlog') {
+			$gamelog.classList.add('d-none');
+			$tournamentlog.classList.remove('d-none');
+		}
+	}
 }
