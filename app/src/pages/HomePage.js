@@ -7,8 +7,8 @@ export default class HomePage extends Component {
             <div class="cus-home-container d-flex">
                 <div class="d-flex flex-column cus-friend-list-container">
                     <div class="cus-friend-button-container">
-                        <button class="my-1 mx-auto border-0 rounded-pill cus-friend-button">add</button>
-                        <button class="my-1 mx-auto border-0 rounded-pill cus-friend-button">delete</button>
+                        <button id="add-button" class="my-1 mx-auto border-0 rounded-pill cus-friend-button">add</button>
+                        <button id="delete-button" class="my-1 mx-auto border-0 rounded-pill cus-friend-button">delete</button>
                     </div>
                     <ul class="cus-friend-list">
                         <li class="cus-friend cus-friend-on"></li>
@@ -31,6 +31,33 @@ export default class HomePage extends Component {
                     <div data-component="usercard" class="cus-home-card m-auto">
                     </div>
                 </div>
+
+
+                    <div class="cus-modal-container hidden" id="add-modal">
+                        <div class="cus-modal-content" id="add">
+                            <div>
+                                add modal
+                            </div>
+                            <button class="cus-button cus-modal-close-button">
+                                닫기
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="cus-modal-container hidden" id="delete-modal">
+
+                        <div class="cus-modal-content" id="delete">
+                            <div>
+                                delete modal
+                            </div>
+                            <button class="cus-button cus-modal-close-button">
+                                닫기
+                            </button>
+                        </div>
+                 
+                    </div>
+                    
+
             </div>
         `;
     }
@@ -55,5 +82,27 @@ export default class HomePage extends Component {
         this.addEvent('click', '#select-button', () => {
             window.location.hash = '/select'; // select 페이지로 이동
         });
+
+        this.addEvent('click', "#add-button", () => {
+            const $modal = this.$target.querySelector('#add-modal');
+            $modal.classList.remove('hidden');
+            $modal.classList.add('current');
+        });
+
+        this.addEvent('click', "#delete-button", () => {
+            const $modal = this.$target.querySelector('#delete-modal');
+            $modal.classList.remove('hidden');
+            $modal.classList.add('current');
+        });
+
+        
+        this.addEvent('click', '.cus-modal-close-button', () => {
+            const $Modal = this.$target.querySelector('.cus-modal-container.current');
+            $Modal.classList.add('hidden');
+            $Modal.classList.remove('current');
+        });
+
+
+
     }
 }

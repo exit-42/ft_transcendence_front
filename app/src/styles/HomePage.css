@@ -66,6 +66,31 @@
     border: 2px solid greenyellow;
 }
 
+.cus-modal-content {
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 20px;
+    padding: 50px 100px;
+
+    input {
+        width: 400px;
+        height: 40px;
+    }
+
+    button {
+        color: white;
+        border: none;
+    
+        border-radius: 5px;
+        width: 200px;
+        height: 40px;
+    }
+}
+
 @media (max-width: 1000px) {
     .cus-home-button {
         width: 16rem;
