@@ -24,9 +24,6 @@ export default class RoomTwoPage extends Component {
         $usercards.forEach(($usercard) => {
             new UserCard($usercard);
         });
-
-        const $chatting = this.$target.querySelector('[data-component="chatting"]');
-        new Chatting($chatting);
     }
 
     setEvent() {

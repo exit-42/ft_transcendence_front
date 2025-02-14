@@ -22,17 +22,28 @@
 	height: 100%;
 	align-items: center;
 	justify-content: space-around;
+	font-size: 2rem;
 }
 
-.cus-user-picture-container {
+.cus-user-picture-container-left {
 	width: 10%;
 	height: 100%;
 	display: flex;
 	flex-direction: column;
+	align-items: end;
+}
+
+.cus-user-picture-container-right {
+	width: 10%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: start;
 }
 
 .cus-user-picture {
 	height: 50%;
+	max-width: 5rem;
 	border-radius: 50%;
 }
 
@@ -89,4 +100,10 @@
 
 .cus-black {
 	background-color: black;
+}
+
+@media (max-width: 1000px) {
+	.cus-username-container {
+		font-size: 1rem;
+	}
 }

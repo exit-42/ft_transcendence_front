@@ -25,7 +25,7 @@ export default class TournamentLog extends Component {
 						<div>${log.players1}</div>
 						<div>${log.players2}</div>
 					</div>
-					<div class="cus-user-picture-container">
+					<div class="cus-user-picture-container-left">
 						<img class="cus-user-picture" src="src/imgs/sample.jpeg"></img>
 						<img class="cus-user-picture" src="src/imgs/sample.jpeg"></img>
 					</div>
@@ -55,7 +55,7 @@ export default class TournamentLog extends Component {
 						<div>${log.score2}</div>
 						<div class="cus-side-line cus-red"></div>
 					</div>
-					<div class="cus-user-picture-container">
+					<div class="cus-user-picture-container-right">
 						<img class="cus-user-picture" src="src/imgs/sample.jpeg"></img>
 						<img class="cus-user-picture" src="src/imgs/sample.jpeg"></img>
 					</div>
