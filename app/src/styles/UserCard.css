@@ -1,0 +1,13 @@
+
+
+.cus-user-card-picture {
+	width: 10rem; 
+	height: 10rem;
+}
+
+@media (max-width: 900px) {
+	.cus-user-card-picture {
+		width: 7rem; 
+		height: 7rem;
+	}
+}

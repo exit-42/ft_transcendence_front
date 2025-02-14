@@ -1,0 +1,109 @@
+
+.cus-tournamentlog-list {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	margin-top: 0px;
+	margin-bottom: 48px;
+	padding: 24px;
+	color: white;
+	border: 0px;
+	border-radius: 50rem;
+	width: 100%;
+	height: 200px;
+	font-size: larger;
+	background-color: rgba(14, 180, 252, 0.6);
+}
+
+.cus-username-container {
+	display: flex;
+	flex-direction: column;
+	width: 15%;
+	height: 100%;
+	align-items: center;
+	justify-content: space-around;
+	font-size: 2rem;
+}
+
+.cus-user-picture-container-left {
+	width: 10%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: end;
+}
+
+.cus-user-picture-container-right {
+	width: 10%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: start;
+}
+
+.cus-user-picture {
+	height: 50%;
+	max-width: 5rem;
+	border-radius: 50%;
+}
+
+.cus-side-line-container {
+	display: flex;
+	flex-direction: column;
+	height: 60%;
+	width: 15%;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.cus-side-line {
+	height: 2px;
+	width: 100%;
+}
+
+.cus-semi-line-container {
+	height: 60%;
+}
+
+.cus-semi-line {
+	height: 50%;
+	width: 2px;
+}
+
+.cus-mid-container {
+	width: 20%;
+	height: 60%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.cus-tournament-crown {
+	height: 20px;
+}
+
+.cus-mid-line-container {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+}
+
+.cus-mid-line {
+	width: 50%;
+	height: 2px;
+}
+
+.cus-red {
+	background-color: red;
+}
+
+.cus-black {
+	background-color: black;
+}
+
+@media (max-width: 1000px) {
+	.cus-username-container {
+		font-size: 1rem;
+	}
+}

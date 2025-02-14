@@ -1,5 +1,5 @@
 import Component from '../core/Component.js';
-import { Chatting, UserCard } from '../components/index.js';
+import { UserCard } from '../components/index.js';
 
 export default class RoomTwoPage extends Component {
     template() {
@@ -24,9 +24,6 @@ export default class RoomTwoPage extends Component {
         $usercards.forEach(($usercard) => {
             new UserCard($usercard);
         });
-
-        const $chatting = this.$target.querySelector('[data-component="chatting"]');
-        new Chatting($chatting);
     }
 
     setEvent() {
