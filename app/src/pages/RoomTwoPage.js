@@ -1,5 +1,5 @@
 import Component from '../core/Component.js';
-import { Chatting, UserCard } from '../components/index.js';
+import { UserCard } from '../components/index.js';
 
 export default class RoomTwoPage extends Component {
     template() {
