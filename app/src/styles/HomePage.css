@@ -105,6 +105,15 @@ body .cus-user-delete {
     font-size: 15px;
 }
 
+body .cus-new-image {
+    width: 100%;
+}
+
+body .cus-submit {
+    background-color: #23db63;
+    width: 100%;
+}
+
 .cus-user-info {
     width: 150px;
     height: 150px;

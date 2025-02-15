@@ -56,7 +56,7 @@ export default class HomePage extends Component {
                     <button class="cus-home-button border-0 fs-2 text-white fw-bold rounded-pill cus-button" id="gamelog-button">game log</button>
                     <button class="cus-home-button border-0 fs-2 text-white fw-bold rounded-pill cus-button" id="lobby-button">lobby</button>
                     <button class="cus-home-button border-0 fs-2 text-white fw-bold rounded-pill cus-button" id="select-button">make room</button>
-                    <button class="cus-home-button border-0 fs-2 text-white fw-bold rounded-pill cus-button" id="select-button">edit ID</button>
+                    <button class="cus-home-button border-0 fs-2 text-white fw-bold rounded-pill cus-button" id="edit-button">edit ID</button>
                     <button class="cus-home-button border-0 fs-2 text-white fw-bold rounded-pill cus-button cus-delete-button" id="select-button">delete ID</button>
                 </div>
                 <div class="d-flex cus-home-card-container">
@@ -91,6 +91,33 @@ export default class HomePage extends Component {
                           <div class="cus-users">
 
                             </div>
+
+                            <div class="cus-modal-close">
+                                X
+                            </div>
+                        </div>
+                 
+                    </div>
+
+
+                    <div class="cus-modal-container hidden" id="edit-modal">
+
+                        <div class="cus-modal-content" id="edit">
+                            <div>
+                                <input type="text" placeholder="username">
+                                <button class="cus-button" id="user-search">
+                                search
+                                </button>
+                            </div>
+
+                            <button class="cus-button cus-new-image" id="new-image">
+                            new image
+                            </button>
+
+                            <button class="cus-button cus-submit" id="submit">
+                            new image
+                            </button>
+                         
 
                             <div class="cus-modal-close">
                                 X
@@ -135,6 +162,12 @@ export default class HomePage extends Component {
 
         this.addEvent('click', '#delete-button', () => {
             const $modal = this.$target.querySelector('#delete-modal');
+            $modal.classList.remove('hidden');
+            $modal.classList.add('current');
+        });
+
+        this.addEvent('click', '#edit-button', () => {
+            const $modal = this.$target.querySelector('#edit-modal');
             $modal.classList.remove('hidden');
             $modal.classList.add('current');
         });
