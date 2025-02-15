@@ -103,9 +103,9 @@ export default class HomePage extends Component {
                     <div class="cus-modal-container hidden" id="edit-modal">
 
                         <div class="cus-modal-content" id="edit">
-                            <div>
+                            <div id="edit-id">
                                 <input type="text" placeholder="username">
-                                <button class="cus-button" id="user-search">
+                                <button class="cus-button" id="username-search">
                                 search
                                 </button>
                             </div>
@@ -170,6 +170,11 @@ export default class HomePage extends Component {
             const $modal = this.$target.querySelector('#edit-modal');
             $modal.classList.remove('hidden');
             $modal.classList.add('current');
+
+            const $dup = this.$target.querySelector('#id-dup');
+            if ($dup) {
+                $dup.innerHTML = '';
+            }
         });
 
         this.addEvent('click', '.cus-modal-close', () => {
@@ -182,6 +187,25 @@ export default class HomePage extends Component {
             const $modal = this.$target.querySelector('#add');
             const $input = $modal.querySelector('input');
             console.log('user-search click : ', $input.value);
+            // 서버에 유저 검색 요청
+        });
+
+        this.addEvent('click', '#username-search', () => {
+            const $modal = this.$target.querySelector('#edit');
+            const $input = $modal.querySelector('input');
+            console.log('username-search click : ', $input.value);
+
+            // 서버에 유저 검색 요청
+
+            const $editId = this.$target.querySelector('#edit-id');
+            const $dup = $editId.querySelector('#id-dup');
+            if (!$dup) {
+                const $newDiv = document.createElement('div');
+                $newDiv.id = 'id-dup';
+                $newDiv.innerHTML = $input.value + '는 사용 가능합니다.';
+                $editId.appendChild($newDiv);
+            }
+            $dup.innerHTML = $input.value + '는 사용 가능합니다.';
         });
     }
 }
