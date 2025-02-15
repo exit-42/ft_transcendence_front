@@ -2,22 +2,18 @@ import Component from '../core/Component.js';
 
 // template 내부에서 ${test()}로 사용 가능
 // 분리하는 게 의미가 있나?
-const test = () => {
-    return `
-        <div class="cus-modal-content">
-            회원가입 모달
-            <button class="cus-modal-close-button">
-                닫기
-            </button>
-        </div>
-    `;
-}
+// const test = () => {
+//     return `
+//         <div class="cus-modal-content">
+//             회원가입 모달
+//             <button class="cus-modal-close-button">
+//                 닫기
+//             </button>
+//         </div>
+//     `;
+// };
 
 export default class LoginPage extends Component {
-
-    
-   
-    
     template() {
         return `
             <div style="width: 100vw; height: 100vh; position: relative;">
@@ -93,14 +89,12 @@ export default class LoginPage extends Component {
             const $modal = this.$target.querySelector('#login-modal');
             $modal.classList.remove('hidden');
             $modal.classList.add('current');
-            
         });
 
         this.addEvent('click', '#signup-button', () => {
             const $modal = this.$target.querySelector('#signup-modal');
             $modal.classList.remove('hidden');
             $modal.classList.add('current');
-
         });
 
         this.addEvent('click', '.cus-modal-close-button', () => {
@@ -121,7 +115,6 @@ export default class LoginPage extends Component {
             $Modal.classList.add('hidden');
         });
 
-
         // 회원가입 아이디 체크 이벤트
         this.addEvent('click', '#signup-modal-id-check', () => {
             const $Modal = this.$target.querySelector('.cus-modal-container.current');
@@ -137,7 +130,7 @@ export default class LoginPage extends Component {
             console.log(email.value);
             email.value = '';
         });
-        
+
         // 회원가입 이메일 체크 이벤트
         this.addEvent('click', '#signup-modal-insert', () => {
             const $Modal = this.$target.querySelector('.cus-modal-container.current');
@@ -149,14 +142,8 @@ export default class LoginPage extends Component {
 
             console.log(id.value, password.value, email.value, code.value);
 
-
             $Modal.classList.remove('current');
             $Modal.classList.add('hidden');
         });
-
-
-
-     
-
     }
 }

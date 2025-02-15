@@ -116,6 +116,14 @@ body .cus-user-delete {
     align-items: center;
 }
 
+.divider {
+    position: absolute;
+    top: 120px;
+    height: 3px;
+    width: 100%;
+    background-color: #0eb4fc;
+}
+
 @media (max-width: 1000px) {
     .cus-home-button {
         width: 16rem;
