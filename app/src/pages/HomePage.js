@@ -1,6 +1,38 @@
 import Component from '../core/Component.js';
 import { UserCard } from '../components/index.js';
 
+const mockData = ['heelee', 'heokee', 'heoheo', 'hohoho'];
+
+const renderFriendList = (data, selector) => {
+    const $addModal = document.querySelector(selector);
+    const buttonType = selector.slice(1);
+    const $users = $addModal.querySelector('.cus-users');
+    data.forEach((name) => {
+        const $user = document.createElement('div');
+        $user.className = 'cus-user';
+        $user.innerHTML = `
+            <div class="cus-user-info">
+                ${name}
+            </div>
+            <button class="cus-user-${buttonType}">${buttonType}</button>
+        `;
+        // cus-user-add에 이벤트 추가
+        if (buttonType === 'add') {
+            $user.querySelector('.cus-user-add').addEventListener('click', () => {
+                console.log('add friend : ', name);
+            });
+        }
+        // cus-user-delete에 이벤트 추가
+        if (buttonType === 'delete') {
+            $user.querySelector('.cus-user-delete').addEventListener('click', () => {
+                console.log('delete friend : ', name);
+            });
+        }
+
+        $users.appendChild($user);
+    });
+};
+
 export default class HomePage extends Component {
     template() {
         return `
@@ -36,23 +68,33 @@ export default class HomePage extends Component {
                     <div class="cus-modal-container hidden" id="add-modal">
                         <div class="cus-modal-content" id="add">
                             <div>
-                                add modal
+                                <input type="text" placeholder="username">
+                                <button class="cus-button" id="user-search">
+                                search
+                                </button>
                             </div>
-                            <button class="cus-button cus-modal-close-button">
-                                닫기
-                            </button>
+                            <div class="divider"></div>
+
+                            <div class="cus-users">
+
+                            </div>
+                            <div class="cus-modal-close">
+                                X
+                            </div>
                         </div>
                     </div>
 
                     <div class="cus-modal-container hidden" id="delete-modal">
 
                         <div class="cus-modal-content" id="delete">
-                            <div>
-                                delete modal
+                       
+                          <div class="cus-users">
+
                             </div>
-                            <button class="cus-button cus-modal-close-button">
-                                닫기
-                            </button>
+
+                            <div class="cus-modal-close">
+                                X
+                            </div>
                         </div>
                  
                     </div>
@@ -65,6 +107,8 @@ export default class HomePage extends Component {
     mounted() {
         const $usercard = this.$target.querySelector('[data-component="usercard"]');
         new UserCard($usercard);
+        renderFriendList(mockData, '#add');
+        renderFriendList(mockData, '#delete');
     }
 
     setEvent() {
@@ -83,26 +127,28 @@ export default class HomePage extends Component {
             window.location.hash = '/select'; // select 페이지로 이동
         });
 
-        this.addEvent('click', "#add-button", () => {
+        this.addEvent('click', '#add-button', () => {
             const $modal = this.$target.querySelector('#add-modal');
             $modal.classList.remove('hidden');
             $modal.classList.add('current');
         });
 
-        this.addEvent('click', "#delete-button", () => {
+        this.addEvent('click', '#delete-button', () => {
             const $modal = this.$target.querySelector('#delete-modal');
             $modal.classList.remove('hidden');
             $modal.classList.add('current');
         });
 
-        
-        this.addEvent('click', '.cus-modal-close-button', () => {
-            const $Modal = this.$target.querySelector('.cus-modal-container.current');
-            $Modal.classList.add('hidden');
-            $Modal.classList.remove('current');
+        this.addEvent('click', '.cus-modal-close', () => {
+            const $modal = this.$target.querySelector('.cus-modal-container.current');
+            $modal.classList.add('hidden');
+            $modal.classList.remove('current');
         });
 
-
-
+        this.addEvent('click', '#user-search', () => {
+            const $modal = this.$target.querySelector('#add');
+            const $input = $modal.querySelector('input');
+            console.log('user-search click : ', $input.value);
+        });
     }
 }
