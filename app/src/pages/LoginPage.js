@@ -33,9 +33,9 @@ export default class LoginPage extends Component {
                     <div class="cus-modal-container hidden" id="login-modal">
                         <div class="cus-modal-content" id="login">
                             <input class="id" type="text" placeholder="ID">
-                            <input class="password" type="text" placeholder="passward">
+                            <input class="password" type="text" placeholder="password">
 
-                            <div>
+                            <div class="cus-buttons">
                                 <button class="cus-button" id="login-modal-insert">
                                     입력
                                 </button>
@@ -49,22 +49,22 @@ export default class LoginPage extends Component {
 
                     <div class="cus-modal-container hidden" id="signup-modal">
                         <div class="cus-modal-content" id="signup">
-                        <div>
+                        <div class="cus-modal-check">
                             <input class="id" type="text" placeholder="ID">
                             <button class="cus-button" id="signup-modal-id-check">
                             check
                             </button>
 
                         </div>
-                        <div>
+                        <div class="cus-modal-check">
                             <input class="email" type="text" placeholder="email">
                             <button class="cus-button" id="signup-modal-email-check">
                             send
                             </button>
                         </div>
                             <input class="code" type="text" placeholder="코드를 입력하세요">
-                            <input class="password" type="text" placeholder="passward">                   
-                            <div>
+                            <input class="password" type="text" placeholder="password">                   
+                            <div class="cus-buttons">
                                 <button class="cus-button" id="signup-modal-insert">
                                     입력
                                 </button>
@@ -86,15 +86,15 @@ export default class LoginPage extends Component {
         });
 
         this.addEvent('click', '#login-button', () => {
-            const $modal = this.$target.querySelector('#login-modal');
-            $modal.classList.remove('hidden');
-            $modal.classList.add('current');
+            const $Modal = this.$target.querySelector('#login-modal');
+            $Modal.classList.remove('hidden');
+            $Modal.classList.add('current');
         });
 
         this.addEvent('click', '#signup-button', () => {
-            const $modal = this.$target.querySelector('#signup-modal');
-            $modal.classList.remove('hidden');
-            $modal.classList.add('current');
+            const $Modal = this.$target.querySelector('#signup-modal');
+            $Modal.classList.remove('hidden');
+            $Modal.classList.add('current');
         });
 
         this.addEvent('click', '.cus-modal-close-button', () => {
@@ -104,7 +104,7 @@ export default class LoginPage extends Component {
         });
 
         this.addEvent('click', '#login-modal-insert', () => {
-            const $Modal = this.$target.querySelector('.cus-modal-container.current');
+            const $Modal = this.$target.querySelector('.cus-modal-container');
             const id = $Modal.querySelector('.id');
             const password = $Modal.querySelector('.password');
             console.log(id.value, password.value);

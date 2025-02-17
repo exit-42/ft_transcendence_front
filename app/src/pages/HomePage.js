@@ -103,7 +103,7 @@ export default class HomePage extends Component {
                     <div class="cus-modal-container hidden" id="edit-modal">
 
                         <div class="cus-modal-content" id="edit">
-                            <div id="edit-id">
+                            <div class="cus-modal-check" id="edit-id">
                                 <input type="text" placeholder="username">
                                 <button class="cus-button" id="username-search">
                                 search

@@ -66,13 +66,10 @@
     border: 2px solid greenyellow;
 }
 
-/* .cus-modal-container { } */
-/* .cus-modal-content { } */
-
-.cus-modal-content {
+/* .cus-modal-content {
     min-width: 70%;
     min-height: 70%;
-}
+} */
 
 .cus-users {
     display: grid;

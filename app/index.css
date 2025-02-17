@@ -58,7 +58,7 @@
     background-color: #fff; /* 흰색 모달 */
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    min-width: 300px;
+    min-width: 800px;
     min-height: 150px;
 
     gap: 50px;
@@ -73,9 +73,10 @@
         color: white;
         border: none;
 
-        border-radius: 5px;
-        width: 200px;
+        border-radius: 20px;
+        width: 150px;
         height: 40px;
+   
     }
 }
 
@@ -84,6 +85,10 @@
     top: 10px;
     right: 10px;
 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     border: 1px solid black;
     border-radius: 50%;
     width: 30px;
@@ -91,6 +96,21 @@
 
     cursor: pointer;
 }
+
+.cus-modal-check {
+    display: flex;
+    position: relative;
+
+    input {
+        z-index: 1;
+    }
+    button {
+        margin-left: -60px;
+        padding-right: 30px;
+        text-align: right;
+    }
+}
+
 .hidden {
     display: none;
 }
