@@ -65,68 +65,52 @@ export default class HomePage extends Component {
                 </div>
 
 
-                    <div class="cus-modal-container hidden" id="add-modal">
-                        <div class="cus-modal-content" id="add">
-                            <div>
-                                <input type="text" placeholder="username">
-                                <button class="cus-button" id="user-search">
-                                search
-                                </button>
-                            </div>
-                            <div class="divider"></div>
-
-                            <div class="cus-users">
-
-                            </div>
-                            <div class="cus-modal-close">
-                                X
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="cus-modal-container hidden" id="delete-modal">
-
-                        <div class="cus-modal-content" id="delete">
-                       
-                          <div class="cus-users">
-
-                            </div>
-
-                            <div class="cus-modal-close">
-                                X
-                            </div>
-                        </div>
-                 
-                    </div>
-
-
-                    <div class="cus-modal-container hidden" id="edit-modal">
-
-                        <div class="cus-modal-content" id="edit">
-                            <div class="cus-modal-check" id="edit-id">
-                                <input type="text" placeholder="username">
-                                <button class="cus-button" id="username-search">
-                                search
-                                </button>
-                            </div>
-
-                            <button class="cus-button cus-new-image" id="new-image">
-                            new image
+                <div class="cus-modal-container hidden" id="add-modal">
+                    <div class="cus-user-modal-content" id="add">
+                        <div>
+                            <input type="text" placeholder="username">
+                            <button class="cus-button" id="user-search">
+                                search                                
                             </button>
-
-                            <button class="cus-button cus-submit" id="submit">
-                            new image
-                            </button>
-                         
-
-                            <div class="cus-modal-close">
-                                X
-                            </div>
                         </div>
-                 
+                        <div class="divider"></div>
+                        <div class="cus-users"></div>
+                        <div class="cus-modal-close">
+                            X
+                        </div>
                     </div>
-                    
+                </div>
 
+                <div class="cus-modal-container hidden" id="delete-modal">
+                    <div class="cus-user-modal-content" id="delete">   
+                        <div class="cus-users"></div>
+                        <div class="cus-modal-close">
+                            X
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="cus-modal-container hidden" id="edit-modal">
+                    <div class="cus-edit-modal-content" id="edit">
+                        <div class="cus-modal-check" id="edit-id">
+                            <input class="cus-username-change-input" type="text" placeholder="username">
+                            <button class="cus-button cus-username-change-button" id="username-search">
+                                search
+                            </button>
+                        </div>
+                        <div class="mb-4">사용 가능합니다</div>
+                        <button class="cus-button cus-new-image mb-5" id="new-image">
+                            new image
+                        </button>
+                        <button class="cus-button cus-submit" id="submit">
+                            submit
+                        </button>
+                        <div class="cus-modal-close">
+                            X
+                        </div>
+                    </div>     
+                </div>
             </div>
         `;
     }
@@ -191,21 +175,21 @@ export default class HomePage extends Component {
         });
 
         this.addEvent('click', '#username-search', () => {
-            const $modal = this.$target.querySelector('#edit');
-            const $input = $modal.querySelector('input');
-            console.log('username-search click : ', $input.value);
+            // const $modal = this.$target.querySelector('#edit');
+            // const $input = $modal.querySelector('input');
+            // console.log('username-search click : ', $input.value);
 
-            // 서버에 유저 검색 요청
+            // // 서버에 유저 검색 요청
 
-            const $editId = this.$target.querySelector('#edit-id');
-            const $dup = $editId.querySelector('#id-dup');
-            if (!$dup) {
-                const $newDiv = document.createElement('div');
-                $newDiv.id = 'id-dup';
-                $newDiv.innerHTML = $input.value + '는 사용 가능합니다.';
-                $editId.appendChild($newDiv);
-            }
-            $dup.innerHTML = $input.value + '는 사용 가능합니다.';
+            // const $editId = this.$target.querySelector('#edit-id');
+            // const $dup = $editId.querySelector('#id-dup');
+            // if (!$dup) {
+            //     const $newDiv = document.createElement('div');
+            //     $newDiv.id = 'id-dup';
+            //     $newDiv.innerHTML = $input.value + '는 사용 가능합니다.';
+            //     $editId.appendChild($newDiv);
+            // }
+            // $dup.innerHTML = $input.value + '는 사용 가능합니다.';
         });
     }
 }

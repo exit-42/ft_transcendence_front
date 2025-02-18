@@ -30,51 +30,49 @@ export default class LoginPage extends Component {
                     </button>
                 </div>
 
-                    <div class="cus-modal-container hidden" id="login-modal">
-                        <div class="cus-modal-content" id="login">
-                            <input class="id" type="text" placeholder="ID">
-                            <input class="password" type="text" placeholder="password">
-
-                            <div class="cus-buttons">
-                                <button class="cus-button" id="login-modal-insert">
-                                    입력
-                                </button>
-                                <button class="cus-button cus-modal-close-button">
-                                    닫기
-                                </button>
-                            </div>
-
+                <div class="cus-modal-container hidden" id="login-modal">
+                    <div class="cus-login-modal-content" id="login">
+                        <input class="id" type="text" placeholder="ID">
+                        <input class="password" type="text" placeholder="password">
+                        <div class="cus-buttons">
+                            <button class="cus-button" id="login-modal-insert">
+                                log in
+                            </button>
+                            <button class="cus-button cus-modal-close-button">
+                                close
+                            </button>
                         </div>
                     </div>
+                </div>
 
-                    <div class="cus-modal-container hidden" id="signup-modal">
-                        <div class="cus-modal-content" id="signup">
-                        <div class="cus-modal-check">
-                            <input class="id" type="text" placeholder="ID">
-                            <button class="cus-button" id="signup-modal-id-check">
+                <div class="cus-modal-container hidden" id="signup-modal">
+                    <div class="cus-signup-modal-content" id="signup">
+                    <div class="cus-modal-check">
+                        <input class="id cus-signup-up-input" type="text" placeholder="ID">
+                        <button class="cus-signupcheck-button cus-button" id="signup-modal-id-check">
                             check
-                            </button>
-
-                        </div>
-                        <div class="cus-modal-check">
-                            <input class="email" type="text" placeholder="email">
-                            <button class="cus-button" id="signup-modal-email-check">
-                            send
-                            </button>
-                        </div>
-                            <input class="code" type="text" placeholder="코드를 입력하세요">
-                            <input class="password" type="text" placeholder="password">                   
-                            <div class="cus-buttons">
-                                <button class="cus-button" id="signup-modal-insert">
-                                    입력
-                                </button>
-                                <button class="cus-button cus-modal-close-button">
-                                    닫기
-                                </button>
-                            </div>
-
-                        </div>
+                        </button>
                     </div>
+                    <div class="mb-4">사용 가능합니다</div>
+                    <div class="cus-modal-check">
+                        <input class="email cus-signup-up-input" type="text" placeholder="email">
+                        <button class="cus-signupcheck-button cus-button" id="signup-modal-email-check">
+                            send                            
+                        </button>
+                    </div>
+                    <div class="mb-4">보냈습니다</div>
+                    <input class="code cus-signup-down-input mb-5" type="text" placeholder="코드를 입력하세요">
+                    <input class="password cus-signup-down-input mb-5" type="text" placeholder="password">                   
+                    <div class="cus-buttons">
+                        <button class="cus-signup-submit-button cus-button" id="signup-modal-insert">
+                            sign up
+                        </button>
+                        <button class="cus-signup-submit-button cus-button cus-modal-close-button">
+                            close
+                        </button>
+                    </div>
+                    </div>
+                </div>
             </div>
         `;
     }

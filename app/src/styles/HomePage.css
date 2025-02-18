@@ -1,185 +1,277 @@
 .cus-home-button {
-    margin: auto;
-    width: 20rem;
-    height: 6rem;
+	margin: auto;
+	width: 20rem;
+	height: 6rem;
 }
 
 .cus-home-card {
-    width: 25rem;
-    height: 34rem;
+	width: 25rem;
+	height: 34rem;
 }
 
 .cus-home-container {
-    width: 100%;
-    height: 88vh;
+	width: 100%;
+	height: 88vh;
 }
 
 .cus-home-card-container {
-    height: 100%;
-    width: 45%;
+	height: 100%;
+	width: 45%;
 }
 
 .cus-delete-button {
-    background-color: black;
+	background-color: black;
 }
 
 .cus-delete-button:hover {
-    background-color: black;
+	background-color: black;
 }
 
 .cus-friend-list-container {
-    background-color: rgba(14, 180, 252, 0.6);
-    height: 100%;
-    width: 10%;
+	background-color: rgba(14, 180, 252, 0.6);
+	height: 100%;
+	width: 10%;
 }
 
 .cus-friend-button-container {
-    display: flex;
-    flex-direction: row;
+	display: flex;
+	flex-direction: row;
 }
 
 .cus-friend-button {
-    background-color: white;
+	background-color: white;
 }
 
 .cus-friend-list {
-    list-style: none;
-    padding: 0px;
-    margin: 0px;
-    display: flex;
-    flex-direction: column;
-    overflow: auto;
+	list-style: none;
+	padding: 0px;
+	margin: 0px;
+	display: flex;
+	flex-direction: column;
+	overflow: auto;
 }
 
 .cus-friend {
-    background-color: white;
-    width: 80%;
-    aspect-ratio: 1 / 1;
-    border-radius: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 4px;
-    flex-shrink: 0;
+	background-color: white;
+	width: 80%;
+	aspect-ratio: 1 / 1;
+	border-radius: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 4px;
+	flex-shrink: 0;
 }
 
 .cus-friend-on {
-    border: 2px solid greenyellow;
+	border: 2px solid greenyellow;
 }
 
-/* .cus-modal-content {
-    min-width: 70%;
-    min-height: 70%;
-} */
-
 .cus-users {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3개씩 배치 */
-    gap: 20px;
-    width: 100%;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 20px;
+	width: 100%;
 }
 
 .cus-user {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 1px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 1px;
 }
 
 body .cus-user-add {
-    background-color: #23db63;
-    width: 60px;
-    height: 30px;
-    border-radius: 20px;
-    font-size: 15px;
+	background-color: #23db63;
+	width: 60px;
+	height: 30px;
+	border-radius: 20px;
+	font-size: 15px;
 }
 
 body .cus-user-delete {
-    background-color: #fc0e0e;
-    width: 60px;
-    height: 30px;
-    border-radius: 20px;
-    font-size: 15px;
+	background-color: #fc0e0e;
+	width: 60px;
+	height: 30px;
+	border-radius: 20px;
+	font-size: 15px;
+}
+
+.cus-edit-modal-content {
+	display: flex;
+	position: relative;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	background-color: #fff;
+	border-radius: 10px;
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+	width: 800px;
+	height: 450px;
+}
+
+.cus-username-change-input {
+	width: 500px;
+}
+
+.cus-username-change-button {
+	color: white;
+	border: none;
+	border-radius: 20px;
+	width: 150px;
+	height: 60px;
 }
 
 body .cus-new-image {
-    width: 100%;
+	width: 600px;
+	height: 60px;
+	font-size: 30px;
+	color: white;
+	border: none;
+	border-radius: 20px;
 }
 
 body .cus-submit {
-    background-color: #23db63;
-    width: 100%;
+	background-color: #23db63;
+	width: 600px;
+	height: 60px;
+	font-size: 30px;
+	color: white;
+	border: none;
+	border-radius: 20px;
+}
+
+body .cus-submit:hover {
+	background-color: #09a740;
+	width: 600px;
+	height: 60px;
+	font-size: 30px;
 }
 
 .cus-user-info {
-    width: 150px;
-    height: 150px;
-    border-radius: 100%;
-    border: 4px solid #d9d9d9;
+	width: 150px;
+	height: 150px;
+	border-radius: 100%;
+	border: 4px solid #d9d9d9;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .divider {
-    position: absolute;
-    top: 120px;
-    height: 3px;
-    width: 100%;
-    background-color: #0eb4fc;
+	position: absolute;
+	top: 120px;
+	height: 3px;
+	width: 100%;
+	background-color: #0eb4fc;
+}
+
+.cus-user-modal-content {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    background-color: #fff;
+    border: 2px solid rgba(14, 180, 252);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    width: 800px;
+    height: 600px;
+
+    gap: 50px;
+    padding: 50px;
+
+    input {
+        width: 400px;
+        height: 40px;
+    }
+
+    button {
+        color: white;
+        border: none;
+
+        border-radius: 20px;
+        width: 150px;
+        height: 40px;
+    }
 }
 
 @media (max-width: 1000px) {
-    .cus-home-button {
-        width: 16rem;
-        height: 5rem;
-    }
+	.cus-home-button {
+		width: 16rem;
+		height: 5rem;
+	}
 
-    .cus-home-card {
-        width: 22rem;
-        height: 30rem;
-    }
+	.cus-home-card {
+		width: 22rem;
+		height: 30rem;
+	}
 
-    .cus-friend-button-container {
-        display: flex;
-        flex-direction: column;
-    }
+	.cus-friend-button-container {
+		display: flex;
+		flex-direction: column;
+	}
 }
 
 @media (max-width: 700px) {
-    .cus-home-container {
-        flex-direction: column;
-    }
+	.cus-home-container {
+		flex-direction: column;
+	}
 
-    .cus-home-button {
-        margin-top: 10px;
-        margin-bottom: 10px;
-    }
+	.cus-home-button {
+		margin-top: 10px;
+		margin-bottom: 10px;
+	}
 
-    .cus-home-card-container {
-        height: 100%;
-        width: 100%;
-    }
+	.cus-home-card-container {
+		height: 100%;
+		width: 100%;
+	}
 
-    .cus-friend-list-container {
-        background-color: rgba(14, 180, 252, 0.6);
-        height: 100%;
-        width: 100%;
-    }
+	.cus-friend-list-container {
+		background-color: rgba(14, 180, 252, 0.6);
+		height: 100%;
+		width: 100%;
+	}
 
-    .cus-friend-button-container {
-        display: flex;
-        flex-direction: row;
-    }
+	.cus-friend-button-container {
+		display: flex;
+		flex-direction: row;
+	}
 
-    .cus-friend-list {
-        flex-direction: row;
-    }
+	.cus-friend-list {
+		flex-direction: row;
+	}
 
-    .cus-friend {
-        margin: 2px;
-        width: 4rem;
-        height: 4rem;
-    }
+	.cus-friend {
+		margin: 2px;
+		width: 4rem;
+		height: 4rem;
+	}
+
+	.cus-edit-modal-content {
+		width: 400px;
+	}
+
+	.cus-username-change-input {
+		width: 200px;
+	}
+
+	body .cus-new-image {
+		width: 300px;
+	}
+	
+	body .cus-submit {
+		width: 300px;
+	}
+
+	.cus-users {
+		grid-template-columns: repeat(2, 1fr);
+	}
 }

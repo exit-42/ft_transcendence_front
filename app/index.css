@@ -40,7 +40,7 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.6); /* 어두운 배경 */
+    background-color: rgba(0, 0, 0, 0.6);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -55,7 +55,8 @@
     align-items: center;
     text-align: center;
 
-    background-color: #fff; /* 흰색 모달 */
+    background-color: #fff;
+    border: 2px solid rgba(14, 180, 252);
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     min-width: 800px;
