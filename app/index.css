@@ -33,3 +33,85 @@
         height: 20rem;
     }
 }
+
+.cus-modal-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cus-modal-content {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    background-color: #fff;
+    border: 2px solid rgba(14, 180, 252);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    min-width: 800px;
+    min-height: 150px;
+
+    gap: 50px;
+    padding: 50px 100px;
+
+    input {
+        width: 400px;
+        height: 40px;
+    }
+
+    button {
+        color: white;
+        border: none;
+
+        border-radius: 20px;
+        width: 150px;
+        height: 40px;
+   
+    }
+}
+
+.cus-modal-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border: 1px solid black;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+
+    cursor: pointer;
+}
+
+.cus-modal-check {
+    display: flex;
+    position: relative;
+
+    input {
+        z-index: 1;
+    }
+    button {
+        margin-left: -60px;
+        padding-right: 30px;
+        text-align: right;
+    }
+}
+
+.hidden {
+    display: none;
+}
