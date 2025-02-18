@@ -85,18 +85,21 @@ export default class LoginPage extends Component {
 
         this.addEvent('click', '#login-button', () => {
             const $Modal = this.$target.querySelector('#login-modal');
+            if (!$Modal) return;
             $Modal.classList.remove('hidden');
             $Modal.classList.add('current');
         });
 
         this.addEvent('click', '#signup-button', () => {
             const $Modal = this.$target.querySelector('#signup-modal');
+            if (!$Modal) return;
             $Modal.classList.remove('hidden');
             $Modal.classList.add('current');
         });
 
         this.addEvent('click', '.cus-modal-close-button', () => {
             const $Modal = this.$target.querySelector('.cus-modal-container.current');
+            if (!$Modal) return;
             $Modal.classList.add('hidden');
             $Modal.classList.remove('current');
         });
