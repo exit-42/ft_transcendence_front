@@ -4,3 +4,8 @@ export { default as Header } from './Header.js';
 export { default as UserCard } from './UserCard.js';
 export { default as GameLog } from './GameLog.js';
 export { default as TournamentLog } from './TournamentLog.js';
+export { default as LoginModal } from './LoginModal.js';
+export { default as SignupModal } from './SignupModal.js';
+export { default as AddFriendModal } from './AddFriendModal.js';
+export { default as DeleteFriendModal } from './DeleteFriendModal.js';
+export { default as EditUserModal } from './EditUserModal.js';

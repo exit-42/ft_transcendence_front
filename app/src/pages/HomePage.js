@@ -1,5 +1,5 @@
 import Component from '../core/Component.js';
-import { UserCard } from '../components/index.js';
+import { UserCard, EditUserModal, AddFriendModal, DeleteFriendModal } from '../components/index.js';
 
 const mockData = ['heelee', 'heokee', 'heoheo', 'hohoho'];
 
