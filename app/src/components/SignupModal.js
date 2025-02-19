@@ -16,7 +16,7 @@ export default class LoginModal extends Component {
 					<div class="cus-modal-check">
 						<input class="email cus-signup-up-input" type="text" placeholder="email">
 						<button class="cus-signupcheck-button cus-button" id="signup-modal-email-check">
-							send							
+							send
 						</button>
 					</div>
 					<div class="mb-4">보냈습니다</div>

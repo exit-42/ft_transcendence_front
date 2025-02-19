@@ -17,16 +17,16 @@ export default class LoginPage extends Component {
 						Sign up
 					</button>
 				</div>
-				<div data-component="loginmodal"></div>
-				<div data-component="signupmodal"></div>
+				<div data-component="login-modal"></div>
+				<div data-component="signup-modal"></div>
 			</div>
 		`;
 	}
 
 	mounted() {
-		const $loginmodal = this.$target.querySelector('[data-component="loginmodal"]');
+		const $loginmodal = this.$target.querySelector('[data-component="login-modal"]');
 		new LoginModal($loginmodal);
-		const $signupmodal = this.$target.querySelector('[data-component="signupmodal"]');
+		const $signupmodal = this.$target.querySelector('[data-component="signup-modal"]');
 		new SignupModal($signupmodal);
 	}
 
