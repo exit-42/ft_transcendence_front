@@ -1,6 +1,20 @@
 import Component from '../core/Component.js';
 import { LoginModal, SignupModal } from '../components/index.js';
 
+async function checkToken() {
+	try {
+		const response = await fetch('https://localhost/api/account/login/', { method: 'POST' });
+		console.log(response.status);
+		if (response.status === 200) {
+			window.location.hash = '/home';
+		}
+	}
+	catch (error) {
+		console.error(error);
+	}
+}
+
+
 export default class LoginPage extends Component {
 	template() {
 		return `
@@ -24,6 +38,7 @@ export default class LoginPage extends Component {
 	}
 
 	mounted() {
+		checkToken();
 		const $loginmodal = this.$target.querySelector('[data-component="login-modal"]');
 		new LoginModal($loginmodal);
 		const $signupmodal = this.$target.querySelector('[data-component="signup-modal"]');
@@ -33,7 +48,8 @@ export default class LoginPage extends Component {
 	setEvent() {
 		// 42로그인 하는 이벤트
 		this.addEvent('click', '#login-42-button', () => {
-			window.location.hash = '/home'; 
+			window.location.href = 'https://localhost/api/authentication/oauth/token/';
+			checkToken();
 		});
 
 		// 로그인 모달 나오는 이벤트
