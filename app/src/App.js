@@ -6,8 +6,8 @@ import createPages from './pages/index.js';
 export default class App extends Component {
     template() {
         return `
-        <header></header>
-        <main></main>
+            <header></header>
+            <main></main>
         `;
     }
 

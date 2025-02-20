@@ -4,12 +4,12 @@ import { LoginModal, SignupModal } from '../components/index.js';
 async function checkToken() {
 	try {
 		const response = await fetch('https://localhost/api/account/login/', { method: 'POST' });
-		console.log(response.status);
 		if (response.status === 200) {
 			window.location.hash = '/home';
 		}
 	}
-	catch (error) {
+	catch (error)
+	{
 		console.error(error);
 	}
 }
