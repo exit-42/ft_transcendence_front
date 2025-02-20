@@ -58,7 +58,7 @@ export default class LoginModal extends Component {
 
 			const idPattern = /^[a-zA-Z0-9_]+$/;
 			if (!idPattern.test(id)) {
-				alert("사용할수 없는 아이디 입니다");
+				alert("사용할 수 없는 아이디 입니다");
 				return ;
 			}
 
@@ -71,7 +71,7 @@ export default class LoginModal extends Component {
 				});
 
 				if (response.ok) {
-					alert("사용 가능합니다");
+					alert("사용 가능 합니다");
 				}
 				else {
 					// 200번대 제외하고 다 여기서 걸림
@@ -86,13 +86,13 @@ export default class LoginModal extends Component {
 						alert("서버 에러");
 					}
 					else {
-						alert("알수없는 에러");
+						alert("알 수 없는 에러");
 					}
 				}
 			}
 			catch (error) {
 				// 요청이 오고 가는것 자체에 뭔가 에러가 생김
-				alert("알수없는 에러");
+				alert("알 수 없는 에러");
 				console.log(error);
 			}
 		});
@@ -103,7 +103,7 @@ export default class LoginModal extends Component {
 			const email = $Modal.querySelector('.email').value;
 
 			if (!email) {
-				alert("이메일을 입력하세요");
+				alert("이메일을 입력 하세요");
 				return ;
 			}
 
@@ -120,18 +120,18 @@ export default class LoginModal extends Component {
 				}
 				else {
 					if (response.status == 400) {
-						alert("이메일을 입력하세요");
+						alert("이메일을 입력 하세요");
 					}
 					else if (response.status == 500) {
 						alert("서버 에러");
 					}
 					else {
-						alert("알수없는 에러");
+						alert("알 수 없는 에러");
 					}
 				}
 			}
 			catch (error) {
-				alert("알수없는 에러");
+				alert("알 수 없는 에러");
 				console.log(error);
 			}
 
@@ -146,7 +146,7 @@ export default class LoginModal extends Component {
 			console.log(email, code);
 
 			if (!code) {
-				alert("값을 입력하세요");
+				alert("값을 입력 하세요");
 				return ;
 			}
 
@@ -173,12 +173,12 @@ export default class LoginModal extends Component {
 						alert("서버 에러");
 					}
 					else {
-						alert("알수없는 에러");
+						alert("알 수 없는 에러");
 					}
 				}
 			}
 			catch (error) {
-				alert("알수없는 에러");
+				alert("알 수 없는 에러");
 				console.log(error);
 			}
 		});
@@ -194,7 +194,7 @@ export default class LoginModal extends Component {
 			console.log(id, password, email, "이걸로 회원가입할게");
 
 			if (!id || !password || !email) {
-				alert("값을 입력하세요");
+				alert("값을 입력 하세요");
 				return ;
 			}
 
@@ -220,24 +220,24 @@ export default class LoginModal extends Component {
 				}
 				else {
 					if (response.status == 400) {
-						alert("값을 입력하세요");
+						alert("값을 입력 하세요");
 					}
 					else if (response.status == 403) {
 						alert("이메일 인증 하세요");
 					}
 					else if (response.status == 409) {
-						alert("아이디가 이미 사용중입니다");
+						alert("아이디가 이미 사용중 입니다");
 					}
 					else if (response.status == 500) {
 						alert("서버 에러");
 					}
 					else {
-						alert("알수없는 에러");
+						alert("알 수 없는 에러");
 					}
 				}
 			}
 			catch (error) {
-				alert("알수없는 에러");
+				alert("알 수 없는 에러");
 				console.log(error);
 			}
 		});

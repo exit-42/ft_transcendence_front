@@ -46,7 +46,7 @@ export default class SignupModal extends Component {
 			const password = $Modal.querySelector('.password').value;
 
 			if (!id || !password) {
-				alert("아이디를 입력하세요");
+				alert("아이디를 입력 하세요");
 				return ;
 			}
 			
@@ -67,7 +67,7 @@ export default class SignupModal extends Component {
 				else {
 					// 에러 처리
 					if (response.status == 400) {
-						alert("값을 입력하세요");
+						alert("값을 입력 하세요");
 					}
 					else if (response.status == 401) {
 						alert("비밀번호가 틀렸습니다");
@@ -79,12 +79,12 @@ export default class SignupModal extends Component {
 						alert("서버 에러");
 					}
 					else {
-						alert("알수없는 에러");
+						alert("알 수 없는 에러");
 					}
 				}
 			}
 			catch (error) {
-				alert("알수없는 에러");
+				alert("알 수 없는 에러");
 				console.log(error);
 			}
 		});
@@ -108,7 +108,7 @@ export default class SignupModal extends Component {
 						alert("코드가 틀렸습니다");
 					}
 					else if (response.status == 401) {
-						alert("존재하지 않는 유저입니다");
+						alert("존재하지 않는 유저 입니다");
 					}
 					else if (response.status == 404) {
 						alert("세션이 만료 되었습니다");
@@ -117,12 +117,12 @@ export default class SignupModal extends Component {
 						alert("서버 에러");
 					}
 					else {
-						alert("알수없는 에러");
+						alert("알 수 없는 에러");
 					}
 				}
 			}
 			catch (error) {
-				alert("알수없는 에러");
+				alert("알 수 없는 에러");
 				console.log(error);
 			}
 		});
