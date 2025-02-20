@@ -6,14 +6,20 @@ export default class SignupModal extends Component {
 		return `
 			<div class="cus-modal-container hidden" id="login-modal">
 				<div class="cus-login-modal-content" id="login">
-					<input class="id" type="text" placeholder="ID">
-					<input class="password" type="text" placeholder="password">
+					<input class="id cus-login-modal-input" type="text" placeholder="ID">
+					<input class="password cus-login-modal-input" type="text" placeholder="password">
 					<div class="cus-buttons">
-						<button class="cus-button" id="login-modal-insert">
+						<button class="cus-button cus-login-modal-button" id="login-modal-insert">
 							log in
 						</button>
-						<button class="cus-button cus-modal-close-button">
+						<button class="cus-button cus-login-modal-button cus-modal-close-button">
 							close
+						</button>
+					</div>
+					<div class="cus-modal-check hidden">
+						<input class="code cus-signup-up-input" type="text" placeholder="인증 코드를 입력하세요">
+						<button class="cus-signupcheck-button cus-button" id="signup-modal-email-check">
+							check
 						</button>
 					</div>
 				</div>
@@ -32,14 +38,17 @@ export default class SignupModal extends Component {
 		// 로그인 요청 이벤트
 		this.addEvent('click', '#login-modal-insert', () => {
 			const $Modal = this.$target.querySelector('.cus-modal-container');
-			const id = $Modal.querySelector('.id');
-			const password = $Modal.querySelector('.password');
-			console.log(id.value, password.value, "로그인 할게");
-			id.value = '';
-			password.value = '';
+			const id = $Modal.querySelector('.id').value;
+			const password = $Modal.querySelector('.password').value;
+			console.log(id, password, "로그인 할게");
 
-			$Modal.classList.remove('current');
-			$Modal.classList.add('hidden');
+			const $Input = this.$target.querySelector('.cus-modal-check');
+
+			$Input.classList.remove('hidden');
+			$Input.classList.add('current');
+
+			// $Modal.classList.remove('current');
+			// $Modal.classList.add('hidden');
 		});
 	}
 }

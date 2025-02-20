@@ -35,18 +35,18 @@
 	border-radius: 10px;
 	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 	width: 700px;
-	height: 400px;
+	height: 500px;
 
-	gap: 50px;
+	gap: 30px;
 	padding: 50px 100px;
 
-	input {
+	/* input {
 		font-size: larger;
 		width: 400px;
 		height: 60px;
-	}
+	} */
 
-	button {
+	/* button {
 		color: white;
 		border: none;
 
@@ -54,7 +54,21 @@
 		width: 150px;
 		height: 40px;
 
-	}
+	} */
+}
+
+.cus-login-modal-input {
+	font-size: larger;
+	width: 500px;
+	height: 60px;
+}
+
+.cus-login-modal-button {
+	color: white;
+	border: none;
+	border-radius: 20px;
+	width: 150px;
+	height: 40px;
 }
 
 .cus-buttons > button {
