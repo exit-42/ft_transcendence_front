@@ -93,6 +93,7 @@ export default class LoginModal extends Component {
 			catch (error) {
 				// 요청이 오고 가는것 자체에 뭔가 에러가 생김
 				alert("알수없는 에러");
+				console.log(error);
 			}
 		});
 
@@ -131,6 +132,7 @@ export default class LoginModal extends Component {
 			}
 			catch (error) {
 				alert("알수없는 에러");
+				console.log(error);
 			}
 
 		});
@@ -177,6 +179,7 @@ export default class LoginModal extends Component {
 			}
 			catch (error) {
 				alert("알수없는 에러");
+				console.log(error);
 			}
 		});
 
@@ -235,6 +238,7 @@ export default class LoginModal extends Component {
 			}
 			catch (error) {
 				alert("알수없는 에러");
+				console.log(error);
 			}
 		});
 

@@ -59,7 +59,6 @@ export default class SignupModal extends Component {
 					body: JSON.stringify(data)
 				});
 				
-				const result = await response.json();
 				if (response.ok) {
 					const $Input = this.$target.querySelector('.cus-modal-check');
 					$Input.classList.remove('hidden');
@@ -86,6 +85,7 @@ export default class SignupModal extends Component {
 			}
 			catch (error) {
 				alert("알수없는 에러");
+				console.log(error);
 			}
 		});
 
@@ -123,6 +123,7 @@ export default class SignupModal extends Component {
 			}
 			catch (error) {
 				alert("알수없는 에러");
+				console.log(error);
 			}
 		});
 	}
