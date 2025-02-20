@@ -1,6 +1,0 @@
-services:
-    js-front:
-        build:
-            context: .
-        ports:
-            - '3000:80'

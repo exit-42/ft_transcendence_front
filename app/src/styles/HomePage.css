@@ -101,25 +101,25 @@ body .cus-user-delete {
 	display: flex;
 	position: relative;
 	flex-direction: column;
-	justify-content: center;
+	justify-content: space-evenly;
 	align-items: center;
 	text-align: center;
 	background-color: #fff;
 	border-radius: 10px;
 	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 	width: 800px;
-	height: 450px;
+	height: 350px;
 }
 
 .cus-username-change-input {
-	width: 500px;
+	width: 480px;
 }
 
 .cus-username-change-button {
 	color: white;
 	border: none;
 	border-radius: 20px;
-	width: 150px;
+	width: 170px;
 	height: 60px;
 }
 
