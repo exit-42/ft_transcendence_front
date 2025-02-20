@@ -13,7 +13,7 @@ export default class LoginModal extends Component {
 						</button>
 					</div>
 					<div class="cus-modal-check mb-5">
-						<input class="email cus-signup-up-input" type="text" placeholder="email">
+						<input class="email cus-signup-up-input" type="email" placeholder="email">
 						<button class="cus-signupcheck-button cus-button" id="signup-modal-email-send">
 							send
 						</button>
@@ -104,6 +104,13 @@ export default class LoginModal extends Component {
 
 			if (!email) {
 				alert("이메일을 입력 하세요");
+				return ;
+			}
+
+			const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+			if (!emailRegex.test(email)) {
+				alert("형식이 틀립니다");
 				return ;
 			}
 
