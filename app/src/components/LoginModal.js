@@ -31,24 +31,99 @@ export default class SignupModal extends Component {
 		// 모달 닫기 이벤트
 		this.addEvent('click', '.cus-modal-close-button', () => {
 			const $Modal = this.$target.querySelector('.cus-modal-container.current');
+			const $Input = this.$target.querySelector('.cus-modal-check');
+
 			$Modal.classList.add('hidden');
 			$Modal.classList.remove('current');
+			$Input.classList.remove('current');
+			$Input.classList.add('hidden');
 		});
 
 		// 로그인 요청 이벤트
-		this.addEvent('click', '#login-modal-insert', () => {
+		this.addEvent('click', '#login-modal-insert', async () => {
 			const $Modal = this.$target.querySelector('.cus-modal-container');
 			const id = $Modal.querySelector('.id').value;
 			const password = $Modal.querySelector('.password').value;
-			console.log(id, password, "로그인 할게");
 
-			const $Input = this.$target.querySelector('.cus-modal-check');
+			if (!id || !password) {
+				alert("아이디를 입력하세요");
+				return ;
+			}
+			
+			const data = { id, password };
 
-			$Input.classList.remove('hidden');
-			$Input.classList.add('current');
+			try {
+				const response = await fetch('https://localhost/api/authentication/local-auth/signin/', {
+					method: 'POST',
+					headers: { 'Content-Type': 'application/json' },
+					body: JSON.stringify(data)
+				});
+				
+				const result = await response.json();
+				if (response.ok) {
+					const $Input = this.$target.querySelector('.cus-modal-check');
+					$Input.classList.remove('hidden');
+					$Input.classList.add('current');
+				}
+				else {
+					// 에러 처리
+					if (response.status == 400) {
+						alert("값을 입력하세요");
+					}
+					else if (response.status == 401) {
+						alert("비밀번호가 틀렸습니다");
+					}
+					else if (response.status == 404) {
+						alert("아이디가 존재하지 않습니다");
+					}
+					else if (response.status == 500) {
+						alert("서버 에러");
+					}
+					else {
+						alert("알수없는 에러");
+					}
+				}
+			}
+			catch (error) {
+				alert("알수없는 에러");
+			}
+		});
 
-			// $Modal.classList.remove('current');
-			// $Modal.classList.add('hidden');
+		this.addEvent('click', '#signup-modal-email-check', async () => {
+			const $Modal = this.$target.querySelector('.cus-modal-container.current');
+			const code = $Modal.querySelector('.code').value;
+
+			try {
+				const response = await fetch('https://localhost/api/authentication/local-auth/token/', {
+					method: 'POST',
+					headers: { 'Content-Type': 'application/json' },
+					body: JSON.stringify({ code })
+				});
+
+				if (response.ok) {
+					window.location.hash = '/home'; 
+				}
+				else {
+					if (response.status == 400) {
+						alert("코드가 틀렸습니다");
+					}
+					else if (response.status == 401) {
+						alert("존재하지 않는 유저입니다");
+					}
+					else if (response.status == 404) {
+						alert("세션이 만료 되었습니다");
+					}
+					else if (response.status == 500) {
+						alert("서버 에러");
+					}
+					else {
+						alert("알수없는 에러");
+					}
+				}
+			}
+			catch (error) {
+				alert("알수없는 에러");
+			}
 		});
 	}
 }
