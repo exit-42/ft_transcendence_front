@@ -60,19 +60,15 @@ export default class SignupModal extends Component {
             } else {
                 // 에러 처리
                 if (response.status == 400) {
-                	alert("값을 입력 하세요");
-                }
-                else if (response.status == 401) {
-                	alert("비밀번호가 틀렸습니다");
-                }
-                else if (response.status == 404) {
-                	alert("아이디가 존재하지 않습니다");
-                }
-                else if (response.status == 500) {
-                	alert("서버 에러");
-                }
-                else {
-                	alert("알 수 없는 에러");
+                    alert('값을 입력 하세요');
+                } else if (response.status == 401) {
+                    alert('비밀번호가 틀렸습니다');
+                } else if (response.status == 404) {
+                    alert('아이디가 존재하지 않습니다');
+                } else if (response.status == 500) {
+                    alert('서버 에러');
+                } else {
+                    alert('알 수 없는 에러');
                 }
             }
         });

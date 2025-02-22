@@ -1,12 +1,11 @@
 import Component from '../core/Component.js';
 
 export default class Chatting extends Component {
-
     setup() {
-        console.log("소켓 열거임");
+        console.log('소켓 열거임');
     }
     dispose() {
-        console.log("소켓 닫을거임");
+        console.log('소켓 닫을거임');
     }
 
     template() {

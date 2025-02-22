@@ -1,52 +1,52 @@
 .cus-auth-button {
-	width: 18%;
-	position: absolute;
-	top: 85%;
-	left: 20%;
-	transform: translate(-50%, -50%);
+    width: 18%;
+    position: absolute;
+    top: 85%;
+    left: 20%;
+    transform: translate(-50%, -50%);
 }
 
 .cus-login-button {
-	width: 18%;
-	position: absolute;
-	top: 85%;
-	left: 50%;
-	transform: translate(-50%, -50%);
+    width: 18%;
+    position: absolute;
+    top: 85%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .cus-signup-button {
-	width: 18%;
-	position: absolute;
-	top: 85%;
-	left: 80%;
-	transform: translate(-50%, -50%);
+    width: 18%;
+    position: absolute;
+    top: 85%;
+    left: 80%;
+    transform: translate(-50%, -50%);
 }
 
 .cus-login-modal-content {
-	display: flex;
-	flex-direction: column;
+    display: flex;
+    flex-direction: column;
 
-	justify-content: center;
-	align-items: center;
-	text-align: center;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 
-	background-color: #fff;
-	border: 2px solid rgba(14, 180, 252);
-	border-radius: 10px;
-	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-	width: 700px;
-	height: 500px;
+    background-color: #fff;
+    border: 2px solid rgba(14, 180, 252);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    width: 700px;
+    height: 500px;
 
-	gap: 30px;
-	padding: 50px 100px;
+    gap: 30px;
+    padding: 50px 100px;
 
-	/* input {
+    /* input {
 		font-size: larger;
 		width: 400px;
 		height: 60px;
 	} */
 
-	/* button {
+    /* button {
 		color: white;
 		border: none;
 
@@ -58,90 +58,90 @@
 }
 
 .cus-login-modal-input {
-	font-size: larger;
-	width: 500px;
-	height: 60px;
+    font-size: larger;
+    width: 500px;
+    height: 60px;
 }
 
 .cus-login-modal-button {
-	color: white;
-	border: none;
-	border-radius: 20px;
-	width: 150px;
-	height: 40px;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    width: 150px;
+    height: 40px;
 }
 
 .cus-buttons > button {
-	margin: 5px 20px; 
+    margin: 5px 20px;
 }
 
 .cus-signup-modal-content {
-	display: flex;
-	flex-direction: column;
+    display: flex;
+    flex-direction: column;
 
-	justify-content: center;
-	align-items: center;
-	text-align: center;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 
-	background-color: #fff;
-	border: 2px solid rgba(14, 180, 252);
-	border-radius: 10px;
-	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-	width: 700px;
-	height: 600px;
+    background-color: #fff;
+    border: 2px solid rgba(14, 180, 252);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    width: 700px;
+    height: 600px;
 }
 
 .cus-signupcheck-button {
-	width: 150px;
-	height: 60px;
-	color: white;
-	border: none;
-	border-radius: 20px;
+    width: 150px;
+    height: 60px;
+    color: white;
+    border: none;
+    border-radius: 20px;
 }
 
 .cus-signup-submit-button {
-	color: white;
-	border: none;
-	border-radius: 20px;
-	width: 150px;
-	height: 40px;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    width: 150px;
+    height: 40px;
 }
 
 .cus-signup-up-input {
-	width: 410px;
-	height: 60px;
+    width: 410px;
+    height: 60px;
 }
 
 .cus-signup-down-input {
-	width: 500px;
-	height: 60px;
+    width: 500px;
+    height: 60px;
 }
 
 @media (max-width: 700px) {
-	.cus-login-modal-content {
-		width: 400px;
-		gap: 40px;
+    .cus-login-modal-content {
+        width: 400px;
+        gap: 40px;
 
-		input {
-			font-size: larger;
-			width: 300px;
-			height: 60px;
-		}
-	}
+        input {
+            font-size: larger;
+            width: 300px;
+            height: 60px;
+        }
+    }
 
-	.cus-signup-modal-content {
-		width: 400px;
-	}
+    .cus-signup-modal-content {
+        width: 400px;
+    }
 
-	.cus-signup-up-input {
-		width: 260px;
-		height: 60px;
-	}
-	
-	.cus-signup-down-input {
-		width: 350px;
-		height: 60px;
-	}
+    .cus-signup-up-input {
+        width: 260px;
+        height: 60px;
+    }
+
+    .cus-signup-down-input {
+        width: 350px;
+        height: 60px;
+    }
 }
 
 /* #signup {

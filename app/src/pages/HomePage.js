@@ -2,8 +2,8 @@ import Component from '../core/Component.js';
 import { UserCard, EditUserModal, AddFriendModal, DeleteFriendModal } from '../components/index.js';
 
 export default class HomePage extends Component {
-	template() {
-		return `
+    template() {
+        return `
 			<div class="cus-home-container d-flex">
 				<div class="d-flex flex-column cus-friend-list-container">
 					<div class="cus-friend-button-container">
@@ -41,62 +41,62 @@ export default class HomePage extends Component {
 
 			</div>
 		`;
-	}
+    }
 
-	mounted() {
-		const $usercard = this.$target.querySelector('[data-component="usercard"]');
-		new UserCard($usercard);
+    mounted() {
+        const $usercard = this.$target.querySelector('[data-component="usercard"]');
+        new UserCard($usercard);
 
-		const $editmodal = this.$target.querySelector('[data-component="edit-modal"]');
-		new EditUserModal($editmodal);
+        const $editmodal = this.$target.querySelector('[data-component="edit-modal"]');
+        new EditUserModal($editmodal);
 
-		const $addfriendmodal = this.$target.querySelector('[data-component="addfriend-modal"]');
-		new  AddFriendModal($addfriendmodal);
+        const $addfriendmodal = this.$target.querySelector('[data-component="addfriend-modal"]');
+        new AddFriendModal($addfriendmodal);
 
-		const $deletefriendmodal = this.$target.querySelector('[data-component="deletefriend-modal"]');
-		new  DeleteFriendModal($deletefriendmodal);
-	}
+        const $deletefriendmodal = this.$target.querySelector('[data-component="deletefriend-modal"]');
+        new DeleteFriendModal($deletefriendmodal);
+    }
 
-	setEvent() {
-		// gamelog 버튼 클릭 이벤트
-		this.addEvent('click', '#gamelog-button', () => {
-			window.location.hash = '/gamelog';
-		});
+    setEvent() {
+        // gamelog 버튼 클릭 이벤트
+        this.addEvent('click', '#gamelog-button', () => {
+            window.location.hash = '/gamelog';
+        });
 
-		// lobby 버튼 클릭 이벤트
-		this.addEvent('click', '#lobby-button', () => {
-			window.location.hash = '/lobby';
-		});
+        // lobby 버튼 클릭 이벤트
+        this.addEvent('click', '#lobby-button', () => {
+            window.location.hash = '/lobby';
+        });
 
-		// Select 버튼 클릭 이벤트
-		this.addEvent('click', '#select-button', () => {
-			window.location.hash = '/select';
-		});
+        // Select 버튼 클릭 이벤트
+        this.addEvent('click', '#select-button', () => {
+            window.location.hash = '/select';
+        });
 
-		// add 버튼 클릭 이벤트
-		this.addEvent('click', '#add-button', () => {
-			const $modal = this.$target.querySelector('#add-modal');
-			$modal.classList.remove('hidden');
-			$modal.classList.add('current');
-		});
+        // add 버튼 클릭 이벤트
+        this.addEvent('click', '#add-button', () => {
+            const $modal = this.$target.querySelector('#add-modal');
+            $modal.classList.remove('hidden');
+            $modal.classList.add('current');
+        });
 
-		// delete 버튼 클릭 이벤트
-		this.addEvent('click', '#delete-button', () => {
-			const $modal = this.$target.querySelector('#delete-modal');
-			$modal.classList.remove('hidden');
-			$modal.classList.add('current');
-		});
+        // delete 버튼 클릭 이벤트
+        this.addEvent('click', '#delete-button', () => {
+            const $modal = this.$target.querySelector('#delete-modal');
+            $modal.classList.remove('hidden');
+            $modal.classList.add('current');
+        });
 
-		// edit 버튼 클릭 이벤트
-		this.addEvent('click', '#edit-button', () => {
-			const $modal = this.$target.querySelector('#edit-modal');
-			$modal.classList.remove('hidden');
-			$modal.classList.add('current');
+        // edit 버튼 클릭 이벤트
+        this.addEvent('click', '#edit-button', () => {
+            const $modal = this.$target.querySelector('#edit-modal');
+            $modal.classList.remove('hidden');
+            $modal.classList.add('current');
 
-			const $dup = this.$target.querySelector('#id-dup');
-			if ($dup) {
-				$dup.innerHTML = '';
-			}
-		});
-	}
+            const $dup = this.$target.querySelector('#id-dup');
+            if ($dup) {
+                $dup.innerHTML = '';
+            }
+        });
+    }
 }
