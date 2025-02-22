@@ -3,12 +3,13 @@ export async function useFetch(url, options = {}) {
     try {
         const response = await fetch(baseUrl + url, options);
 
-        if (response.ok) {
-            return await response.json(); // 성공적인 응답을 반환
-        } else {
-            const errorData = await response.json();
-            handleError(response.status, errorData);
-        }
+        return response;
+        // if (response.ok) {
+        //     return await response.json(); // 성공적인 응답을 반환
+        // } else {
+        //     const errorData = await response.json();
+        //     handleError(response.status, errorData);
+        // }
     } catch (error) {
         console.error('Network error:', error);
         alert('알 수 없는 에러');

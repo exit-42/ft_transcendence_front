@@ -53,28 +53,27 @@ export default class SignupModal extends Component {
 
             const response = await postSignin(data);
 
-            // if (response.ok) {
-            if (response) {
+            if (response.ok) {
                 const $Input = this.$target.querySelector('.cus-modal-check');
                 $Input.classList.remove('hidden');
                 $Input.classList.add('current');
             } else {
                 // 에러 처리
-                // if (response.status == 400) {
-                // 	alert("값을 입력 하세요");
-                // }
-                // else if (response.status == 401) {
-                // 	alert("비밀번호가 틀렸습니다");
-                // }
-                // else if (response.status == 404) {
-                // 	alert("아이디가 존재하지 않습니다");
-                // }
-                // else if (response.status == 500) {
-                // 	alert("서버 에러");
-                // }
-                // else {
-                // 	alert("알 수 없는 에러");
-                // }
+                if (response.status == 400) {
+                	alert("값을 입력 하세요");
+                }
+                else if (response.status == 401) {
+                	alert("비밀번호가 틀렸습니다");
+                }
+                else if (response.status == 404) {
+                	alert("아이디가 존재하지 않습니다");
+                }
+                else if (response.status == 500) {
+                	alert("서버 에러");
+                }
+                else {
+                	alert("알 수 없는 에러");
+                }
             }
         });
 
@@ -87,17 +86,17 @@ export default class SignupModal extends Component {
             if (response.ok) {
                 window.location.hash = '/home';
             } else {
-                // if (response.status == 400) {
-                //     alert('코드가 틀렸습니다');
-                // } else if (response.status == 401) {
-                //     alert('존재하지 않는 유저 입니다');
-                // } else if (response.status == 404) {
-                //     alert('세션이 만료 되었습니다');
-                // } else if (response.status == 500) {
-                //     alert('서버 에러');
-                // } else {
-                //     alert('알 수 없는 에러');
-                // }
+                if (response.status == 400) {
+                    alert('코드가 틀렸습니다');
+                } else if (response.status == 401) {
+                    alert('존재하지 않는 유저 입니다');
+                } else if (response.status == 404) {
+                    alert('세션이 만료 되었습니다');
+                } else if (response.status == 500) {
+                    alert('서버 에러');
+                } else {
+                    alert('알 수 없는 에러');
+                }
             }
         });
     }

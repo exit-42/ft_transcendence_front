@@ -4,7 +4,7 @@ import { postLogin } from '../api/account.js';
 
 async function checkToken() {
     const response = await postLogin();
-    if (response) window.location.hash = '/home';
+    if (response.ok) window.location.hash = '/home';
 }
 
 export default class LoginPage extends Component {

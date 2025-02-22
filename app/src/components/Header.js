@@ -18,7 +18,7 @@ export default class Header extends Component {
 
         this.addEvent('click', '#logout-button', async () => {
             const response = await postLogout();
-            if (response) window.location.hash = '/';
+            if (response.ok) window.location.hash = '/';
         });
     }
 }

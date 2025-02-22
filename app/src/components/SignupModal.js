@@ -1,5 +1,5 @@
 import Component from '../core/Component.js';
-
+import { getId, postEmail, postCode , postSignup} from '../api/localAuth.js';
 export default class LoginModal extends Component {
     template() {
         return `
@@ -60,35 +60,24 @@ export default class LoginModal extends Component {
                 alert('사용할 수 없는 아이디 입니다');
                 return;
             }
+            const response = await getId(id);
 
-            try {
-                const response = await fetch(`https://localhost/api/authentication/local-auth/id/?id=${id}`, {
-                    method: 'GET',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                });
-
-                if (response.ok) {
-                    alert('사용 가능 합니다');
+            if (response.ok) {
+                alert('사용 가능 합니다');
+            } else {
+                // 200번대 제외하고 다 여기서 걸림
+                console.log(response.status);
+                if (response.status == 400) {
+                    alert('아이디에 문제가 있습니다');
+                } else if (response.status == 409) {
+                    alert('이미 존재하는 아이디 입니다');
+                } else if (response.status == 500) {
+                    alert('서버 에러');
                 } else {
-                    // 200번대 제외하고 다 여기서 걸림
-                    console.log(response.status);
-                    if (response.status == 400) {
-                        alert('아이디에 문제가 있습니다');
-                    } else if (response.status == 409) {
-                        alert('이미 존재하는 아이디 입니다');
-                    } else if (response.status == 500) {
-                        alert('서버 에러');
-                    } else {
-                        alert('알 수 없는 에러');
-                    }
+                    alert('알 수 없는 에러');
                 }
-            } catch (error) {
-                // 요청이 오고 가는것 자체에 뭔가 에러가 생김
-                alert('알 수 없는 에러');
-                console.log(error);
             }
+        
         });
 
         // 회원가입 이메일에 코드 보내는 이벤트
@@ -108,14 +97,7 @@ export default class LoginModal extends Component {
                 return;
             }
 
-            try {
-                const response = await fetch('https://localhost/api/authentication/local-auth/email/', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ email }),
-                });
+                const response = await postEmail({email});
                 if (response.ok) {
                     alert('코드를 전송 했습니다');
                 } else {
@@ -127,11 +109,7 @@ export default class LoginModal extends Component {
                         alert('알 수 없는 에러');
                     }
                 }
-            } catch (error) {
-                alert('알 수 없는 에러');
-                console.log(error);
-            }
-        });
+            });
 
         // 이메일 체크 이벤트
         this.addEvent('click', '#signup-modal-email-check', async () => {
@@ -146,31 +124,21 @@ export default class LoginModal extends Component {
                 return;
             }
 
-            try {
-                const response = await fetch('https://localhost/api/authentication/local-auth/code/', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ email, code: code }),
-                });
-
-                if (response.ok) {
-                    alert('인증 성공');
+            const response = await postCode({email, code});
+            
+            
+            if (response.ok) {
+                alert('인증 성공');
+            } else {
+                if (response.status == 400) {
+                    alert('인증 실패');
+                } else if (response.status == 404) {
+                    alert('세션이 만료 되었습니다');
+                } else if (response.status == 500) {
+                    alert('서버 에러');
                 } else {
-                    if (response.status == 400) {
-                        alert('인증 실패');
-                    } else if (response.status == 404) {
-                        alert('세션이 만료 되었습니다');
-                    } else if (response.status == 500) {
-                        alert('서버 에러');
-                    } else {
-                        alert('알 수 없는 에러');
-                    }
+                    alert('알 수 없는 에러');
                 }
-            } catch (error) {
-                alert('알 수 없는 에러');
-                console.log(error);
             }
         });
 
@@ -194,14 +162,7 @@ export default class LoginModal extends Component {
                 email: email,
             };
 
-            try {
-                const response = await fetch('https://localhost/api/authentication/local-auth/signup/', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(data),
-                });
+                const response = await postSignup(data);
 
                 if (response.ok) {
                     alert('회원가입 되었습니다');
@@ -220,10 +181,6 @@ export default class LoginModal extends Component {
                         alert('알 수 없는 에러');
                     }
                 }
-            } catch (error) {
-                alert('알 수 없는 에러');
-                console.log(error);
-            }
         });
     }
 }
