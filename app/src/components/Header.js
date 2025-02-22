@@ -19,7 +19,7 @@ export default class Header extends Component {
 			try {
 				const response = await fetch('https://localhost/api/account/logout/', { method: 'POST' });
 				if (response.status === 200) {
-					window.location.hash = '/login';
+					window.location.hash = '/';
 				}
 			}
 			catch (error)
