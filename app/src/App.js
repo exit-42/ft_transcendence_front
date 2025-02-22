@@ -6,8 +6,11 @@ import createPages from './pages/index.js';
 export default class App extends Component {
     template() {
         return `
-            <header></header>
-            <main></main>
+        <header></header>
+        <main>
+            <div id="page">
+            </div>
+        </main>
         `;
     }
 
@@ -15,9 +18,10 @@ export default class App extends Component {
         const $header = this.$target.querySelector('header');
         new Header($header);
         const $main = this.$target.querySelector('main');
-        const pages = createPages($main);
+        const $page = $main.querySelector('#page');
+        const pages = createPages($page);
 
-        const router = new Router($main);
+        const router = new Router($page);
         router.addRoute('#/', () => {
             $header.style.display = 'none';
             pages.login();
