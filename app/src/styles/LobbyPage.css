@@ -5,14 +5,14 @@
 }
 
 .cus-mode-button-container {
-    height: 12%; 
+    height: 12%;
 }
 
 .inner-container {
     padding: 3rem;
     border-radius: 1.25rem;
     overflow: auto;
-    height: 88%; 
+    height: 88%;
     background-color: rgba(14, 180, 252, 0.25);
 }
 

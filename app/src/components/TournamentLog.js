@@ -1,25 +1,25 @@
 import Component from '../core/Component.js';
 
 export default class TournamentLog extends Component {
-	template() {
-		const gameLogs = [
-			{
-				players1: 'dogwak',
-				players2: 'haejeong',
-				players3: 'sham',
-				players4: 'dogwak',
-				winner1: 'dogwak',
-				winner2: 'sham',
-				winner3: 'sham',
-				score1: '11 : 8',
-				score2: '11 : 9',
-				score3: '11 : 7',
-			},
-		];
+    template() {
+        const gameLogs = [
+            {
+                players1: 'dogwak',
+                players2: 'haejeong',
+                players3: 'sham',
+                players4: 'dogwak',
+                winner1: 'dogwak',
+                winner2: 'sham',
+                winner3: 'sham',
+                score1: '11 : 8',
+                score2: '11 : 9',
+                score3: '11 : 7',
+            },
+        ];
 
-		const gameLogItems = gameLogs
-		.map(
-			(log) => `
+        const gameLogItems = gameLogs
+            .map(
+                (log) => `
 				<li class="cus-tournamentlog-list">				
 					<div class="cus-username-container">
 						<div>${log.players1}</div>
@@ -65,12 +65,13 @@ export default class TournamentLog extends Component {
 					</div>
 				</li>
 			`,
-		).join('');
+            )
+            .join('');
 
-		return `
+        return `
 			<ul class="d-flex flex-column align-items-center p-5 list-unstyled" style="width: 100%;">
 				${gameLogItems}
 			</ul>
 		`;
-	}
+    }
 }

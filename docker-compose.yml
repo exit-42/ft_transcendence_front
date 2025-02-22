@@ -1,16 +1,16 @@
 services:
-  frontend:
-    image: nginx:stable
-    ports:
-      - "443:443"
-      - "80:80"
-    networks:
-      - intra
-    volumes:
-      - ./nginx.conf:/etc/nginx/conf.d/default.conf
-      - ./app:/usr/share/nginx/html/static
-      - ./certs:/etc/nginx/certs
+    frontend:
+        image: nginx:stable
+        ports:
+            - '443:443'
+            - '80:80'
+        networks:
+            - intra
+        volumes:
+            - ./nginx.conf:/etc/nginx/conf.d/default.conf
+            - ./app:/usr/share/nginx/html/static
+            - ./certs:/etc/nginx/certs
 
 networks:
-  intra:
-    external: true
+    intra:
+        external: true

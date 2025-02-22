@@ -2,8 +2,8 @@ import Component from '../core/Component.js';
 import { UserCard } from '../components/index.js';
 
 export default class RoomFourPage extends Component {
-	template() {
-		return `
+    template() {
+        return `
 			<div class="p-5" style="width: 100%; height: 88vh;">
 				<div class="cus-tournament-container">
 					<img class="cus-crown" src="src/imgs/crown.png"></img>
@@ -36,22 +36,22 @@ export default class RoomFourPage extends Component {
 				</div>
 			</div>
 		`;
-	}
+    }
 
-	mounted() {
-		const $usercards = this.$target.querySelectorAll('[data-component="usercard"]');
-		$usercards.forEach(($usercard) => {
-			new UserCard($usercard);
-		});
-	}
+    mounted() {
+        const $usercards = this.$target.querySelectorAll('[data-component="usercard"]');
+        $usercards.forEach(($usercard) => {
+            new UserCard($usercard);
+        });
+    }
 
-	setEvent() {
-		this.addEvent('click', '#exit-button', () => {
-			window.location.hash = '/lobby';
-		});
+    setEvent() {
+        this.addEvent('click', '#exit-button', () => {
+            window.location.hash = '/lobby';
+        });
 
-		this.addEvent('click', '#start-button', () => {
-			window.location.hash = '/game';
-		});
-	}
+        this.addEvent('click', '#start-button', () => {
+            window.location.hash = '/game';
+        });
+    }
 }
