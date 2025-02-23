@@ -2,7 +2,6 @@ export default class Component {
     $target; // 컴포넌트를 넣을 부모
     $props;
     $state;
-    $eventlist = [];
 
     constructor($target, $props) {
         this.$target = $target;
@@ -15,9 +14,7 @@ export default class Component {
 
     setup() {} // 컴포넌트 state 설정
 
-    dispose() {
-        // 컴포넌트가 제거될 때
-    }
+    dispose() {}
 
     mounted() {} // 컴포넌트가 마운트 되었을 때
 
@@ -49,14 +46,11 @@ export default class Component {
     }
 
     _observeDOMChages() {
-        const observer = new MutationObserver((mutations) => {
-            mutations.forEach((mutation) => {
-                const $page = document.querySelector('#page');
-                if (mutation.target === $page) {
-                    // console.log('childList 변경됨: ', mutation);
-                    this.dispose();
-                }
-            });
+        const observer = new MutationObserver(() => {
+            if (!document.contains(this.$target)) {
+                this.dispose();
+                observer.disconnect();
+            }
         });
 
         observer.observe(document.body, {
