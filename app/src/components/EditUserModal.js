@@ -23,6 +23,12 @@ export default class EditUserModal extends Component {
     }
 
     setEvent() {
+        this.addEvent('click', '.cus-modal-close', () => {
+            const $modal = this.$target.querySelector('.cus-modal-container.current');
+            $modal.classList.add('hidden');
+            $modal.classList.remove('current');
+        });
+
         this.addEvent('click', '#username-search', () => {
             // const $modal = this.$target.querySelector('#edit');
             // const $input = $modal.querySelector('input');

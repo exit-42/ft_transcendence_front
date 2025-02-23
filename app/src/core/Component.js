@@ -53,7 +53,7 @@ export default class Component {
             mutations.forEach((mutation) => {
                 const $page = document.querySelector('#page');
                 if (mutation.target === $page) {
-                    console.log('childList 변경됨: ', mutation);
+                    // console.log('childList 변경됨: ', mutation);
                     this.dispose();
                 }
             });
