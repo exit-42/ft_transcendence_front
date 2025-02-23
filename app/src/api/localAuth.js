@@ -2,6 +2,8 @@ import { useFetch } from './useFetch.js';
 
 const baseUrl = 'authentication/local-auth/';
 
+// EndPoint 끝에 / 왜?
+
 export async function postSignin(body) {
     const response = await useFetch(baseUrl + 'signin/', {
         method: 'POST',
@@ -31,8 +33,11 @@ export async function postToken(body) {
 }
 
 export async function getId(id) {
-    const response = await useFetch(baseUrl + `/id/?id=${id}`, {
+    const response = await useFetch(baseUrl + `id/?id=${id}`, {
         method: 'GET',
+        headers: {
+            'Content-Type': 'fasdfasdfs/json',
+        },
     });
 
     return response;
