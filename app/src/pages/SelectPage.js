@@ -1,5 +1,5 @@
 import Component from '../core/Component.js';
-import { SelectButtonBox, UserCard } from '../components/index.js';
+import { SelectButtonBox } from '../components/index.js';
 
 export default class SelectPage extends Component {
     template() {
