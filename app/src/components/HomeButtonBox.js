@@ -37,7 +37,6 @@ export default class HomeButtonBox extends Component {
         // edit 버튼 클릭 이벤트
         this.addEvent('click', '#edit-button', () => {
             const $modal = this.$target.querySelector('#edit-modal');
-            console.log($modal);
             $modal.classList.remove('hidden');
             $modal.classList.add('current');
 

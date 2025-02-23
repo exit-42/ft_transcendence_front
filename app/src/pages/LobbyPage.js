@@ -53,14 +53,4 @@ export default class LobbyPage extends Component {
             </div>
         `;
     }
-
-    setEvent() {
-        this.addEvent('click', '#room2-button', () => {
-            window.location.hash = '/room2';
-        });
-
-        this.addEvent('click', '#room4-button', () => {
-            window.location.hash = '/room4';
-        });
-    }
 }
