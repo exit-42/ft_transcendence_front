@@ -1,6 +1,12 @@
-export async function useFetch(url, options = {}) {
+export async function useFetch(url, options) {
     const baseUrl = 'https://localhost/api/';
     try {
+        options = {
+            ...options,
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        };
         const response = await fetch(baseUrl + url, options);
 
         return response;
