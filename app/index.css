@@ -15,6 +15,13 @@
     height: 25rem;
 }
 
+.cus-threejs {
+    width: 100%;
+    height: 100%;
+    max-width: 700px;
+    border: 3px solid black;
+}
+
 @media (max-width: 700px) {
     .cus-home-button {
         margin: 10px;
