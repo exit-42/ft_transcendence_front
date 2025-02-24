@@ -98,12 +98,11 @@ export default async function playGame() {
     }
     animate();
 
-    let room = {
-        game: {
-            ball: sphere,
-            you: racket1,
-            enemy: racket2,
-        },
+    let game = {
+        ball: sphere,
+        you: racket1,
+        enemy: racket2,
     };
-    return room;
+
+    return game;
 }

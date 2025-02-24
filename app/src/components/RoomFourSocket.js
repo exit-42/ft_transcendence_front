@@ -6,29 +6,21 @@ export default class RoomFourSocket extends Component {
         const player1 = 'heolee';
         const player2 = 'haejeong';
 
-        const user1 = {
-            name: 'heolee',
-            win: 1,
-            lose: 0,
-        };
+        this.$state.users.user1.name = 'dna';
+        this.$state.users.user1.win = 4;
+        this.$state.users.user1.lose = 5;
 
-        const user2 = {
-            name: 'heolee',
-            win: 1,
-            lose: 0,
-        };
+        this.$state.users.user2.name = 'heolee';
+        this.$state.users.user2.win = 5;
+        this.$state.users.user2.lose = 3;
 
-        const user3 = {
-            name: 'heolee',
-            win: 1,
-            lose: 0,
-        };
+        this.$state.users.user3.name = 'klha';
+        this.$state.users.user3.win = 2;
+        this.$state.users.user3.lose = 3;
 
-        const user4 = {
-            name: 'heolee',
-            win: 1,
-            lose: 0,
-        };
+        this.$state.users.user4.name = 'haejeong';
+        this.$state.users.user4.win = 4;
+        this.$state.users.user4.lose = 3;
 
         return `
             <div class="p-5" style="width: 100%; height: 88vh;">
@@ -55,29 +47,29 @@ export default class RoomFourSocket extends Component {
                     <div class="cus-user-card">
                         <div class="d-flex flex-column m-auto rounded-5" style="width: 100%; height: 100%; background-color: rgba(14, 180, 252, 0.6);">
                             <img class="m-auto rounded-circle cus-user-card-picture" src="src/imgs/sample.jpeg">
-                            <div class="m-auto text-center fs-1 text-white fw-bold">${user1.name}</div>
-                            <div class="m-auto text-center fs-1 text-white fw-bold">${user1.win}승 ${user1.lose}패</div>
+                            <div class="m-auto text-center fs-1 text-white fw-bold">${this.$state.users.user1.name}</div>
+                            <div class="m-auto text-center fs-1 text-white fw-bold">${this.$state.users.user1.win}승 ${this.$state.users.user1.lose}패</div>
                         </div>
                     </div>
                     <div class="cus-user-card">
                         <div class="d-flex flex-column m-auto rounded-5" style="width: 100%; height: 100%; background-color: rgba(14, 180, 252, 0.6);">
                             <img class="m-auto rounded-circle cus-user-card-picture" src="src/imgs/sample.jpeg">
-                            <div class="m-auto text-center fs-1 text-white fw-bold">${user1.name}</div>
-                            <div class="m-auto text-center fs-1 text-white fw-bold">${user1.win}승 ${user1.lose}패</div>
+                            <div class="m-auto text-center fs-1 text-white fw-bold">${this.$state.users.user2.name}</div>
+                            <div class="m-auto text-center fs-1 text-white fw-bold">${this.$state.users.user2.win}승 ${this.$state.users.user2.lose}패</div>
                         </div>
                     </div>
                     <div class="cus-user-card">
                         <div class="d-flex flex-column m-auto rounded-5" style="width: 100%; height: 100%; background-color: rgba(14, 180, 252, 0.6);">
                             <img class="m-auto rounded-circle cus-user-card-picture" src="src/imgs/sample.jpeg">
-                            <div class="m-auto text-center fs-1 text-white fw-bold">${user1.name}</div>
-                            <div class="m-auto text-center fs-1 text-white fw-bold">${user1.win}승 ${user1.lose}패</div>
+                            <div class="m-auto text-center fs-1 text-white fw-bold">${this.$state.users.user3.name}</div>
+                            <div class="m-auto text-center fs-1 text-white fw-bold">${this.$state.users.user3.win}승 ${this.$state.users.user3.lose}패</div>
                         </div>
                     </div>
                     <div class="cus-user-card">
                         <div class="d-flex flex-column m-auto rounded-5" style="width: 100%; height: 100%; background-color: rgba(14, 180, 252, 0.6);">
                             <img class="m-auto rounded-circle cus-user-card-picture" src="src/imgs/sample.jpeg">
-                            <div class="m-auto text-center fs-1 text-white fw-bold">${user1.name}</div>
-                            <div class="m-auto text-center fs-1 text-white fw-bold">${user1.win}승 ${user1.lose}패</div>
+                            <div class="m-auto text-center fs-1 text-white fw-bold">${this.$state.users.user4.name}</div>
+                            <div class="m-auto text-center fs-1 text-white fw-bold">${this.$state.users.user4.win}승 ${this.$state.users.user4.lose}패</div>
                         </div>
                     </div>
                 </div>
@@ -95,16 +87,41 @@ export default class RoomFourSocket extends Component {
         `;
     }
 
-    async mounted() {
-        this.$state = await playGame();
-        console.log(this.$state);
-        // this.$state.game.ball.position.set(1, 3, -1);
-        // this.$state.game.you.position.set(1, 1.9, 3.2);
-        // this.$state.game.enemy.position.set(-1, 1.9, -3.2);
+    setup() {
+        this.$state = {
+            game: null,
+            users: {
+                user1: {
+                    name: '',
+                    win: 0,
+                    lose: 0,
+                },
+                user2: {
+                    name: '',
+                    win: 0,
+                    lose: 0,
+                },
+                user3: {
+                    name: '',
+                    win: 0,
+                    lose: 0,
+                },
+                user4: {
+                    name: '',
+                    win: 0,
+                    lose: 0,
+                },
+            },
+        };
+    }
 
+    async gameSetup() {
+        this.$state.game = await playGame();
         console.log('소켓 열기');
         // this.socket = new WebSocket('ws://localhost:8000');
     }
+
+    mounted() {}
 
     dispose() {
         console.log('소켓 닫기');
