@@ -39,11 +39,6 @@ export default class HomeButtonBox extends Component {
             const $modal = this.$target.querySelector('#edit-modal');
             $modal.classList.remove('hidden');
             $modal.classList.add('current');
-
-            const $dup = this.$target.querySelector('#id-dup');
-            if ($dup) {
-                $dup.innerHTML = '';
-            }
         });
     }
 }
