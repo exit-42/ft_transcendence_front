@@ -9,7 +9,7 @@ export default class AddFriendModal extends Component {
 					<div>
 						<input type="text" placeholder="username">
 						<button class="cus-button" id="user-search">
-							search
+							add
 						</button>
 					</div>
 					<div class="cus-modal-close">

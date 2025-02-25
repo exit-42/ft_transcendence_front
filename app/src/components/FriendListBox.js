@@ -1,25 +1,40 @@
 import Component from '../core/Component.js';
 import { AddFriendModal, DeleteFriendModal } from './index.js';
+import { getFolloweList } from '../api/follow.js';
 
 export default class FriendListBox extends Component {
     template() {
+        const friendList = this.$state
+            .map((friend) => {
+                return `
+                <li class="cus-friend">${friend.nickname}</li>
+            `;
+            })
+            .join('');
+
         return `
             <div class="cus-friend-button-container">
-				<button id="add-button" class="my-1 mx-auto border-0 rounded-pill cus-friend-button">add</button>
-				<button id="delete-button" class="my-1 mx-auto border-0 rounded-pill cus-friend-button">delete</button>
-			</div>
-			<ul class="cus-friend-list">
-				<li class="cus-friend cus-friend-on"></li>
-				<li class="cus-friend"></li>
-				<li class="cus-friend"></li>
-				<li class="cus-friend"></li>
-				<li class="cus-friend"></li>
-				<li class="cus-friend"></li>
-			<ul>
+                <button id="add-button" class="my-1 mx-auto border-0 rounded-pill cus-friend-button">add</button>
+                <button id="delete-button" class="my-1 mx-auto border-0 rounded-pill cus-friend-button">delete</button>
+            </div>
+            <ul class="cus-friend-list">
+                <li class="cus-friend cus-friend-on">hlh</li>
+                <li class="cus-friend">
+                    <img class="m-auto rounded-circle cus-friend-picture" src="src/imgs/sample.jpeg">
+                </li>
+                ${friendList}
+
+            <ul>
             <div data-component="addfriend-modal"></div>
 
-			<div data-component="deletefriend-modal"></div>
+            <div data-component="deletefriend-modal"></div>
         `;
+    }
+
+    async setup() {
+        this.$state = [];
+        this.$state = (await (await getFolloweList()).json()).data;
+        this.render();
     }
 
     mounted() {
