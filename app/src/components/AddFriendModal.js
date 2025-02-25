@@ -1,36 +1,5 @@
 import Component from '../core/Component.js';
-
-const mockData = ['heelee', 'heokee', 'heoheo', 'hohoho'];
-
-const renderFriendList = (data, selector) => {
-    const $addModal = document.querySelector(selector);
-    const buttonType = selector.slice(1);
-    const $users = $addModal.querySelector('.cus-users');
-    data.forEach((name) => {
-        const $user = document.createElement('div');
-        $user.className = 'cus-user';
-        $user.innerHTML = `
-			<div class="cus-user-info">
-				${name}
-			</div>
-			<button class="cus-user-${buttonType}">${buttonType}</button>
-		`;
-        // cus-user-add에 이벤트 추가
-        if (buttonType === 'add') {
-            $user.querySelector('.cus-user-add').addEventListener('click', () => {
-                console.log('add friend : ', name);
-            });
-        }
-        // cus-user-delete에 이벤트 추가
-        if (buttonType === 'delete') {
-            $user.querySelector('.cus-user-delete').addEventListener('click', () => {
-                console.log('delete friend : ', name);
-            });
-        }
-
-        $users.appendChild($user);
-    });
-};
+import { postFollow } from '../api/follow.js';
 
 export default class AddFriendModal extends Component {
     template() {
@@ -43,18 +12,12 @@ export default class AddFriendModal extends Component {
 							search
 						</button>
 					</div>
-					<div class="divider"></div>
-					<div class="cus-users"></div>
 					<div class="cus-modal-close">
 						X
 					</div>					
 				</div>
 			</div>
 		`;
-    }
-
-    mounted() {
-        renderFriendList(mockData, '#add');
     }
 
     setEvent() {
@@ -64,11 +27,34 @@ export default class AddFriendModal extends Component {
             $modal.classList.remove('current');
         });
 
-        // 서버에 유저 검색 요청
-        this.addEvent('click', '#user-search', () => {
+        this.addEvent('click', '#user-search', async () => {
             const $modal = this.$target.querySelector('#add');
-            const $input = $modal.querySelector('input');
-            console.log('이름 검색할게 : ', $input.value);
+            const name = $modal.querySelector('input').value;
+            console.log('이름 검색할게 : ', name);
+
+            const response = await postFollow({ name });
+
+            if (response.ok) {
+                alert('친구 추가 했습니다');
+            } else {
+                if (response.status == 400) {
+                    alert('이름을 입력 하세요');
+                } else if (response.status == 401) {
+                    alert('토큰이 만료 되었습니다');
+                } else if (response.status == 403) {
+                    alert('팔로우 할 수 없습니다');
+                } else if (response.status == 404) {
+                    alert('유저를 찾을 수 없습니다');
+                } else if (response.status == 409) {
+                    alert('이미 친구 입니다');
+                } else if (response.status == 452) {
+                    alert('토큰이 만료 되었습니다');
+                } else if (response.status == 500) {
+                    alert('서버 에러');
+                } else {
+                    alert('알 수 없는 에러');
+                }
+            }
         });
     }
 }

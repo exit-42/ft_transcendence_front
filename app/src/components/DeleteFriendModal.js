@@ -1,43 +1,17 @@
 import Component from '../core/Component.js';
-
-const mockData = ['heelee', 'heokee', 'heoheo', 'hohoho'];
-
-const renderFriendList = (data, selector) => {
-    const $addModal = document.querySelector(selector);
-    const buttonType = selector.slice(1);
-    const $users = $addModal.querySelector('.cus-users');
-    data.forEach((name) => {
-        const $user = document.createElement('div');
-        $user.className = 'cus-user';
-        $user.innerHTML = `
-			<div class="cus-user-info">
-				${name}
-			</div>
-			<button class="cus-user-${buttonType}">${buttonType}</button>
-		`;
-        // cus-user-add에 이벤트 추가
-        if (buttonType === 'add') {
-            $user.querySelector('.cus-user-add').addEventListener('click', () => {
-                console.log('add friend : ', name);
-            });
-        }
-        // cus-user-delete에 이벤트 추가
-        if (buttonType === 'delete') {
-            $user.querySelector('.cus-user-delete').addEventListener('click', () => {
-                console.log('delete friend : ', name);
-            });
-        }
-
-        $users.appendChild($user);
-    });
-};
+import { deleteFollow } from '../api/follow.js';
 
 export default class DeleteFriendModal extends Component {
     template() {
         return `
 			<div class="cus-modal-container hidden" id="delete-modal">
 				<div class="cus-user-modal-content" id="delete">   
-					<div class="cus-users"></div>
+                    <div>
+						<input type="text" placeholder="username">
+						<button class="cus-button cus-red" id="user-search">
+							delete
+						</button>
+					</div>
 					<div class="cus-modal-close">
 						X
 					</div>
@@ -46,15 +20,37 @@ export default class DeleteFriendModal extends Component {
 		`;
     }
 
-    mounted() {
-        renderFriendList(mockData, '#delete');
-    }
-
     setEvent() {
         this.addEvent('click', '.cus-modal-close', () => {
             const $modal = this.$target.querySelector('.cus-modal-container.current');
             $modal.classList.add('hidden');
             $modal.classList.remove('current');
+        });
+
+        this.addEvent('click', '#user-search', async () => {
+            const $modal = this.$target.querySelector('#delete');
+            const name = $modal.querySelector('input').value;
+            console.log('삭제할게 : ', name);
+
+            const response = await deleteFollow({ name });
+
+            if (response.ok) {
+                alert('친구 삭제 했습니다');
+            } else {
+                if (response.status == 400) {
+                    alert('이름을 입력 하세요');
+                } else if (response.status == 401) {
+                    alert('토큰이 만료 되었습니다');
+                } else if (response.status == 404) {
+                    alert('유저를 찾을 수 없습니다');
+                } else if (response.status == 452) {
+                    alert('토큰이 만료 되었습니다');
+                } else if (response.status == 500) {
+                    alert('서버 에러');
+                } else {
+                    alert('알 수 없는 에러');
+                }
+            }
         });
     }
 }
