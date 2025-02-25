@@ -1,11 +1,6 @@
 import Component from '../core/Component.js';
 import { LoginButtonBox } from '../components/index.js';
-import { postLogin } from '../api/account.js';
-
-async function checkToken() {
-    const response = await postLogin();
-    if (response.ok) window.location.hash = '/home';
-}
+import { checkToken } from '../api/account.js';
 
 export default class LoginPage extends Component {
     template() {

@@ -10,8 +10,7 @@ export default class HomePage extends Component {
                 <div data-component="home-button-box" class="d-flex flex-column cus-home-card-container"></div>
 
 				<div class="d-flex cus-home-card-container">
-					<div data-component="usercard" class="cus-home-card m-auto">
-					</div>
+					<div data-component="usercard" class="cus-home-card m-auto"></div>
 				</div>
 
 			</div>

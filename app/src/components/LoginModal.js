@@ -50,9 +50,7 @@ export default class SignupModal extends Component {
             }
 
             const data = { id, password };
-
             const response = await postSignin(data);
-
             if (response.ok) {
                 const $Input = this.$target.querySelector('.cus-modal-check');
                 $Input.classList.remove('hidden');

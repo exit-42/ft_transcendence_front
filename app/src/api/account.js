@@ -12,3 +12,8 @@ export async function postLogin() {
 
     return response;
 }
+
+export async function checkToken() {
+    const response = await postLogin();
+    if (response.ok) window.location.hash = '/home';
+}
