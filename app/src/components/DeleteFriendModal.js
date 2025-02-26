@@ -30,7 +30,7 @@ export default class DeleteFriendModal extends Component {
         this.addEvent('click', '#user-search', async () => {
             const $modal = this.$target.querySelector('#delete');
             const name = $modal.querySelector('input').value;
-            console.log('삭제할게 : ', name);
+            // console.log('삭제할게 : ', name);
 
             const response = await deleteFollow({ name });
 

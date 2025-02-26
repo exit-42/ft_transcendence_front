@@ -30,7 +30,6 @@ export default class AddFriendModal extends Component {
         this.addEvent('click', '#user-search', async () => {
             const $modal = this.$target.querySelector('#add');
             const name = $modal.querySelector('input').value;
-            console.log('이름 검색할게 : ', name);
 
             const response = await postFollow({ name });
 

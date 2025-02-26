@@ -65,8 +65,6 @@ export default class LoginModal extends Component {
             if (response.ok) {
                 alert('사용 가능 합니다');
             } else {
-                // 200번대 제외하고 다 여기서 걸림
-                console.log(response.status);
                 if (response.status == 400) {
                     alert('아이디에 문제가 있습니다');
                 } else if (response.status == 409) {
@@ -116,8 +114,6 @@ export default class LoginModal extends Component {
             const email = $Modal.querySelector('.email').value;
             const code = $Modal.querySelector('.code').value;
 
-            console.log(email, code);
-
             if (!code) {
                 alert('값을 입력 하세요');
                 return;
@@ -146,8 +142,6 @@ export default class LoginModal extends Component {
             const id = $Modal.querySelector('.id').value;
             const password = $Modal.querySelector('.password').value;
             const email = $Modal.querySelector('.email').value;
-
-            console.log(id, password, email, '이걸로 회원가입할게');
 
             if (!id || !password || !email) {
                 alert('값을 입력 하세요');

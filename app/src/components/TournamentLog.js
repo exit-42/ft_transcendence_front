@@ -75,7 +75,6 @@ export default class TournamentLog extends Component {
 
         if (response.ok) {
             this.$state = await response.json();
-            console.log(this.$state);
             this.render();
         } else if (response.ok == 400) {
             alert('잘못된 요청 입니다');

@@ -55,17 +55,6 @@ export default class App extends Component {
             pages.gamelog();
         });
 
-        // 사용되지 않는 메서드
-        // router.onRouteChange = (currentRoute) => {
-        //     console.log('onRouteChange');
-        //     console.log('currentRoute', currentRoute);
-        //     if (currentRoute === '#/') {
-        //         $header.style.display = 'none';
-        //     } else {
-        //         $header.style.display = 'block';
-        //     }
-        // };
-
         router.start();
     }
 }

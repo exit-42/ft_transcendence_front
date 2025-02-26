@@ -37,7 +37,6 @@ export default class GameLog extends Component {
         const response = await getLog('normal', '-1');
         if (response.ok) {
             this.$state = await response.json();
-            // console.log(this.$state);
             this.render();
         } else if (response.ok == 400) {
             alert('잘못된 요청 입니다');
