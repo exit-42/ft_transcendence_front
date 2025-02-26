@@ -5,16 +5,18 @@ export default async function playGame() {
     let scene = new THREE.Scene();
     let renderer = new THREE.WebGLRenderer({
         canvas: document.querySelector('#canvas'),
+        antialias: true, // 앤티앨리어싱 활성화
     });
+    renderer.setPixelRatio(window.devicePixelRatio); // 디스플레이 비율에 맞게 픽셀 비율 설정
 
     let camera = new THREE.PerspectiveCamera(30, 1);
     camera.position.set(0, 3, 8);
     camera.lookAt(0, 2, 1);
 
-    const ambientLight = new THREE.AmbientLight(0xffffff, 1); // 부드러운 조명
+    const ambientLight = new THREE.AmbientLight(0xffffff, 1);
     scene.add(ambientLight);
 
-    const directionalLight = new THREE.DirectionalLight(0xffffff, 2); // 직사광 조명
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 2);
     directionalLight.position.set(0, 2, 0);
     scene.add(directionalLight);
 
@@ -35,7 +37,6 @@ export default async function playGame() {
         renderer.render(scene, camera);
     });
 
-    // 공 모델 로딩
     loader.load('./src/texture/pingpong/scene.gltf', function (gltf) {
         scene.add(gltf.scene);
         renderer.render(scene, camera);
@@ -81,17 +82,16 @@ export default async function playGame() {
         isRacketRotated = true;
 
         setTimeout(() => {
-            racket1.rotation.y -= angle; // 원래 상태로 회전 복구
+            racket1.rotation.y -= angle;
             isRacketRotated = false;
-        }, 200); // 200ms 후 원래 상태로 복구
+        }, 200);
     }
 
-    // 애니메이션 함수
     function animate() {
         requestAnimationFrame(animate);
         if (Math.abs(sphere.position.z - 3) < 0.05 && !isRacketRotated) {
             if (Math.abs(racket1.position.x + 0.2 - sphere.position.x) < 0.3) {
-                rotateRacket(THREE.MathUtils.degToRad(45)); // 15도 회전
+                rotateRacket(THREE.MathUtils.degToRad(45));
             }
         }
         renderer.render(scene, camera);
