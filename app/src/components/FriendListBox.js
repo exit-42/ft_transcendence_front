@@ -33,8 +33,22 @@ export default class FriendListBox extends Component {
 
     async setup() {
         this.$state = [];
-        this.$state = (await (await getFolloweList()).json()).data;
-        this.render();
+
+        const response = await getFolloweList();
+        if (response.ok) {
+            this.$state = (await response.json()).data;
+            this.render();
+        } else if (response.ok == 400) {
+            alert('잘못된 요청 입니다');
+        } else if (response.ok == 401) {
+            alert('잘못된 접근 입니다');
+        } else if (response.ok == 452) {
+            alert('토큰이 만료 되었습니다');
+        } else if (response.ok == 500) {
+            alert('서버 에러');
+        } else {
+            alert('알 수 없는 에러');
+        }
     }
 
     mounted() {
