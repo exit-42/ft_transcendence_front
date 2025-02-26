@@ -1,4 +1,5 @@
 import Component from '../core/Component.js';
+import { getLog } from '../api/log.js';
 
 export default class TournamentLog extends Component {
     template() {
@@ -69,9 +70,27 @@ export default class TournamentLog extends Component {
             .join('');
 
         return `
-			<ul class="d-flex flex-column align-items-center p-5 list-unstyled" style="width: 100%;">
+			<ul class="d-flex flex-column align-items-center list-unstyled" style="width: 100%;">
 				${gameLogItems}
 			</ul>
+			<div class="d-flex justify-content-center" style="width: 100%;">
+				<button id="loadMoreBtn" class="btn btn-primary">Load More</button>
+			</div>
 		`;
+    }
+
+    async setup() {
+        // this.$state = 기초값 설정
+        this.$state = await (await getLog('tournament', '-1')).json();
+        console.log(this.$state);
+        this.render();
+    }
+
+    setEvent() {
+        this.addEvent('click', '#loadMoreBtn', async () => {
+            this.$state = await (await getLog('normal', '0')).json();
+            console.log(this.$state);
+            this.render();
+        });
     }
 }
