@@ -3,35 +3,20 @@ import { getLog } from '../api/log.js';
 
 export default class GameLog extends Component {
     template() {
-        const gameLogs = [
-            {
-                players: 'heolee VS haejeong',
-                winner: 'heolee',
-                score: '11 : 8',
-            },
-            {
-                players: 'sangyhan VS haejeong',
-                winner: 'haejeong',
-                score: '8 : 11',
-            },
-            {
-                players: 'sham VS haejeong',
-                winner: 'sham',
-                score: '11 : 7',
-            },
-        ];
-
-        const gameLogItems = gameLogs
-            .map(
-                (log) => `
-				<li class="d-flex mt-3 mb-3 p-4 border-0 fs-3 text-white fw-bold rounded-pill justify-content-between align-items-center"
-					style="width: 80%; height: 7rem; background-color: rgba(14, 180, 252, 0.6);">
-					<div class="my-auto">${log.players}</div>
-					<div class="my-auto">Winner : ${log.winner}</div>
-					<div class="my-auto">${log.score}</div>					
-				</li>
-			`,
-            )
+        const gameLogItems = this.$state.games
+            .map((log) => {
+                if (!log || !log.matches || !log.matches[0]) {
+                    return ``;
+                }
+                return `
+                    <li class="d-flex mt-3 mb-3 p-4 border-0 fs-3 text-white fw-bold rounded-pill justify-content-between align-items-center"
+                        style="width: 80%; height: 7rem; background-color: rgba(14, 180, 252, 0.6);">
+                        <div class="my-auto">${log.matches[0].playerA} VS ${log.matches[0].playerB}</div>
+                        <div class="my-auto">Winner : ${log.matches[0].scoreA > log.matches[0].scoreB ? log.matches[0].playerA : log.matches[0].playerB}</div>
+                        <div class="my-auto">${log.matches[0].scoreA} : ${log.matches[0].scoreB}</div>					
+                    </li>
+                `;
+            })
             .join('');
 
         return `
@@ -45,17 +30,46 @@ export default class GameLog extends Component {
     }
 
     async setup() {
-        // 기초설정필요
-        this.$state = await (await getLog('normal', '-1')).json();
-        console.log(this.$state);
-        this.render();
+        this.$state = {
+            games: [],
+        };
+
+        const response = await getLog('normal', '-1');
+        if (response.ok) {
+            this.$state = await response.json();
+            // console.log(this.$state);
+            this.render();
+        } else if (response.ok == 400) {
+            alert('잘못된 요청 입니다');
+        } else if (response.ok == 401) {
+            alert('잘못된 접근 입니다');
+        } else if (response.ok == 500) {
+            alert('서버 에러');
+        } else {
+            alert('알 수 없는 에러');
+        }
     }
 
     setEvent() {
         this.addEvent('click', '#loadMoreBtn', async () => {
-            this.$state = await (await getLog('normal', '0')).json();
-            console.log(this.$state);
-            this.render();
+            if (this.$state.next_cursor == null) {
+                return;
+            }
+            const response = await getLog('normal', `${this.$state.next_cursor}`);
+            if (response.ok) {
+                const responseData = await response.json();
+                this.$state.games = [...this.$state.games, ...responseData.games];
+                this.$state.next_cursor = responseData.next_cursor;
+                this.render();
+            } else if (response.ok == 400) {
+                alert('잘못된 요청 입니다');
+            } else if (response.ok == 401) {
+                alert('잘못된 접근 입니다');
+            } else if (response.ok == 500) {
+                alert('서버 에러');
+            } else {
+                alert('알 수 없는 에러');
+            }
         });
     }
 }

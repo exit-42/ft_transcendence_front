@@ -3,70 +3,58 @@ import { getLog } from '../api/log.js';
 
 export default class TournamentLog extends Component {
     template() {
-        const gameLogs = [
-            {
-                players1: 'dogwak',
-                players2: 'haejeong',
-                players3: 'sham',
-                players4: 'dogwak',
-                winner1: 'dogwak',
-                winner2: 'sham',
-                winner3: 'sham',
-                score1: '11 : 8',
-                score2: '11 : 9',
-                score3: '11 : 7',
-            },
-        ];
-
-        const gameLogItems = gameLogs
-            .map(
-                (log) => `
-				<li class="cus-tournamentlog-list">				
-					<div class="cus-username-container">
-						<div>${log.players1}</div>
-						<div>${log.players2}</div>
-					</div>
-					<div class="cus-user-picture-container-left">
-						<img class="cus-user-picture" src="src/imgs/sample.jpeg"></img>
-						<img class="cus-user-picture" src="src/imgs/sample.jpeg"></img>
-					</div>
-					<div class="cus-side-line-container">
-						<div class="cus-side-line cus-red"></div>
-						<div>${log.score1}</div>
-						<div class="cus-side-line cus-black"></div>
-					</div>
-					<div class="cus-semi-line-container">
-						<div class="cus-semi-line cus-red"></div>
-						<div class="cus-semi-line cus-black"></div>
-					</div>
-					<div class="cus-mid-container">
-						<img class="cus-tournament-crown" src="src/imgs/crown.png"></img>
-						<div class="cus-mid-line-container">
-							<div class="cus-mid-line cus-red"></div>
-							<div class="cus-mid-line cus-black"></div>
+        const gameLogItems = this.$state.games
+            .map((log) => {
+                if (!log || !log.matches || !log.matches[0]) {
+                    return ``;
+                }
+                return `
+					<li class="cus-tournamentlog-list">				
+						<div class="cus-username-container">
+							<div>${log.matches[0].playerA}</div>
+							<div>${log.matches[0].playerB}</div>
 						</div>
-						<div class="cus-tournament-crown">${log.score3}</div>
-					</div>
-					<div class="cus-semi-line-container">
-						<div class="cus-semi-line cus-black"></div>
-						<div class="cus-semi-line cus-black"></div>
-					</div>
-					<div class="cus-side-line-container">
-						<div class="cus-side-line cus-black"></div>
-						<div>${log.score2}</div>
-						<div class="cus-side-line cus-red"></div>
-					</div>
-					<div class="cus-user-picture-container-right">
-						<img class="cus-user-picture" src="src/imgs/sample.jpeg"></img>
-						<img class="cus-user-picture" src="src/imgs/sample.jpeg"></img>
-					</div>
-					<div class="cus-username-container">
-						<div>${log.players3}</div>
-						<div>${log.players4}</div>
-					</div>
-				</li>
-			`,
-            )
+						<div class="cus-user-picture-container-left">
+							<img class="cus-user-picture" src="${log.matches[0].playerAimagePath}"></img>
+							<img class="cus-user-picture" src="${log.matches[0].playerBimagePath}"></img>
+						</div>
+						<div class="cus-side-line-container">
+							<div class="cus-side-line ${log.matches[0].scoreA > log.matches[0].scoreB ? 'cus-red' : 'cus-black'}"></div>
+							<div>${log.matches[0].scoreA} : ${log.matches[0].scoreB}</div>
+							<div class="cus-side-line ${log.matches[0].scoreA > log.matches[0].scoreB ? 'cus-black' : 'cus-red'}"></div>
+						</div>
+						<div class="cus-semi-line-container">
+							<div class="cus-semi-line ${log.matches[0].scoreA > log.matches[0].scoreB ? 'cus-red' : 'cus-black'}"></div>
+							<div class="cus-semi-line ${log.matches[0].scoreA > log.matches[0].scoreB ? 'cus-black' : 'cus-red'}"></div>
+						</div>
+						<div class="cus-mid-container">
+							<img class="cus-tournament-crown" src="src/imgs/crown.png"></img>
+							<div class="cus-mid-line-container">
+								<div class="cus-mid-line ${log.matches[2].scoreA > log.matches[2].scoreB ? 'cus-red' : 'cus-black'}"></div>
+								<div class="cus-mid-line ${log.matches[2].scoreA > log.matches[2].scoreB ? 'cus-black' : 'cus-red'}"></div>
+							</div>
+							<div class="cus-tournament-crown">${log.matches[2].scoreA} : ${log.matches[2].scoreB}</div>
+						</div>
+						<div class="cus-semi-line-container">
+							<div class="cus-semi-line ${log.matches[1].scoreA > log.matches[1].scoreB ? 'cus-red' : 'cus-black'}"></div>
+							<div class="cus-semi-line ${log.matches[1].scoreA > log.matches[1].scoreB ? 'cus-black' : 'cus-red'}"></div>
+						</div>
+						<div class="cus-side-line-container">
+							<div class="cus-side-line ${log.matches[1].scoreA > log.matches[1].scoreB ? 'cus-red' : 'cus-black'}"></div>
+							<div>${log.matches[1].scoreA} : ${log.matches[1].scoreB}</div>
+							<div class="cus-side-line ${log.matches[1].scoreA > log.matches[1].scoreB ? 'cus-black' : 'cus-red'}"></div>
+						</div>
+						<div class="cus-user-picture-container-right">
+							<img class="cus-user-picture" src="${log.matches[1].playerAimagePath}"></img>
+							<img class="cus-user-picture" src="${log.matches[1].playerBimagePath}"></img>
+						</div>
+						<div class="cus-username-container">
+							<div>${log.matches[1].playerA}</div>
+							<div>${log.matches[1].playerB}</div>
+						</div>
+					</li>
+			`;
+            })
             .join('');
 
         return `
@@ -80,17 +68,46 @@ export default class TournamentLog extends Component {
     }
 
     async setup() {
-        // this.$state = 기초값 설정
-        this.$state = await (await getLog('tournament', '-1')).json();
-        console.log(this.$state);
-        this.render();
+        this.$state = {
+            games: [],
+        };
+        const response = await getLog('tournament', '-1');
+
+        if (response.ok) {
+            this.$state = await response.json();
+            console.log(this.$state);
+            this.render();
+        } else if (response.ok == 400) {
+            alert('잘못된 요청 입니다');
+        } else if (response.ok == 401) {
+            alert('잘못된 접근 입니다');
+        } else if (response.ok == 500) {
+            alert('서버 에러');
+        } else {
+            alert('알 수 없는 에러');
+        }
     }
 
     setEvent() {
         this.addEvent('click', '#loadMoreBtn', async () => {
-            this.$state = await (await getLog('normal', '0')).json();
-            console.log(this.$state);
-            this.render();
+            if (this.$state.next_cursor == null) {
+                return;
+            }
+            const response = await getLog('tournament', `${this.$state.next_cursor}`);
+            if (response.ok) {
+                const responseData = await response.json();
+                this.$state.games = [...this.$state.games, ...responseData.games];
+                this.$state.next_cursor = responseData.next_cursor;
+                this.render();
+            } else if (response.ok == 400) {
+                alert('잘못된 요청 입니다');
+            } else if (response.ok == 401) {
+                alert('잘못된 접근 입니다');
+            } else if (response.ok == 500) {
+                alert('서버 에러');
+            } else {
+                alert('알 수 없는 에러');
+            }
         });
     }
 }
