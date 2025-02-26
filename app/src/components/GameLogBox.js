@@ -38,17 +38,4 @@ export default class GameLogBox extends Component {
             $TournamentLog.classList.add('current');
         });
     }
-
-    // toggleComponent(componentType) {
-    //     const $gamelog = this.$target.querySelector('[data-component="gamelog"]');
-    //     const $tournamentlog = this.$target.querySelector('[data-component="tournamentlog"]');
-
-    //     if (componentType === 'gamelog') {
-    //         $gamelog.classList.remove('d-none');
-    //         $tournamentlog.classList.add('d-none');
-    //     } else if (componentType === 'tournamentlog') {
-    //         $gamelog.classList.add('d-none');
-    //         $tournamentlog.classList.remove('d-none');
-    //     }
-    // }
 }
