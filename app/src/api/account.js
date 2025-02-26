@@ -12,3 +12,26 @@ export async function postLogin() {
 
     return response;
 }
+
+export async function checkToken() {
+    const response = await postLogin();
+    if (response.ok) window.location.hash = '/home';
+}
+
+export async function patchNickname(body) {
+    const response = await useFetch(baseUrl + 'nickname/', {
+        method: 'PATCH',
+        body: JSON.stringify(body),
+    });
+
+    return response;
+}
+
+export async function postImage(data) {
+    const response = await useFetch(baseUrl + 'image/', {
+        method: 'POST',
+        body: data,
+    });
+
+    return response;
+}

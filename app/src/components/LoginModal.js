@@ -1,5 +1,6 @@
 import Component from '../core/Component.js';
 import { postSignin, postToken } from '../api/localAuth.js';
+
 export default class SignupModal extends Component {
     template() {
         return `
@@ -50,9 +51,7 @@ export default class SignupModal extends Component {
             }
 
             const data = { id, password };
-
             const response = await postSignin(data);
-
             if (response.ok) {
                 const $Input = this.$target.querySelector('.cus-modal-check');
                 $Input.classList.remove('hidden');

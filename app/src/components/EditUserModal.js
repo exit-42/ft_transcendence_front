@@ -1,25 +1,27 @@
 import Component from '../core/Component.js';
+import { patchNickname, postImage } from '../api/account.js';
 
 export default class EditUserModal extends Component {
     template() {
         return `
-			<div class="cus-modal-container hidden" id="edit-modal">
-				<div class="cus-edit-modal-content" id="edit">
-					<div class="cus-modal-check" id="edit-id">
-						<input class="cus-username-change-input" type="text" placeholder="username">
-						<button class="cus-button cus-username-change-button" id="username-search">
-							change
-						</button>
-					</div>
-					<button class="cus-button cus-new-image" id="new-image">
-						new image
-					</button>
-					<div class="cus-modal-close">
-						X
-					</div>
-				</div>	 
-			</div>
-		`;
+            <div class="cus-modal-container hidden" id="edit-modal">
+                <div class="cus-edit-modal-content" id="edit">
+                    <div class="cus-modal-check" id="edit-id">
+                        <input class="cus-username-change-input" type="text" placeholder="username">
+                        <button class="cus-button cus-username-change-button" id="username-change">
+                            change
+                        </button>
+                    </div>
+                    <button class="cus-button cus-new-image" id="new-image">
+                        new image
+                    </button>
+                    <input type="file" id="image-input" class="hidden" accept="image/*">
+                    <div class="cus-modal-close">
+                        X
+                    </div>
+                </div>   
+            </div>
+        `;
     }
 
     setEvent() {
@@ -29,20 +31,59 @@ export default class EditUserModal extends Component {
             $modal.classList.remove('current');
         });
 
-        this.addEvent('click', '#username-search', () => {
-            // const $modal = this.$target.querySelector('#edit');
-            // const $input = $modal.querySelector('input');
-            // console.log('username-search click : ', $input.value);
-            // // 서버에 유저 검색 요청
-            // const $editId = this.$target.querySelector('#edit-id');
-            // const $dup = $editId.querySelector('#id-dup');
-            // if (!$dup) {
-            //	 const $newDiv = document.createElement('div');
-            //	 $newDiv.id = 'id-dup';
-            //	 $newDiv.innerHTML = $input.value + '는 사용 가능합니다.';
-            //	 $editId.appendChild($newDiv);
-            // }
-            // $dup.innerHTML = $input.value + '는 사용 가능합니다.';
+        this.addEvent('click', '#username-change', async () => {
+            const $modal = this.$target.querySelector('#edit');
+            const data = {
+                name: $modal.querySelector('input').value,
+            };
+            const response = await patchNickname(data);
+
+            if (response.ok) {
+                alert('닉네임을 바꿨습니다');
+            } else {
+                if (response.status == 401) {
+                    alert('잘못된 요청 입니다');
+                } else if (response.status == 452) {
+                    alert('토큰이 만료 되었습니다');
+                } else if (response.status == 500) {
+                    alert('서버 에러');
+                } else {
+                    alert('알 수 없는 에러');
+                }
+            }
+        });
+
+        this.addEvent('click', '#new-image', () => {
+            const imageInput = this.$target.querySelector('#image-input');
+            imageInput.click();
+        });
+
+        this.addEvent('change', '#image-input', async (event) => {
+            const file = event.target.files[0];
+            if (!file) {
+                return alert('이미지를 선택하세요');
+            }
+
+            const formData = new FormData();
+            formData.append('image', file);
+
+            const response = await postImage(formData);
+
+            if (response.ok) {
+                alert('이미지가 업로드 되었습니다');
+            } else {
+                if (response.status == 400) {
+                    alert('파일 형식이 잘못 되었습니다');
+                } else if (response.status == 401) {
+                    alert('잘못된 접근 입니다');
+                } else if (response.status == 452) {
+                    alert('토큰이 만료 되었습니다');
+                } else if (response.status == 500) {
+                    alert('서버 에러');
+                } else {
+                    alert('알 수 없는 에러');
+                }
+            }
         });
     }
 }
