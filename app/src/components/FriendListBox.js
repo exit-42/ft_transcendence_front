@@ -22,7 +22,7 @@ export default class FriendListBox extends Component {
             </div>
             <ul class="cus-friend-list">
                 <li class="cus-friend">
-                    <img class="m-auto rounded-circle cus-friend-picture" src="src/imgs/sample.jpeg">
+                    <img class="m-auto rounded-circle cus-friend-picture" src="src/imgs/default.jpeg">
                 </li>
                 <div class="d-flex justify-content-center">friend</div>
                 ${friendList}

@@ -46,28 +46,28 @@ export default class RoomFourSocket extends Component {
                 <div class="cus-room-container d-flex justify-content-around" style="width: 100%;">
                     <div class="cus-user-card">
                         <div class="d-flex flex-column m-auto rounded-5" style="width: 100%; height: 100%; background-color: rgba(14, 180, 252, 0.6);">
-                            <img class="m-auto rounded-circle cus-user-card-picture" src="src/imgs/sample.jpeg">
+                            <img class="m-auto rounded-circle cus-user-card-picture" src="src/imgs/default.jpeg">
                             <div class="m-auto text-center fs-1 text-white fw-bold">${this.$state.users.user1.name}</div>
                             <div class="m-auto text-center fs-1 text-white fw-bold">${this.$state.users.user1.win}승 ${this.$state.users.user1.lose}패</div>
                         </div>
                     </div>
                     <div class="cus-user-card">
                         <div class="d-flex flex-column m-auto rounded-5" style="width: 100%; height: 100%; background-color: rgba(14, 180, 252, 0.6);">
-                            <img class="m-auto rounded-circle cus-user-card-picture" src="src/imgs/sample.jpeg">
+                            <img class="m-auto rounded-circle cus-user-card-picture" src="src/imgs/default.jpeg">
                             <div class="m-auto text-center fs-1 text-white fw-bold">${this.$state.users.user2.name}</div>
                             <div class="m-auto text-center fs-1 text-white fw-bold">${this.$state.users.user2.win}승 ${this.$state.users.user2.lose}패</div>
                         </div>
                     </div>
                     <div class="cus-user-card">
                         <div class="d-flex flex-column m-auto rounded-5" style="width: 100%; height: 100%; background-color: rgba(14, 180, 252, 0.6);">
-                            <img class="m-auto rounded-circle cus-user-card-picture" src="src/imgs/sample.jpeg">
+                            <img class="m-auto rounded-circle cus-user-card-picture" src="src/imgs/default.jpeg">
                             <div class="m-auto text-center fs-1 text-white fw-bold">${this.$state.users.user3.name}</div>
                             <div class="m-auto text-center fs-1 text-white fw-bold">${this.$state.users.user3.win}승 ${this.$state.users.user3.lose}패</div>
                         </div>
                     </div>
                     <div class="cus-user-card">
                         <div class="d-flex flex-column m-auto rounded-5" style="width: 100%; height: 100%; background-color: rgba(14, 180, 252, 0.6);">
-                            <img class="m-auto rounded-circle cus-user-card-picture" src="src/imgs/sample.jpeg">
+                            <img class="m-auto rounded-circle cus-user-card-picture" src="src/imgs/default.jpeg">
                             <div class="m-auto text-center fs-1 text-white fw-bold">${this.$state.users.user4.name}</div>
                             <div class="m-auto text-center fs-1 text-white fw-bold">${this.$state.users.user4.win}승 ${this.$state.users.user4.lose}패</div>
                         </div>

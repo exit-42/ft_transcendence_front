@@ -17,7 +17,7 @@ export default class UserCard extends Component {
             nickname: '로딩중',
             winCnt: 0,
             loseCnt: 0,
-            imagePath: 'src/imgs/sample.jpeg',
+            imagePath: 'src/imgs/default.jpeg',
         };
 
         const response = await postLogin();
