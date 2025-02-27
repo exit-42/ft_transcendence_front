@@ -31,10 +31,12 @@ export default class SelectButtonBox extends Component {
     setEvent() {
         this.addEvent('click', '#room2-button', () => {
             window.location.hash = '/room2';
+            // 서버에 본인이 방장인 2인 룸 개설
         });
 
         this.addEvent('click', '#room4-button', () => {
             window.location.hash = '/room4';
+            // 서버에 본인이 방장인 4인 룸 개설
         });
     }
 }
