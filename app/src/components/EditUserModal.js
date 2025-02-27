@@ -65,7 +65,7 @@ export default class EditUserModal extends Component {
             }
 
             const formData = new FormData();
-            formData.append('image', file);
+            formData.append('profile_image', file);
 
             const response = await postImage(formData);
 
