@@ -1,13 +1,14 @@
-export async function useFetch(url, options) {
+export async function useFetch(url, options = {}, retries = 1) {
     const baseUrl = 'https://localhost/api/';
+
     try {
-        options = {
-            ...options,
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        };
         const response = await fetch(baseUrl + url, options);
+
+        // Check if the status code is 452 (you can customize retries as needed)
+        if (response.status === 452 && retries > 0) {
+            console.log('Status 452 received. Retrying...');
+            return useFetch(url, options, retries - 1); // Retry once with reduced retries
+        }
 
         return response;
     } catch (error) {
