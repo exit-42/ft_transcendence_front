@@ -7,7 +7,10 @@ export default class FriendListBox extends Component {
         const friendList = this.$state
             .map((friend) => {
                 return `
-                <li class="cus-friend">${friend.nickname}</li>
+                <li class="cus-friend">
+                    <img class="m-auto rounded-circle cus-friend-picture" src="${friend.imagePath}">
+                </li>
+                <div class="d-flex justify-content-center">${friend.nickname}</div>
             `;
             })
             .join('');
@@ -18,10 +21,10 @@ export default class FriendListBox extends Component {
                 <button id="delete-button" class="my-1 mx-auto border-0 rounded-pill cus-friend-button">delete</button>
             </div>
             <ul class="cus-friend-list">
-                <li class="cus-friend cus-friend-on">hlh</li>
                 <li class="cus-friend">
                     <img class="m-auto rounded-circle cus-friend-picture" src="src/imgs/sample.jpeg">
                 </li>
+                <div class="d-flex justify-content-center">friend</div>
                 ${friendList}
 
             <ul>
@@ -37,6 +40,7 @@ export default class FriendListBox extends Component {
         const response = await getFolloweList();
         if (response.ok) {
             this.$state = (await response.json()).data;
+            // console.log(this.$state);
             this.render();
         } else if (response.ok == 400) {
             alert('잘못된 요청 입니다');
