@@ -71,8 +71,16 @@
     text-align: center;
 }
 
-.cus-friend-on {
+.cus-friend-green {
     border: 2px solid greenyellow;
+}
+
+.cus-friend-orange {
+    border: 2px solid orange;
+}
+
+.cus-friend-black {
+    border: 2px solid black;
 }
 
 .cus-users {

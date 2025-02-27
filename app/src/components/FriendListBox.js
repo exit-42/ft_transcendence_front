@@ -6,12 +6,25 @@ export default class FriendListBox extends Component {
     template() {
         const friendList = this.$state
             .map((friend) => {
+                const getActivityClass = (lastActivity) => {
+                    if (!lastActivity) {
+                        return 'cus-friend-black';
+                    }
+                    const lastActivityTime = new Date(lastActivity);
+                    const currentTime = new Date();
+                    const timeDifference = (currentTime - lastActivityTime) / 1000 / 60;
+                    if (timeDifference <= 5) {
+                        return 'cus-friend-green';
+                    }
+                    return 'cus-friend-orange';
+                };
+
                 return `
-                <li class="cus-friend">
-                    <img class="m-auto rounded-circle cus-friend-picture" src="${friend.imagePath}">
-                </li>
-                <div class="d-flex justify-content-center">${friend.nickname}</div>
-            `;
+                    <li class="cus-friend ${getActivityClass(friend.lastActivity)}">
+                        <img class="m-auto rounded-circle cus-friend-picture" src="${friend.imagePath}">
+                    </li>
+                    <div class="d-flex justify-content-center">${friend.nickname}</div>
+                `;
             })
             .join('');
 
@@ -21,12 +34,7 @@ export default class FriendListBox extends Component {
                 <button id="delete-button" class="my-1 mx-auto border-0 rounded-pill cus-friend-button">delete</button>
             </div>
             <ul class="cus-friend-list">
-                <li class="cus-friend">
-                    <img class="m-auto rounded-circle cus-friend-picture" src="src/imgs/default.jpeg">
-                </li>
-                <div class="d-flex justify-content-center">friend</div>
                 ${friendList}
-
             <ul>
             <div data-component="addfriend-modal"></div>
 
