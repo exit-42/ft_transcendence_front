@@ -8,7 +8,6 @@ export default class HomeButtonBox extends Component {
 			<button class="cus-home-button border-0 fs-2 text-white fw-bold rounded-pill cus-button" id="lobby-button">lobby</button>
 			<button class="cus-home-button border-0 fs-2 text-white fw-bold rounded-pill cus-button" id="select-button">make room</button>
 			<button class="cus-home-button border-0 fs-2 text-white fw-bold rounded-pill cus-button" id="edit-button">edit ID</button>
-			<button class="cus-home-button border-0 fs-2 text-white fw-bold rounded-pill cus-button cus-delete-button" id="select-button">delete ID</button>				
             <div data-component="edit-modal"></div>
         `;
     }
