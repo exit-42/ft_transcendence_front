@@ -16,4 +16,4 @@ export { default as LobbyBox } from './LobbyBox.js';
 export { default as LoginButtonBox } from './LoginButtonBox.js';
 export { default as SelectButtonBox } from './SelectButtonBox.js';
 export { default as RoomFourSocket } from './RoomFourSocket.js';
-export { default as RoomTwoScoket } from './RoomTwoSocket.js';
+export { default as RoomTwoSocket } from './RoomTwoSocket.js';
