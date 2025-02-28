@@ -126,7 +126,7 @@ export default class LoginModal extends Component {
             } else {
                 if (response.status == 400) {
                     alert('인증 실패');
-                } else if (response.status == 404) {
+                } else if (response.status == 452) {
                     alert('세션이 만료 되었습니다');
                 } else if (response.status == 500) {
                     alert('서버 에러');

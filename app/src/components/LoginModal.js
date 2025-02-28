@@ -85,7 +85,7 @@ export default class SignupModal extends Component {
                     alert('코드가 틀렸습니다');
                 } else if (response.status == 401) {
                     alert('존재하지 않는 유저 입니다');
-                } else if (response.status == 404) {
+                } else if (response.status == 452) {
                     alert('세션이 만료 되었습니다');
                 } else if (response.status == 500) {
                     alert('서버 에러');

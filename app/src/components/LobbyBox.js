@@ -1,16 +1,17 @@
 import Component from '../core/Component.js';
+import { getRoom, patchRoom } from '../api/room.js';
 
 export default class LobbyBox extends Component {
     template() {
-        const roomItems = this.$state
+        const roomItems = this.$state.data
             .map(
                 (room) => `
                     <li class="col m-auto rounded-5 d-flex flex-column p-3" 
                         style="width: 16rem; height: 12rem; background-color: rgba(14, 180, 252, 0.5);"
-                        data-room-name="${room.roomName}">
-                        <div class="my-auto fs-5 text-white">${room.capacity}</div>
+                        room-id="${room.roomId}">
+                        <div class="my-auto fs-5 text-white">${room.playerCount}/${this.$state.now}</div>
                         <div class="m-auto rounded-circle" style="width: 5rem; height: 5rem; background-color: white"></div>
-                        <div class="m-auto fs-4 text-white">${room.roomName}</div>
+                        <div class="m-auto fs-4 text-white">${room.roomManager}</div>
                     </li>
                 `,
             )
@@ -31,67 +32,92 @@ export default class LobbyBox extends Component {
         `;
     }
 
-    setup() {
-        this.$state = [
-            {
-                capacity: '2/4',
-                roomName: "heolee's room",
-            },
-            {
-                capacity: '2/2',
-                roomName: "haejeong's room",
-            },
-            {
-                capacity: '1/2',
-                roomName: "sangyhan's room",
-            },
-        ];
-        // 최초에는 1대1 room만 불러 올것임
-        // console.log(this.$state);
+    async setup() {
+        this.$state = {
+            now: '2',
+            data: [],
+        };
+
+        const response = await getRoom('individual');
+        if (response.ok) {
+            const responseData = await response.json();
+            this.$state.data = responseData.data;
+            this.render();
+        } else if (response.ok == 400) {
+            alert('잘못된 요청 입니다');
+        } else if (response.ok == 401) {
+            alert('잘못된 접근 입니다');
+        } else if (response.ok == 452) {
+            alert('토큰이 만료 되었습니다');
+        } else if (response.ok == 500) {
+            alert('서버 에러');
+        } else {
+            alert('알 수 없는 에러');
+        }
     }
 
     setEvent() {
-        this.addEvent('click', '#room2-button', () => {
-            this.$state = [
-                {
-                    capacity: '2/4',
-                    roomName: "heolee's room",
-                },
-                {
-                    capacity: '2/2',
-                    roomName: "haejeong's room",
-                },
-                {
-                    capacity: '1/2',
-                    roomName: "sangyhan's room",
-                },
-            ];
-            this.render();
+        this.addEvent('click', '#room2-button', async () => {
+            const response = await getRoom('individual');
+            if (response.ok) {
+                const responseData = await response.json();
+                this.$state.now = '2';
+                this.$state.data = responseData.data;
+                this.render();
+            } else if (response.ok == 400) {
+                alert('잘못된 요청 입니다');
+            } else if (response.ok == 401) {
+                alert('잘못된 접근 입니다');
+            } else if (response.ok == 452) {
+                alert('토큰이 만료 되었습니다');
+            } else if (response.ok == 500) {
+                alert('서버 에러');
+            } else {
+                alert('알 수 없는 에러');
+            }
         });
 
-        this.addEvent('click', '#room4-button', () => {
-            this.$state = [
-                {
-                    capacity: '1/4',
-                    roomName: "sham's room",
-                },
-                {
-                    capacity: '1/4',
-                    roomName: "klha's room",
-                },
-                {
-                    capacity: '3/4',
-                    roomName: "dna's room",
-                },
-            ];
-            this.render();
+        this.addEvent('click', '#room4-button', async () => {
+            const response = await getRoom('tournament');
+            if (response.ok) {
+                const responseData = await response.json();
+                this.$state.now = '4';
+                this.$state.data = responseData.data;
+                this.render();
+            } else if (response.ok == 400) {
+                alert('잘못된 요청 입니다');
+            } else if (response.ok == 401) {
+                alert('잘못된 접근 입니다');
+            } else if (response.ok == 452) {
+                alert('토큰이 만료 되었습니다');
+            } else if (response.ok == 500) {
+                alert('서버 에러');
+            } else {
+                alert('알 수 없는 에러');
+            }
         });
 
-        this.addEvent('click', '.cus-lobby-container', (e) => {
-            const clickedRoom = e.target.closest('li'); // Find the clicked <li> element
+        this.addEvent('click', '.cus-lobby-container', async (e) => {
+            const clickedRoom = e.target.closest('li');
             if (clickedRoom) {
-                const roomName = clickedRoom.getAttribute('data-room-name');
-                console.log(`You clicked on: ${roomName}`);
+                const roomId = clickedRoom.getAttribute('room-id');
+                // console.log(`this room id: ${roomId}`);
+                const response = await patchRoom(roomId);
+                if (response.ok) {
+                    const responseData = await response.json();
+                    window.myGlobalVar = responseData.port;
+                    window.location.hash = `/room${this.$state.now}`;
+                } else if (response.ok == 400) {
+                    alert('잘못된 요청 입니다');
+                } else if (response.ok == 401) {
+                    alert('잘못된 접근 입니다');
+                } else if (response.ok == 452) {
+                    alert('토큰이 만료 되었습니다');
+                } else if (response.ok == 500) {
+                    alert('서버 에러');
+                } else {
+                    alert('알 수 없는 에러');
+                }
             }
         });
     }

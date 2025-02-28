@@ -1,4 +1,5 @@
 import Component from '../core/Component.js';
+import { postRoom } from '../api/room.js';
 
 export default class SelectButtonBox extends Component {
     template() {
@@ -29,14 +30,48 @@ export default class SelectButtonBox extends Component {
     }
 
     setEvent() {
-        this.addEvent('click', '#room2-button', () => {
-            window.location.hash = '/room2';
+        this.addEvent('click', '#room2-button', async () => {
             // 서버에 본인이 방장인 2인 룸 개설
+            const response = await postRoom('individual');
+            if (response.ok) {
+                const responseData = await response.json();
+                window.myGlobalVar = responseData.port;
+                window.location.hash = '/room2';
+            } else {
+                if (response.status == 400) {
+                    alert('코드가 틀렸습니다');
+                } else if (response.status == 401) {
+                    alert('존재하지 않는 유저 입니다');
+                } else if (response.status == 452) {
+                    alert('세션이 만료 되었습니다');
+                } else if (response.status == 500) {
+                    alert('서버 에러');
+                } else {
+                    alert('알 수 없는 에러');
+                }
+            }
         });
 
-        this.addEvent('click', '#room4-button', () => {
-            window.location.hash = '/room4';
+        this.addEvent('click', '#room4-button', async () => {
             // 서버에 본인이 방장인 4인 룸 개설
+            const response = await postRoom('tournament');
+            if (response.ok) {
+                const responseData = await response.json();
+                window.myGlobalVar = responseData.port;
+                window.location.hash = '/room4';
+            } else {
+                if (response.status == 400) {
+                    alert('코드가 틀렸습니다');
+                } else if (response.status == 401) {
+                    alert('존재하지 않는 유저 입니다');
+                } else if (response.status == 452) {
+                    alert('세션이 만료 되었습니다');
+                } else if (response.status == 500) {
+                    alert('서버 에러');
+                } else {
+                    alert('알 수 없는 에러');
+                }
+            }
         });
     }
 }
