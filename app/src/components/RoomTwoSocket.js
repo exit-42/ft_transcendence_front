@@ -44,7 +44,7 @@ export default class RoomTwoSocket extends Component {
                 <div class="d-flex flex-column rounded-5 p-3" style="width: 100%; height: 100%; background-color: rgba(14, 180, 252, 0.25);">
                     <img class="m-auto" style="width: 14rem; height: 7rem;" src="src/imgs/crown.png">
                     <div class="m-auto rounded-5 d-flex align-items-center justify-content-center" style="width: 22rem; height: 22rem; background-color: rgba(14, 180, 252, 0.6);">
-                        <div class="m-auto rounded-circle" style="width: 12rem; height: 12rem; background-color: white"></div>
+                        <img class="m-auto rounded-circle" style="width: 12rem; height: 12rem;"  src="${this.$state.winnerImg}"></img>
                     </div>
                     <div class="m-auto fs-1 d-flex align-items-center justify-content-center" style=""> ${this.$state.winner} is winner</div>
                 </div>
@@ -58,6 +58,7 @@ export default class RoomTwoSocket extends Component {
             you: '',
             isEnenmy: false,
             winner: '',
+            winnerImg: '',
             roomVisible: 'current',
             gameVisible: 'hidden',
             resultVisible: 'hidden',
@@ -89,7 +90,7 @@ export default class RoomTwoSocket extends Component {
         }
 
         this.$state.you = userJson.nickname;
-        console.log('state : ', this.$state);
+
         this.socket = new WebSocket(`wss://localhost:${window.myGlobalVar}?username=${userJson.nickname}`);
         // 메시지 수신
         this.socket.onmessage = async (event) => {
@@ -142,6 +143,12 @@ export default class RoomTwoSocket extends Component {
                 this.$state.resultVisible = 'current';
                 this.$state.gameVisible = 'hidden';
                 this.$state.winner = msg.win;
+
+                if (this.$state.users.user1.name == msg.win) {
+                    this.$state.winnerImg = this.$state.users.user1.imgPath;
+                } else {
+                    this.$state.winnerImg = this.$state.users.user2.imgPath;
+                }
 
                 this.render();
             }

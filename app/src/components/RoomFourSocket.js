@@ -1,6 +1,7 @@
 import Component from '../core/Component.js';
 import playGame from '../game/GameModule.js';
 import { postLogin } from '../api/account.js';
+import { Announce } from './index.js';
 
 export default class RoomFourSocket extends Component {
     template() {
@@ -62,9 +63,21 @@ export default class RoomFourSocket extends Component {
 
 
             <div class="px-5 pb-5 ${this.$state.gameVisible}" style="width: 100%; height: 88vh;">
-                <div class="fs-2 fw-normal d-flex align-items-center justify-content-center" style="width: 100%; height: 10%;">${this.$state.announce}</div>
+                <div class="fs-3 d-flex align-items-center justify-content-center" data-component="announce1" style="width: 100%; height: 5%;"></div>
+                <div class="fs-3 d-flex align-items-center justify-content-center" data-component="announce2" style="width: 100%; height: 5%;"></div>
                 <div data-component="game" class="fs-1 m-auto cus-threejs">
                     <canvas id="canvas" style="width: 100%; height: 100%;"></canvas>
+                </div>
+            </div>
+
+
+            <div class="p-5 ${this.$state.resultVisible}" style="width: 100%; height: 88vh;">
+                <div class="d-flex flex-column rounded-5 p-3" style="width: 100%; height: 100%; background-color: rgba(14, 180, 252, 0.25);">
+                    <img class="m-auto" style="width: 14rem; height: 7rem;" src="src/imgs/crown.png">
+                    <div class="m-auto rounded-5 d-flex align-items-center justify-content-center" style="width: 22rem; height: 22rem; background-color: rgba(14, 180, 252, 0.6);">
+                        <img class="m-auto rounded-circle" style="width: 12rem; height: 12rem;"  src="${this.$state.winnerImg}"></img>
+                    </div>
+                    <div class="m-auto fs-1 d-flex align-items-center justify-content-center" style=""> ${this.$state.winner} is winner</div>
                 </div>
             </div>
         `;
@@ -73,9 +86,17 @@ export default class RoomFourSocket extends Component {
     setup() {
         console.log(window.myGlobalVar);
         this.$state = {
+            you: '',
             roomVisible: 'current',
             gameVisible: 'hidden',
-            announce: '게임 대기중',
+            resultVisible: 'hidden',
+
+            winner: '',
+            winnerImg: '',
+
+            isPlay: true,
+            isFinal: false,
+
             game: null,
             users: {
                 user1: {
@@ -114,6 +135,9 @@ export default class RoomFourSocket extends Component {
         if (!userJson) {
             return;
         }
+
+        this.$state.you = userJson.nickname;
+
         this.socket = new WebSocket(`wss://localhost:${window.myGlobalVar}?username=${userJson.nickname}`);
         // 메시지 수신
         this.socket.onmessage = async (event) => {
@@ -135,34 +159,67 @@ export default class RoomFourSocket extends Component {
                 }
                 // 상태 업데이트 후 화면을 다시 렌더링
                 this.render();
-            } else if (msg && msg.type === 'start') {
+            } else if (msg && msg.type === 'start' && msg.player1 && msg.player2) {
                 // 잠시후 게임이 시작 됩니다 문구 띄운다
                 // 화면 타입을 바꾼다
-                this.$state.announce = '스코어 표시';
+
                 this.$state.roomVisible = 'hidden';
                 this.$state.gameVisible = 'current';
                 this.render();
+                new Announce(
+                    this.$target.querySelector('[data-component="announce1"]'),
+                    `${msg.player1} VS ${msg.player2}`,
+                );
+                new Announce(this.$target.querySelector('[data-component="announce2"]'), `0 : 0`);
                 this.$state.game = await playGame();
+                if (msg.player2 == this.$state.you) {
+                    this.$state.game.camera.position.set(0, 3, -8);
+                    this.$state.game.camera.lookAt(0, 2, 0);
+                    this.$state.isEnenmy = true;
+                }
             } else if (msg && msg.type === 'play' && msg.ball && msg.player) {
-                // state 변화 준다 render 안해도 알아서 위치 바뀜
-                // this.$state.game.ball.position.x = msg.ball[0];
-                // this.$state.game.ball.position.y = msg.ball[1];
-                // this.$state.game.ball.position.z = msg.ball[2];
                 this.$state.game.ball.position.set(msg.ball[0], msg.ball[1], msg.ball[2]);
                 this.$state.game.you.position.x = msg.player[0];
                 this.$state.game.enemy.position.x = msg.player[1];
             } else if (msg && msg.type === 'set_result' && msg.win && msg.lose) {
-                // 안내문구 상태변화후 랜더링 playGame 다시호출
-                this.$state.announce = '경기 중...';
-                this.render();
-                this.$state.game = await playGame();
-            } else if (msg && msg.type === 'match_result' && msg.win && msg.lose && msg.win_cnt && msg.lose_cnt) {
-                this.$state.announce = `${msg.win} 님이 이겼습니다`;
-                this.render();
-            } else if (msg && msg.type === 'final_info' && msg.player1 && msg.player2) {
-                this.$state.announce = '스코어 표시';
+                new Announce(
+                    this.$target.querySelector('[data-component="announce2"]'),
+                    `${msg.p1_score} : ${msg.p2_score}`,
+                );
+            } else if (msg && msg.type === 'match_result' && msg.win && msg.lose && msg.p1_score && msg.p2_score) {
+                if (this.$state.isFinal) {
+                    this.$state.resultVisible = 'current';
+                    this.$state.gameVisible = 'hidden';
+                    this.$state.winner = msg.win;
 
-                this.render();
+                    if (this.$state.users.user1.name == msg.win) {
+                        this.$state.winnerImg = this.$state.users.user1.imgPath;
+                    } else if (this.$state.users.user2.name == msg.win) {
+                        this.$state.winnerImg = this.$state.users.user2.imgPath;
+                    } else if (this.$state.users.user3.name == msg.win) {
+                        this.$state.winnerImg = this.$state.users.user3.imgPath;
+                    } else if (this.$state.users.user4.name == msg.win) {
+                        this.$state.winnerImg = this.$state.users.user4.imgPath;
+                    }
+
+                    this.render();
+                } else {
+                    new Announce(
+                        this.$target.querySelector('[data-component="announce1"]'),
+                        `${msg.win}님이 이겼습니다`,
+                    );
+                }
+            } else if (msg && msg.type === 'final_info' && msg.player1 && msg.player2) {
+                new Announce(
+                    this.$target.querySelector('[data-component="announce1"]'),
+                    `${msg.player1}님과 ${msg.player2} 님이 경기합니다`,
+                );
+
+                this.$state.isFinal = true;
+
+                if (this.$state.you != msg.player1 && this.$state.you != msg.player2) {
+                    this.$state.isPlay = false;
+                }
             }
         };
 
@@ -174,27 +231,20 @@ export default class RoomFourSocket extends Component {
         window.addEventListener('keydown', (event) => {
             if (!this.$state.game.you) return;
 
-            if (event.key === 'ArrowLeft') {
-                // if (this.$state.game.you.position.x > -1.2) {
-                //     this.$state.game.you.position.x -= step;
-                // // 뭐라뭐라 보냄
-                // this.socket.send(
-                //     JSON.stringify({
-                //         // type: 'move',
-                //         // player: 'you',
-                //         // position: this.$state.game.you.position
-                //     }),
-                // );
-                // }
-            } else if (event.key === 'ArrowRight') {
-                // this.socket.send(
-                //     JSON.stringify({
-                //         // type: 'move',
-                //         // player: 'you',
-                //         // position: this.$state.game.you.position
-                //     }),
-                // );
-                // }
+            if (event.key === 'ArrowLeft' && this.$state.isPlay) {
+                this.socket.send(
+                    JSON.stringify({
+                        type: 'move',
+                        dir: 'left',
+                    }),
+                );
+            } else if (event.key === 'ArrowRight' && this.$state.isPlay) {
+                this.socket.send(
+                    JSON.stringify({
+                        type: 'move',
+                        dir: 'right',
+                    }),
+                );
             }
         });
     }
