@@ -44,14 +44,6 @@ export default class App extends Component {
             $header.style.display = 'block';
             pages.room4();
         });
-        router.addRoute('#/game', () => {
-            $header.style.display = 'block';
-            pages.game();
-        });
-        router.addRoute('#/result', () => {
-            $header.style.display = 'block';
-            pages.result();
-        });
         router.addRoute('#/gamelog', () => {
             $header.style.display = 'block';
             pages.gamelog();

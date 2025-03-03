@@ -4,8 +4,6 @@ import LobbyPage from './LobbyPage.js';
 import SelectPage from './SelectPage.js';
 import RoomTwoPage from './RoomTwoPage.js';
 import RoomFourPage from './RoomFourPage.js';
-import GamePage from './GamePage.js';
-import ResultPage from './ResultPage.js';
 import GameLogPage from './GameLogPage.js';
 
 export default function createPages(main) {
@@ -15,8 +13,6 @@ export default function createPages(main) {
     const select = () => new SelectPage(main);
     const room2 = () => new RoomTwoPage(main);
     const room4 = () => new RoomFourPage(main);
-    const game = () => new GamePage(main);
-    const result = () => new ResultPage(main);
     const gamelog = () => new GameLogPage(main);
 
     return {
@@ -26,8 +22,6 @@ export default function createPages(main) {
         select,
         room2,
         room4,
-        game,
-        result,
         gamelog,
     };
 }

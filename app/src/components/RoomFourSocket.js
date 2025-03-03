@@ -84,7 +84,7 @@ export default class RoomFourSocket extends Component {
     }
 
     setup() {
-        console.log(window.myGlobalVar);
+        // console.log(window.myGlobalVar);
         this.$state = {
             you: '',
             roomVisible: 'current',
@@ -128,8 +128,7 @@ export default class RoomFourSocket extends Component {
     }
 
     async socketSetup() {
-        // this.$state.game = await playGame();
-        console.log('소켓 열기');
+        // console.log('소켓 열기');
         const user = await postLogin();
         const userJson = await user.json();
         if (!userJson) {
@@ -141,7 +140,7 @@ export default class RoomFourSocket extends Component {
         this.socket = new WebSocket(`wss://localhost:${window.myGlobalVar}?username=${userJson.nickname}`);
         // 메시지 수신
         this.socket.onmessage = async (event) => {
-            console.log(event.data);
+            // console.log(event.data);
             const msg = JSON.parse(event.data);
             if (msg && msg.type === 'join' && msg['data']) {
                 // 1번부터 4번까지 순서대로 업데이트
@@ -175,7 +174,6 @@ export default class RoomFourSocket extends Component {
                 if (msg.player2 == this.$state.you) {
                     this.$state.game.camera.position.set(0, 3, -8);
                     this.$state.game.camera.lookAt(0, 2, 0);
-                    this.$state.isEnenmy = true;
                 }
             } else if (msg && msg.type === 'play' && msg.ball && msg.player) {
                 this.$state.game.ball.position.set(msg.ball[0], msg.ball[1], msg.ball[2]);
@@ -229,7 +227,7 @@ export default class RoomFourSocket extends Component {
         };
 
         window.addEventListener('keydown', (event) => {
-            if (!this.$state.game.you) return;
+            if (!this.$state.game) return;
 
             if (event.key === 'ArrowLeft' && this.$state.isPlay) {
                 this.socket.send(
@@ -252,7 +250,7 @@ export default class RoomFourSocket extends Component {
     mounted() {}
 
     dispose() {
-        console.log('소켓 닫기');
+        // console.log('소켓 닫기');
         if (this.socket) {
             this.socket.close();
         }
