@@ -3,6 +3,8 @@ import * as THREE from 'three';
 
 export default async function playGame() {
     let scene = new THREE.Scene();
+    scene.background = new THREE.Color(0xdcdcdc);
+
     let renderer = new THREE.WebGLRenderer({
         canvas: document.querySelector('#canvas'),
         antialias: true, // 앤티앨리어싱 활성화
@@ -11,7 +13,7 @@ export default async function playGame() {
 
     let camera = new THREE.PerspectiveCamera(30, 1);
     camera.position.set(0, 3, 8);
-    camera.lookAt(0, 2, 1);
+    camera.lookAt(0, 2, 0);
 
     const ambientLight = new THREE.AmbientLight(0xffffff, 1);
     scene.add(ambientLight);
@@ -25,15 +27,9 @@ export default async function playGame() {
     loader.load('./src/texture/stadium/scene.gltf', function (gltf) {
         const stadium = gltf.scene;
         scene.add(stadium);
-        gltf.scene.position.set(-21, 0, -10);
+        gltf.scene.position.set(-21, 0, 0);
         gltf.scene.scale.set(10, 10, 10);
         gltf.scene.rotation.y = THREE.MathUtils.degToRad(90);
-        stadium.traverse((child) => {
-            if (child.isMesh) {
-                child.material = child.material.clone();
-                child.material.color.multiplyScalar(0.7);
-            }
-        });
         renderer.render(scene, camera);
     });
 
@@ -73,27 +69,27 @@ export default async function playGame() {
     sphere.position.set(0, 2, 0);
     scene.add(sphere);
 
-    let isRacketRotated = false;
+    // let isRacketRotated = false;
 
-    function rotateRacket(angle) {
-        if (!racket1) return;
+    // function rotateRacket(angle) {
+    //     if (!racket1) return;
 
-        racket1.rotation.y += angle;
-        isRacketRotated = true;
+    //     racket1.rotation.y += angle;
+    //     isRacketRotated = true;
 
-        setTimeout(() => {
-            racket1.rotation.y -= angle;
-            isRacketRotated = false;
-        }, 200);
-    }
+    //     setTimeout(() => {
+    //         racket1.rotation.y -= angle;
+    //         isRacketRotated = false;
+    //     }, 200);
+    // }
 
     function animate() {
         requestAnimationFrame(animate);
-        if (Math.abs(sphere.position.z - 3) < 0.05 && !isRacketRotated) {
-            if (Math.abs(racket1.position.x + 0.2 - sphere.position.x) < 0.3) {
-                rotateRacket(THREE.MathUtils.degToRad(45));
-            }
-        }
+        // if (Math.abs(sphere.position.z - 3) < 0.05 && !isRacketRotated) {
+        //     if (Math.abs(racket1.position.x + 0.2 - sphere.position.x) < 0.3) {
+        //         rotateRacket(THREE.MathUtils.degToRad(45));
+        //     }
+        // }
         renderer.render(scene, camera);
     }
     animate();
@@ -102,6 +98,7 @@ export default async function playGame() {
         ball: sphere,
         you: racket1,
         enemy: racket2,
+        camera: camera,
     };
 
     return game;

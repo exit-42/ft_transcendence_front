@@ -9,11 +9,11 @@ export default class Component {
         this.setup();
         this.setEvent();
         this.render();
-        this.gameSetup();
+        this.socketSetup();
         this._observeDOMChages();
     }
 
-    gameSetup() {}
+    socketSetup() {}
 
     setup() {} // 컴포넌트 state 설정
 
