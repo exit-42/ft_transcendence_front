@@ -51,6 +51,10 @@ export default class EditUserModal extends Component {
                     alert('알 수 없는 에러');
                 }
             }
+
+            const $close = this.$target.querySelector('.cus-modal-container.current');
+            $close.classList.add('hidden');
+            $close.classList.remove('current');
         });
 
         this.addEvent('click', '#new-image', () => {
@@ -84,6 +88,10 @@ export default class EditUserModal extends Component {
                     alert('알 수 없는 에러');
                 }
             }
+
+            const $close = this.$target.querySelector('.cus-modal-container.current');
+            $close.classList.add('hidden');
+            $close.classList.remove('current');
         });
     }
 }

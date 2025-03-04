@@ -86,32 +86,37 @@
 .cus-users {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
     width: 100%;
+    padding: 0px;
+    overflow: auto;
 }
 
 .cus-user {
+    list-style: none;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 1px;
 }
 
 body .cus-user-add {
     background-color: #23db63;
     width: 60px;
     height: 30px;
+    border: 0px;
     border-radius: 20px;
     font-size: 15px;
+    color: #fff;
 }
 
 body .cus-user-delete {
     background-color: #fc0e0e;
     width: 60px;
     height: 30px;
+    border: 0px;
     border-radius: 20px;
     font-size: 15px;
+    color: #fff;
 }
 
 .cus-edit-modal-content {
@@ -177,15 +182,31 @@ body .cus-submit:hover {
     align-items: center;
 }
 
-.divider {
-    position: absolute;
-    top: 120px;
+.cus-divider {
     height: 3px;
+    margin-bottom: 20px;
     width: 100%;
     background-color: #0eb4fc;
 }
 
 .cus-user-modal-content {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+
+    justify-content: start;
+    align-items: center;
+    text-align: center;
+
+    background-color: #fff;
+    border: 2px solid rgba(14, 180, 252);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    width: 800px;
+    height: 600px;
+}
+
+.cus-user-modal-content-delete {
     display: flex;
     position: relative;
     flex-direction: column;
@@ -201,9 +222,24 @@ body .cus-submit:hover {
     width: 800px;
     height: 200px;
 
-    gap: 50px;
-    padding: 50px;
+    input {
+        width: 400px;
+        height: 40px;
+    }
 
+    button {
+        color: white;
+        border: none;
+
+        border-radius: 20px;
+        width: 150px;
+        height: 40px;
+    }
+}
+
+.cus-user-search {
+    width: 100%;
+    margin: 30px;
     input {
         width: 400px;
         height: 40px;

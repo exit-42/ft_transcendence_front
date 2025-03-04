@@ -50,6 +50,8 @@ export default class FriendListBox extends Component {
             this.$state = (await response.json()).data;
             // console.log(this.$state);
             this.render();
+            const $deletefriendmodal = this.$target.querySelector('[data-component="deletefriend-modal"]');
+            new DeleteFriendModal($deletefriendmodal, this.$state);
         } else if (response.ok == 400) {
             alert('잘못된 요청 입니다');
         } else if (response.ok == 401) {
@@ -66,9 +68,6 @@ export default class FriendListBox extends Component {
     mounted() {
         const $addfriendmodal = this.$target.querySelector('[data-component="addfriend-modal"]');
         new AddFriendModal($addfriendmodal);
-
-        const $deletefriendmodal = this.$target.querySelector('[data-component="deletefriend-modal"]');
-        new DeleteFriendModal($deletefriendmodal);
     }
 
     setEvent() {

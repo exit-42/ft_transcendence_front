@@ -5,7 +5,7 @@ export default class DeleteFriendModal extends Component {
     template() {
         return `
 			<div class="cus-modal-container hidden" id="delete-modal">
-				<div class="cus-user-modal-content" id="delete">   
+				<div class="cus-user-modal-content-delete" id="delete">   
                     <div>
 						<input type="text" placeholder="username">
 						<button class="cus-button cus-red" id="user-search">
