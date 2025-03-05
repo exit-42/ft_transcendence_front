@@ -33,8 +33,16 @@ export default class EditUserModal extends Component {
 
         this.addEvent('click', '#username-change', async () => {
             const $modal = this.$target.querySelector('#edit');
+            const nickname = $modal.querySelector('input').value;
+
+            const idPattern = /^[a-zA-Z0-9_]+$/;
+            if (!idPattern.test(nickname) || nickname.length < 3 || 15 < nickname.length) {
+                alert('사용할 수 없는 닉네임 입니다');
+                return;
+            }
+
             const data = {
-                name: $modal.querySelector('input').value,
+                name: nickname,
             };
             const response = await patchNickname(data);
 

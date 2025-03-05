@@ -30,7 +30,12 @@ export default class DeleteFriendModal extends Component {
         this.addEvent('click', '#user-search', async () => {
             const $modal = this.$target.querySelector('#delete');
             const name = $modal.querySelector('input').value;
-            // console.log('삭제할게 : ', name);
+
+            const idPattern = /^[a-zA-Z0-9_]+$/;
+            if (!idPattern.test(name) || name.length < 3 || 15 < name.length) {
+                alert('사용할 수 없는 닉네임 입니다');
+                return;
+            }
 
             const response = await deleteFollow({ name });
 

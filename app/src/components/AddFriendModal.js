@@ -65,6 +65,12 @@ export default class AddFriendModal extends Component {
             const $modal = this.$target.querySelector('#add');
             const name = $modal.querySelector('input').value;
 
+            const idPattern = /^[a-zA-Z0-9_]+$/;
+            if (!idPattern.test(name) || name.length < 3 || 15 < name.length) {
+                alert('사용할 수 없는 닉네임 입니다');
+                return;
+            }
+
             const response = await getFollow(name);
 
             if (response.ok) {

@@ -114,6 +114,12 @@ export default class LoginModal extends Component {
             const email = $Modal.querySelector('.email').value;
             const code = $Modal.querySelector('.code').value;
 
+            const codePattern = /^[a-zA-Z0-9_]+$/;
+            if (!codePattern.test(code)) {
+                alert('잘못된 코드 입니다');
+                return;
+            }
+
             if (!code) {
                 alert('값을 입력 하세요');
                 return;
@@ -145,6 +151,23 @@ export default class LoginModal extends Component {
 
             if (!id || !password || !email) {
                 alert('값을 입력 하세요');
+                return;
+            }
+
+            const idPattern = /^[a-zA-Z0-9_]+$/;
+            if (!idPattern.test(id)) {
+                alert('사용할 수 없는 아이디 입니다');
+                return;
+            }
+
+            if (!idPattern.test(password)) {
+                alert('사용할 수 없는 비밀번호 입니다');
+                return;
+            }
+
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert('이메일 형식이 틀립니다');
                 return;
             }
 

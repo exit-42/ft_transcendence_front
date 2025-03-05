@@ -50,6 +50,17 @@ export default class SignupModal extends Component {
                 return;
             }
 
+            const idPattern = /^[a-zA-Z0-9_]+$/;
+            if (!idPattern.test(id)) {
+                alert('잘못된 아이디 입니다');
+                return;
+            }
+
+            if (!idPattern.test(password)) {
+                alert('잘못된 비밀번호 입니다');
+                return;
+            }
+
             const data = { id, password };
             const response = await postSignin(data);
             if (response.ok) {
