@@ -92,9 +92,9 @@ export default class RoomTwoSocket extends Component {
         this.socket = new WebSocket(`wss://localhost:${window.myGlobalVar}?username=${userJson.nickname}`);
         // 메시지 수신
         this.socket.onmessage = async (event) => {
-            // console.log(event.data);
+            console.log(event.data);
             const msg = JSON.parse(event.data);
-            if (msg && msg.type === 'join' && msg['data']) {
+            if (msg && msg.type === 'join') {
                 // 1번부터 4번까지 순서대로 업데이트
                 let i = 1;
                 for (let key in msg['data']) {
@@ -110,7 +110,7 @@ export default class RoomTwoSocket extends Component {
                 }
                 // 상태 업데이트 후 화면을 다시 렌더링
                 this.render();
-            } else if (msg && msg.type === 'start' && msg.player1 && msg.player2) {
+            } else if (msg && msg.type === 'start') {
                 // 잠시후 게임이 시작 됩니다 문구 띄운다
                 // 화면 타입을 바꾼다
 
@@ -127,16 +127,16 @@ export default class RoomTwoSocket extends Component {
                     this.$state.game.camera.position.set(0, 3, -8);
                     this.$state.game.camera.lookAt(0, 2, 0);
                 }
-            } else if (msg && msg.type === 'play' && msg.ball && msg.player) {
+            } else if (msg && msg.type === 'play') {
                 this.$state.game.ball.position.set(msg.ball[0], msg.ball[1], msg.ball[2]);
                 this.$state.game.you.position.x = msg.player[0];
                 this.$state.game.enemy.position.x = msg.player[1];
-            } else if (msg && msg.type === 'set_result' && msg.win && msg.lose) {
+            } else if (msg && msg.type === 'set_result') {
                 new Announce(
                     this.$target.querySelector('[data-component="announce2"]'),
                     `${msg.p1_score} : ${msg.p2_score}`,
                 );
-            } else if (msg && msg.type === 'match_result' && msg.win && msg.lose && msg.p1_score && msg.p2_score) {
+            } else if (msg && msg.type === 'match_result') {
                 this.$state.resultVisible = 'current';
                 this.$state.gameVisible = 'hidden';
                 this.$state.winner = msg.win;
@@ -156,7 +156,7 @@ export default class RoomTwoSocket extends Component {
             console.error(error);
         };
 
-        window.addEventListener('keydown', (event) => {
+        this.handleKeyDown = (event) => {
             if (!this.$state.game) return;
 
             if (event.key === 'ArrowLeft') {
@@ -174,7 +174,9 @@ export default class RoomTwoSocket extends Component {
                     }),
                 );
             }
-        });
+        };
+
+        window.addEventListener('keydown', this.handleKeyDown);
     }
 
     mounted() {}
@@ -184,6 +186,7 @@ export default class RoomTwoSocket extends Component {
         if (this.socket) {
             this.socket.close();
         }
+        window.removeEventListener('keydown', this.handleKeyDown);
     }
 
     setEvent() {

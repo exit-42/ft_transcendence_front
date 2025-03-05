@@ -142,7 +142,7 @@ export default class RoomFourSocket extends Component {
         this.socket.onmessage = async (event) => {
             // console.log(event.data);
             const msg = JSON.parse(event.data);
-            if (msg && msg.type === 'join' && msg['data']) {
+            if (msg && msg.type === 'join') {
                 // 1번부터 4번까지 순서대로 업데이트
                 let i = 1;
                 for (let key in msg['data']) {
@@ -158,7 +158,7 @@ export default class RoomFourSocket extends Component {
                 }
                 // 상태 업데이트 후 화면을 다시 렌더링
                 this.render();
-            } else if (msg && msg.type === 'start' && msg.player1 && msg.player2) {
+            } else if (msg && msg.type === 'start') {
                 // 잠시후 게임이 시작 됩니다 문구 띄운다
                 // 화면 타입을 바꾼다
 
@@ -175,16 +175,16 @@ export default class RoomFourSocket extends Component {
                     this.$state.game.camera.position.set(0, 3, -8);
                     this.$state.game.camera.lookAt(0, 2, 0);
                 }
-            } else if (msg && msg.type === 'play' && msg.ball && msg.player) {
+            } else if (msg && msg.type === 'play') {
                 this.$state.game.ball.position.set(msg.ball[0], msg.ball[1], msg.ball[2]);
                 this.$state.game.you.position.x = msg.player[0];
                 this.$state.game.enemy.position.x = msg.player[1];
-            } else if (msg && msg.type === 'set_result' && msg.win && msg.lose) {
+            } else if (msg && msg.type === 'set_result') {
                 new Announce(
                     this.$target.querySelector('[data-component="announce2"]'),
                     `${msg.p1_score} : ${msg.p2_score}`,
                 );
-            } else if (msg && msg.type === 'match_result' && msg.win && msg.lose && msg.p1_score && msg.p2_score) {
+            } else if (msg && msg.type === 'match_result') {
                 if (this.$state.isFinal) {
                     this.$state.resultVisible = 'current';
                     this.$state.gameVisible = 'hidden';
@@ -207,7 +207,7 @@ export default class RoomFourSocket extends Component {
                         `${msg.win}님이 이겼습니다`,
                     );
                 }
-            } else if (msg && msg.type === 'final_info' && msg.player1 && msg.player2) {
+            } else if (msg && msg.type === 'final_info') {
                 new Announce(
                     this.$target.querySelector('[data-component="announce1"]'),
                     `${msg.player1}님과 ${msg.player2} 님이 경기합니다`,
@@ -226,17 +226,17 @@ export default class RoomFourSocket extends Component {
             console.error(error);
         };
 
-        window.addEventListener('keydown', (event) => {
+        this.handleKeyDown = (event) => {
             if (!this.$state.game) return;
 
-            if (event.key === 'ArrowLeft' && this.$state.isPlay) {
+            if (event.key === 'ArrowLeft') {
                 this.socket.send(
                     JSON.stringify({
                         type: 'move',
                         dir: 'left',
                     }),
                 );
-            } else if (event.key === 'ArrowRight' && this.$state.isPlay) {
+            } else if (event.key === 'ArrowRight') {
                 this.socket.send(
                     JSON.stringify({
                         type: 'move',
@@ -244,7 +244,9 @@ export default class RoomFourSocket extends Component {
                     }),
                 );
             }
-        });
+        };
+
+        window.addEventListener('keydown', this.handleKeyDown);
     }
 
     mounted() {}
@@ -254,6 +256,7 @@ export default class RoomFourSocket extends Component {
         if (this.socket) {
             this.socket.close();
         }
+        window.removeEventListener('keydown', this.handleKeyDown);
     }
 
     setEvent() {
