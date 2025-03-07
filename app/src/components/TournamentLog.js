@@ -8,6 +8,19 @@ export default class TournamentLog extends Component {
                 if (!log || !log.matches || !log.matches[0]) {
                     return ``;
                 }
+
+                if (
+                    log.matches[2].playerA == log.matches[1].playerA ||
+                    log.matches[2].playerA == log.matches[1].playerB
+                ) {
+                    let tmp = log.matches[2].playerA;
+                    log.matches[2].playerA = log.matches[2].playerB;
+                    log.matches[2].playerB = tmp;
+                    tmp = log.matches[2].scoreA;
+                    log.matches[2].scoreA = log.matches[2].scoreB;
+                    log.matches[2].scoreB = tmp;
+                }
+
                 return `
 					<li class="cus-tournamentlog-list">				
 						<div class="cus-username-container">
