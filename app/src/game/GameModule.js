@@ -12,7 +12,7 @@ export default async function playGame() {
     renderer.setPixelRatio(window.devicePixelRatio); // 디스플레이 비율에 맞게 픽셀 비율 설정
 
     let camera = new THREE.PerspectiveCamera(30, 1);
-    camera.position.set(0, 3, 8);
+    camera.position.set(0, 4, 9);
     camera.lookAt(0, 2, 0);
 
     const ambientLight = new THREE.AmbientLight(0xffffff, 1);

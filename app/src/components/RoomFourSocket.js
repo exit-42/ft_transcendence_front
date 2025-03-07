@@ -87,6 +87,7 @@ export default class RoomFourSocket extends Component {
         // console.log(window.myGlobalVar);
         this.$state = {
             you: '',
+            isEnenmy: false,
             roomVisible: 'current',
             gameVisible: 'hidden',
             resultVisible: 'hidden',
@@ -172,13 +173,22 @@ export default class RoomFourSocket extends Component {
                 new Announce(this.$target.querySelector('[data-component="announce2"]'), `0 : 0`);
                 this.$state.game = await playGame();
                 if (msg.player2 == this.$state.you) {
-                    this.$state.game.camera.position.set(0, 3, -8);
+                    this.$state.game.camera.position.set(0, 4, -9);
                     this.$state.game.camera.lookAt(0, 2, 0);
+                    this.$state.isEnenmy = true;
+                    const tmp = this.$state.game.you;
+                    this.$state.game.you = this.$state.game.enemy;
+                    this.$state.game.enemy = tmp;
                 }
             } else if (msg && msg.type === 'play') {
                 this.$state.game.ball.position.set(msg.ball[0], msg.ball[1], msg.ball[2]);
-                this.$state.game.you.position.x = msg.player[0];
-                this.$state.game.enemy.position.x = msg.player[1];
+                if (this.$state.isEnenmy) {
+                    this.$state.game.you.position.x = msg.player[1] + 0.15;
+                    this.$state.game.enemy.position.x = msg.player[0] - 0.15;
+                } else {
+                    this.$state.game.you.position.x = msg.player[0] - 0.15;
+                    this.$state.game.enemy.position.x = msg.player[1] + 0.15;
+                }
             } else if (msg && msg.type === 'set_result') {
                 new Announce(
                     this.$target.querySelector('[data-component="announce2"]'),
